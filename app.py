@@ -15,10 +15,13 @@ def home():
     """Serve the portfolio home page."""
     # The list of weekly work grows as the semester goes on.
     weekly_work = [
-        # {"week": 1, "title": "Live site launched", "url": "/"},
+        {"week": 1, "title": "Live site launched", "url": "/week1"},
     ]
     return render_template("index.html", weekly_work=weekly_work)
 
+@app.route("/week1")
+def week1():
+    return render_template("week1/page.html")
 
 if __name__ == "__main__":
     # For local development only. In production, Render runs the app with

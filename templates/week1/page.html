@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 1 - My Web Programming Portfolio</title>
+</head>
+<body>
+    <header>
+        <h1>Week 1 - First Deployment</h1>
+        <p>Today was all about getting started and deploying this first version!</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Today's Work</h2>
+            <img width=200px src="{{ url_for('static', filename='images/spidey.jpeg') }}">
+            <figcaption>Figure 1: Live from the office</figcaption>
+        </section>
+    </main>
+
+    <footer>
+        <p>Web Programming — built with Flask and deployed on Render.</p>
+    </footer>
+</body>
+</html>
