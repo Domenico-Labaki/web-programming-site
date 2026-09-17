@@ -1,34 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Web Programming Portfolio</title>
-    <!--<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">-->
-</head>
-<body>
-    <header>
-        <h1>Web Programming Portfolio — Domenico Labaki</h1>
-        <p>Growing this site week by week. Time to learn and experiment!</p>
-    </header>
-
-    <main>
-        <section>
-            <h2>Weekly Work</h2>
-            <!-- Each week you add a link here to that week's page or feature. -->
-            <ul>
-                {% for item in weekly_work %}
-                    <li><a href="{{ item.url }}">Week {{ item.week }} — {{ item.title }}</a></li>
-                {% else %}
-                    <li>Week 1 — live site launched.</li>
-                {% endfor %}
-            </ul>
-        </section>
-    </main>
-
-    <footer>
-        <p>Web Programming — built with Flask and deployed on Render.</p>
-        <p>This website is created for educational purposes only, as part of the GIN446 - Web Programming course, School of Engineering, USEK. (Fall 2026-2027)</p>
-    </footer>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}
+    Domenico's Web Portfolio
+{% endblock %}
+{% block content %}
+<section>
+    <h2>Weekly Work</h2>
+    <!-- Each week you add a link here to that week's page or feature. -->
+    <ul>
+        {% for item in weekly_work %}
+            <li><a href="{{ item.url }}">Week {{ item.week }} — {{ item.title }}</a></li>
+        {% else %}
+            <li>Week 1 — live site launched.</li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

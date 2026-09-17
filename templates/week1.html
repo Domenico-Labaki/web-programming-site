@@ -1,28 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 1 - My Web Programming Portfolio</title>
-    <!--<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">-->
-</head>
-<body>
-    <header>
-        <h1>Week 1 - First Deployment</h1>
-        <p>Today was all about getting started and deploying this first version!</p>
-    </header>
-
-    <main>
-        <section>
-            <h2>Today's Work</h2>
-            <img width=200px src="{{ url_for('static', filename='images/spidey.jpeg') }}">
-            <figcaption>Figure 1: Live from the office</figcaption>
-        </section>
-    </main>
-
-    <footer>
-        <p>Web Programming — built with Flask and deployed on Render.</p>
-        <p>This website is created for educational purposes only, as part of the GIN446 - Web Programming course, School of Engineering, USEK. (Fall 2026-2027)</p>
-    </footer>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}
+    Live site launched
+{% endblock %}
+{% block content %}
+<section>
+    <h2>Today's Work</h2>
+    <img width=200px src="{{ url_for('static', filename='images/spidey.jpeg') }}">
+    <figcaption>Figure 1: Live from the office</figcaption>
+</section>
+{% endblock %}
