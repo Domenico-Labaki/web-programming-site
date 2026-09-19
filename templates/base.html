@@ -8,12 +8,14 @@
 </head>
 <body>
     <header>
-        <h1>History of the Internet</h1>
+        <h1>Domenico's Web Portfolio</h1>        
         <nav>
+            <a href="/">Home</a>
             {% for item in weekly_work %}
-                <a href="{{ item.url }}">{{ item.title }}</a></li>
+                <a href="{{ item.url }}">{{ item.title }}</a>
             {% endfor %}
         </nav>
+        <button id="theme-toggle" aria-label="Toggle dark mode">◐</button>
     </header>
 
     <main>
@@ -24,5 +26,7 @@
         <p>Web Programming — built with Flask and deployed on Render.</p>
         <p>This website is created for educational purposes only, as part of the GIN446 - Web Programming course, School of Engineering, USEK. (Fall 2026-2027)</p>
     </footer>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
 </html>

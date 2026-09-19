@@ -6,11 +6,11 @@
 <section>
     <h2>Weekly Work</h2>
     <!-- Each week you add a link here to that week's page or feature. -->
-    <ul>
+    <ul class="weekly-list">
         {% for item in weekly_work %}
-            <li><a href="{{ item.url }}">Week {{ item.week }} — {{ item.title }}</a></li>
+            <li data-week="W{{ item.week }}"><a href="{{ item.url }}">{{ item.title }}</a></li>
         {% else %}
-            <li>Week 1 — live site launched.</li>
+            <li data-week="W1">live site launched.</li>
         {% endfor %}
     </ul>
 </section>
