@@ -3,9 +3,11 @@
     Live site launched
 {% endblock %}
 {% block content %}
-<section>
-    <h2>Today's Work</h2>
-    <img width=200px src="{{ url_for('static', filename='images/spidey.jpeg') }}">
-    <figcaption>Figure 1: Live from the office</figcaption>
+<section aria-labelledby="today-heading">
+    <h2 id="today-heading">Today's Work</h2>
+    <figure>
+        <img width="200" src="{{ url_for('static', filename='images/spidey.jpeg') }}" alt="Small Spider-Man figurine in a blue hooded jacket standing on a laptop keyboard, with a blurred monitor in the background">
+        <figcaption>Figure 1: Live from the office</figcaption>
+    </figure>
 </section>
 {% endblock %}

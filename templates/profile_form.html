@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}
+    Engineering Student Profile
+{% endblock %}
+{% block content %}
+<section>
+    <h2>Engineering Student Profile</h2> 
+    <p>Complete this form to provide information about your academic background, technical skills,
+         internship experience, and Final Year Project preferences.</p>
+    <form action="{{ url_for('submit_profile') }}" method="post">
+        
+    </form>
+</section>
+{% endblock %}

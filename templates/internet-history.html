@@ -3,349 +3,1001 @@
     History of the Internet
 {% endblock %}
 {% block content %}
-<section>
-    <h2>Introduction</h2>
+<section id="introduction" aria-labelledby="introduction-heading">
+    <h2 id="introduction-heading">Introduction</h2>
+
     <p>
-        The <b>Internet</b> is the global system of interconnected computer networks that communicate using common networking standards, especially the Internet Protocol suite. It is fundamentally a <b>network of networks</b>, operated by many independent organizations but connected through interoperable protocols and routing systems. 
-        The <b>World Wide Web is not the Internet</b>. The Web is an information system and application that operates <i>over</i> Internet infrastructure, using technologies such as HTTP, URLs, web servers, and browsers. Tim Berners-Lee invented the Web at CERN in 1989, roughly two decades after ARPANET began operating.  Consequently, this timeline focuses on the development of Internet networking infrastructure rather than milestones that belong primarily to the history of the Web.
+        The <strong>Internet</strong> is the global system of interconnected
+        computer networks that communicate using common networking standards,
+        especially the Internet Protocol suite. It is fundamentally a
+        <strong>network of networks</strong>, operated by many independent
+        organizations but connected through interoperable protocols and routing systems.
+    </p>
+
+    <p>
+        The <strong>World Wide Web is not the Internet</strong>. The Web is an
+        information system and application that operates <em>over</em> Internet
+        infrastructure, using technologies such as HTTP, URLs, web servers, and browsers.
+        Tim Berners-Lee invented the Web at CERN in 1989, roughly two decades after
+        ARPANET began operating. Consequently, this timeline focuses on the development
+        of Internet networking infrastructure rather than milestones that belong
+        primarily to the history of the Web.
     </p>
 </section>
-<section>
-    <h2>Milestones of the Internet</h2>
-    <article>
-        <h3>1961 — Foundations of Packet Switching</h3>
-        <h4>What happened</h4>
-        <p>
-            In July 1961, Leonard Kleinrock at MIT published early theoretical work analyzing communication networks in which data could be transmitted in discrete blocks rather than through permanently established circuits. During the same period, related packet-network ideas were developed independently by Paul Baran at RAND and, later, Donald Davies and colleagues at Britain's National Physical Laboratory. 
-        </p>
-        <h4>Why it mattered</h4>
-        <p>
-            Packet switching became a fundamental technical principle behind ARPANET and eventually the Internet. Instead of reserving an entire communication circuit for one connection, data could be divided into packets and sent through shared network infrastructure, allowing computer networks to use communication links much more efficiently. 
-        </p>
-        <h4>Sources</h4>
-        <ul>
-            <li>Internet Society — <i>A Brief History of the Internet</i>: <a href="https://www.internetsociety.org/internet/history-internet/brief-history-internet/">https://www.internetsociety.org/internet/history-internet/brief-history-internet/</a></li>
-            <li>Computer History Museum — <i>Internet History: 1960s</i>: <a href="https://www.computerhistory.org/internethistory/1960s/">https://www.computerhistory.org/internethistory/1960s/</a></li>
-        </ul>
+
+<section id="timeline" aria-labelledby="timeline-heading">
+    <h2 id="timeline-heading">Milestones of the Internet</h2>
+
+    <article id="packet-switching">
+        <header>
+            <h3>
+                <time datetime="1961">1961</time> — Foundations of Packet Switching
+            </h3>
+        </header>
+
+        <section aria-labelledby="packet-switching-happened">
+            <h4 id="packet-switching-happened">What happened</h4>
+
+            <p>
+                In July 1961, Leonard Kleinrock at MIT published early theoretical work
+                analyzing communication networks in which data could be transmitted in
+                discrete blocks rather than through permanently established circuits.
+                During the same period, related packet-network ideas were developed
+                independently by Paul Baran at RAND and, later, Donald Davies and colleagues
+                at Britain's National Physical Laboratory.
+            </p>
+        </section>
+
+        <section aria-labelledby="packet-switching-mattered">
+            <h4 id="packet-switching-mattered">Why it mattered</h4>
+
+            <p>
+                Packet switching became a fundamental technical principle behind ARPANET
+                and eventually the Internet. Instead of reserving an entire communication
+                circuit for one connection, data could be divided into packets and sent
+                through shared network infrastructure, allowing computer networks to use
+                communication links much more efficiently.
+            </p>
+        </section>
+
+        <footer>
+            <h4>Sources</h4>
+
+            <ul>
+                <li>
+                    Internet Society — <cite>A Brief History of the Internet</cite>:
+                    <a href="https://www.internetsociety.org/internet/history-internet/brief-history-internet/">
+                        https://www.internetsociety.org/internet/history-internet/brief-history-internet/
+                    </a>
+                </li>
+                <li>
+                    Computer History Museum — <cite>Internet History: 1960s</cite>:
+                    <a href="https://www.computerhistory.org/internethistory/1960s/">
+                        https://www.computerhistory.org/internethistory/1960s/
+                    </a>
+                </li>
+            </ul>
+        </footer>
     </article>
-    <article>
-        <h3>1969 — ARPANET Goes Live</h3>
-        <h4>What happened</h4>
-        <p>
-            In 1969, the U.S. Advanced Research Projects Agency established the first four nodes of <b>ARPANET</b> at UCLA, Stanford Research Institute (SRI), the University of California Santa Barbara, and the University of Utah. DARPA describes this four-node network as an important foundation of the present Internet. 
-        </p>
-        <p>
-            On <b>29 October 1969 at approximately 10:30 p.m.</b>, researchers at UCLA attempted to send the word <code>LOGIN</code> to a computer at SRI. The system crashed after the letters <code>LO</code> had been transmitted; the complete login succeeded shortly afterward. 
-        </p>
-        <h4>Why it mattered</h4>
-        <p>
-            ARPANET demonstrated that geographically separated computers could communicate through a practical packet-switched network. It became the experimental environment in which many technologies and protocols that later formed the Internet were developed.
-        </p>
-        <p>
-            It is more accurate to call this the first ARPANET host-to-host message rather than unconditionally calling it the "first Internet message," because the modern Internet emerged later through the interconnection of multiple independent networks using TCP/IP.
-        </p>
-        <h4>Sources</h4>
-        <ul>
-            <li>DARPA — <i>ARPANET</i>: <a href="https://www.darpa.mil/news/features/arpanet">https://www.darpa.mil/news/features/arpanet</a></li>
-            <li>UCLA — Leonard Kleinrock, <i>The Day the Infant Internet Uttered its First Words</i>: <a href="https://www.lk.cs.ucla.edu/internet_first_words.html">https://www.lk.cs.ucla.edu/internet_first_words.html</a></li>
-        </ul>
+
+    <article id="arpanet">
+        <header>
+            <h3>
+                <time datetime="1969">1969</time> — ARPANET Goes Live
+            </h3>
+        </header>
+
+        <section aria-labelledby="arpanet-happened">
+            <h4 id="arpanet-happened">What happened</h4>
+
+            <p>
+                In 1969, the U.S. Advanced Research Projects Agency established the first
+                four nodes of <strong>ARPANET</strong> at UCLA, Stanford Research Institute
+                (SRI), the University of California Santa Barbara, and the University of Utah.
+                DARPA describes this four-node network as an important foundation of the
+                present Internet.
+            </p>
+
+            <p>
+                On <time datetime="1969-10-29">29 October 1969</time> at approximately
+                10:30 p.m., researchers at UCLA attempted to send the word
+                <code>LOGIN</code> to a computer at SRI. The system crashed after the
+                letters <code>LO</code> had been transmitted; the complete login
+                succeeded shortly afterward.
+            </p>
+        </section>
+
+        <section aria-labelledby="arpanet-mattered">
+            <h4 id="arpanet-mattered">Why it mattered</h4>
+
+            <p>
+                ARPANET demonstrated that geographically separated computers could communicate
+                through a practical packet-switched network. It became the experimental
+                environment in which many technologies and protocols that later formed the
+                Internet were developed.
+            </p>
+
+            <p>
+                It is more accurate to call this the first ARPANET host-to-host message rather
+                than unconditionally calling it the "first Internet message," because the
+                modern Internet emerged later through the interconnection of multiple
+                independent networks using TCP/IP.
+            </p>
+        </section>
+
+        <footer>
+            <h4>Sources</h4>
+
+            <ul>
+                <li>
+                    DARPA — <cite>ARPANET</cite>:
+                    <a href="https://www.darpa.mil/news/features/arpanet">
+                        https://www.darpa.mil/news/features/arpanet
+                    </a>
+                </li>
+                <li>
+                    UCLA — Leonard Kleinrock,
+                    <cite>The Day the Infant Internet Uttered its First Words</cite>:
+                    <a href="https://www.lk.cs.ucla.edu/internet_first_words.html">
+                        https://www.lk.cs.ucla.edu/internet_first_words.html
+                    </a>
+                </li>
+            </ul>
+        </footer>
     </article>
-    <article>
-        <h3>1974 — TCP and the Internetworking Model</h3>
-        <h4>What happened</h4>
-        <p>
-            During 1973, Robert Kahn and Vinton Cerf developed a new approach for connecting different packet-switched networks. Their refined design was published in <b>May 1974</b> as <i>A Protocol for Packet Network Intercommunication</i>. The design introduced an architecture in which independently operated networks could communicate through gateways while end systems provided end-to-end communication functions. 
-        </p>
-        <p>
-            A more detailed Internet Transmission Control Program specification followed as <b>RFC 675 in December 1974</b>. 
-        </p>
-        <h4>Why it mattered</h4>
-        <p>
-            ARPANET itself was one network. Cerf and Kahn's work tackled the more important long-term problem: <b>how to interconnect different networks without forcing each one to use the same internal technology</b>.
-        </p>
-        <p>
-            This "open architecture networking" concept is central to the Internet. Ethernet networks, radio networks, satellite networks, fiber networks, cellular systems, and many other technologies can participate in the same Internet because IP provides a common layer between them.
-        </p>
-        <h4>Sources</h4>
-        <ul>
-            <li>Internet Society — <i>A Brief History of the Internet</i>: <a href="https://www.internetsociety.org/internet/history-internet/brief-history-internet/">https://www.internetsociety.org/internet/history-internet/brief-history-internet/</a></li>
-            <li>RFC Editor — <i>RFC 675: Specification of Internet Transmission Control Program</i>: <a href="https://www.rfc-editor.org/info/rfc675/">https://www.rfc-editor.org/info/rfc675/</a></li>
-        </ul>
+
+    <article id="tcp-internetworking">
+        <header>
+            <h3>
+                <time datetime="1974">1974</time> — TCP and the Internetworking Model
+            </h3>
+        </header>
+
+        <section aria-labelledby="tcp-internetworking-happened">
+            <h4 id="tcp-internetworking-happened">What happened</h4>
+
+            <p>
+                During 1973, Robert Kahn and Vinton Cerf developed a new approach for
+                connecting different packet-switched networks. Their refined design was
+                published in <time datetime="1974-05">May 1974</time> as
+                <cite>A Protocol for Packet Network Intercommunication</cite>.
+                The design introduced an architecture in which independently operated
+                networks could communicate through gateways while end systems provided
+                end-to-end communication functions.
+            </p>
+
+            <p>
+                A more detailed Internet Transmission Control Program specification followed
+                as <strong>RFC 675</strong> in
+                <time datetime="1974-12">December 1974</time>.
+            </p>
+        </section>
+
+        <section aria-labelledby="tcp-internetworking-mattered">
+            <h4 id="tcp-internetworking-mattered">Why it mattered</h4>
+
+            <p>
+                ARPANET itself was one network. Cerf and Kahn's work tackled the more important
+                long-term problem:
+                <strong>
+                    how to interconnect different networks without forcing each one to use
+                    the same internal technology
+                </strong>.
+            </p>
+
+            <p>
+                This "open architecture networking" concept is central to the Internet.
+                Ethernet networks, radio networks, satellite networks, fiber networks,
+                cellular systems, and many other technologies can participate in the same
+                Internet because IP provides a common layer between them.
+            </p>
+        </section>
+
+        <footer>
+            <h4>Sources</h4>
+
+            <ul>
+                <li>
+                    Internet Society — <cite>A Brief History of the Internet</cite>:
+                    <a href="https://www.internetsociety.org/internet/history-internet/brief-history-internet/">
+                        https://www.internetsociety.org/internet/history-internet/brief-history-internet/
+                    </a>
+                </li>
+                <li>
+                    RFC Editor —
+                    <cite>RFC 675: Specification of Internet Transmission Control Program</cite>:
+                    <a href="https://www.rfc-editor.org/info/rfc675/">
+                        https://www.rfc-editor.org/info/rfc675/
+                    </a>
+                </li>
+            </ul>
+        </footer>
     </article>
-    <article>
-        <h3>1981 — TCP and IPv4 Are Formally Specified</h3>
-        <h4>What happened</h4>
-        <p>
-            By the late 1970s, the earlier combined TCP design had evolved into separate protocols. In <b>September 1981</b>, two crucial specifications were published:
-        </p>
-        <ul>
-            <li><b>RFC 791</b> defined the Internet Protocol, the protocol now commonly known as <b>IPv4</b>.</li>
-            <li><b>RFC 793</b> defined the Transmission Control Protocol, or <b>TCP</b>. </li>
-        </ul>
-        <p>
-            IP was responsible primarily for addressing and moving datagrams across interconnected networks, while TCP provided reliable end-to-end transport between applications. RFC 791 explicitly describes IP as operating across "interconnected systems of packet-switched computer communication networks." 
-        </p>
-        <h4>Why it mattered</h4>
-        <p>
-            Separating IP from TCP produced a flexible layered architecture. Applications that required reliable delivery could use TCP, while IP itself could remain a comparatively simple mechanism for transporting packets between networks.
-        </p>
-        <p>
-            The TCP/IP architecture became the technical foundation on which the global Internet developed.
-        </p>
-        <h4>Sources</h4>
-        <ul>
-            <li>RFC Editor — <i>RFC 791: Internet Protocol</i>: <a href="https://www.rfc-editor.org/info/rfc791/">https://www.rfc-editor.org/info/rfc791/</a></li>
-            <li>RFC Editor — <i>RFC 793: Transmission Control Protocol</i>: <a href="https://www.rfc-editor.org/info/rfc793/">https://www.rfc-editor.org/info/rfc793/</a></li>
-        </ul>
+
+    <article id="tcp-ipv4">
+        <header>
+            <h3>
+                <time datetime="1981">1981</time> — TCP and IPv4 Are Formally Specified
+            </h3>
+        </header>
+
+        <section aria-labelledby="tcp-ipv4-happened">
+            <h4 id="tcp-ipv4-happened">What happened</h4>
+
+            <p>
+                By the late 1970s, the earlier combined TCP design had evolved into separate
+                protocols. In <time datetime="1981-09">September 1981</time>, two crucial
+                specifications were published:
+            </p>
+
+            <ul>
+                <li>
+                    <strong>RFC 791</strong> defined the Internet Protocol, the protocol now
+                    commonly known as <strong>IPv4</strong>.
+                </li>
+                <li>
+                    <strong>RFC 793</strong> defined the Transmission Control Protocol,
+                    or <strong>TCP</strong>.
+                </li>
+            </ul>
+
+            <p>
+                IP was responsible primarily for addressing and moving datagrams across
+                interconnected networks, while TCP provided reliable end-to-end transport
+                between applications. RFC 791 explicitly describes IP as operating across
+                "interconnected systems of packet-switched computer communication networks."
+            </p>
+        </section>
+
+        <section aria-labelledby="tcp-ipv4-mattered">
+            <h4 id="tcp-ipv4-mattered">Why it mattered</h4>
+
+            <p>
+                Separating IP from TCP produced a flexible layered architecture. Applications
+                that required reliable delivery could use TCP, while IP itself could remain
+                a comparatively simple mechanism for transporting packets between networks.
+            </p>
+
+            <p>
+                The TCP/IP architecture became the technical foundation on which the global
+                Internet developed.
+            </p>
+        </section>
+
+        <footer>
+            <h4>Sources</h4>
+
+            <ul>
+                <li>
+                    RFC Editor — <cite>RFC 791: Internet Protocol</cite>:
+                    <a href="https://www.rfc-editor.org/info/rfc791/">
+                        https://www.rfc-editor.org/info/rfc791/
+                    </a>
+                </li>
+                <li>
+                    RFC Editor — <cite>RFC 793: Transmission Control Protocol</cite>:
+                    <a href="https://www.rfc-editor.org/info/rfc793/">
+                        https://www.rfc-editor.org/info/rfc793/
+                    </a>
+                </li>
+            </ul>
+        </footer>
     </article>
-    <article>
-        <h3>1983 — ARPANET Switches to TCP/IP</h3>
-        <h4>What happened</h4>
-        <p>
-            On <b>1 January 1983</b>, ARPANET carried out a coordinated transition from its older Network Control Protocol (<b>NCP</b>) to <b>TCP/IP</b>. Computers that wanted to continue communicating through the network had to adopt the new protocol suite. The Internet Society describes it as a "flag-day" transition. 
-        </p>
-        <p>
-            DARPA likewise identifies <b>1983</b> as the year ARPANET switched to TCP/IP. 
-        </p>
-        <h4>Why it mattered</h4>
-        <p>
-            This event is frequently treated as one of the strongest candidates for the <b>birth of the operational Internet</b>, because TCP/IP allowed multiple independent networks to function together as a network of networks.
-        </p>
-        <p>
-            Unlike the 1969 ARPANET milestone, this transition concerned the protocol architecture that still underlies Internet communication today.
-        </p>
-        <h4>Sources</h4>
-        <ul>
-            <li>Internet Society — <i>A Brief History of the Internet</i>: <a href="https://www.internetsociety.org/internet/history-internet/brief-history-internet/">https://www.internetsociety.org/internet/history-internet/brief-history-internet/</a></li>
-            <li>DARPA — <i>ARPANET</i>: <a href="https://www.darpa.mil/news/features/arpanet">https://www.darpa.mil/news/features/arpanet</a></li>
-        </ul>
+
+    <article id="tcp-ip-transition">
+        <header>
+            <h3>
+                <time datetime="1983">1983</time> — ARPANET Switches to TCP/IP
+            </h3>
+        </header>
+
+        <section aria-labelledby="tcp-ip-transition-happened">
+            <h4 id="tcp-ip-transition-happened">What happened</h4>
+
+            <p>
+                On <time datetime="1983-01-01">1 January 1983</time>, ARPANET carried out
+                a coordinated transition from its older Network Control Protocol
+                (<strong>NCP</strong>) to <strong>TCP/IP</strong>. Computers that wanted
+                to continue communicating through the network had to adopt the new protocol
+                suite. The Internet Society describes it as a "flag-day" transition.
+            </p>
+
+            <p>
+                DARPA likewise identifies 1983 as the year ARPANET switched to TCP/IP.
+            </p>
+        </section>
+
+        <section aria-labelledby="tcp-ip-transition-mattered">
+            <h4 id="tcp-ip-transition-mattered">Why it mattered</h4>
+
+            <p>
+                This event is frequently treated as one of the strongest candidates for the
+                <strong>birth of the operational Internet</strong>, because TCP/IP allowed
+                multiple independent networks to function together as a network of networks.
+            </p>
+
+            <p>
+                Unlike the 1969 ARPANET milestone, this transition concerned the protocol
+                architecture that still underlies Internet communication today.
+            </p>
+        </section>
+
+        <footer>
+            <h4>Sources</h4>
+
+            <ul>
+                <li>
+                    Internet Society — <cite>A Brief History of the Internet</cite>:
+                    <a href="https://www.internetsociety.org/internet/history-internet/brief-history-internet/">
+                        https://www.internetsociety.org/internet/history-internet/brief-history-internet/
+                    </a>
+                </li>
+                <li>
+                    DARPA — <cite>ARPANET</cite>:
+                    <a href="https://www.darpa.mil/news/features/arpanet">
+                        https://www.darpa.mil/news/features/arpanet
+                    </a>
+                </li>
+            </ul>
+        </footer>
     </article>
-    <article>
-        <h3>1983 — The Domain Name System Is Specified</h3>
-        <h4>What happened</h4>
-        <p>
-            As the Internet grew, the earlier method of distributing a single centralized <code>HOSTS.TXT</code> file containing computer names and addresses became increasingly difficult to scale.
-        </p>
-        <p>
-            Paul Mockapetris designed the <b>Domain Name System (DNS)</b> as a distributed alternative. The original DNS architecture and implementation were formally described in <b>RFC 882 and RFC 883 in November 1983</b>. 
-        </p>
-        <p>
-            The specifications were later refined and replaced by RFC 1034 and RFC 1035 in 1987. RFC 1034 explicitly explains that rapid growth of the Internet made the old centralized host-file system unsuitable. 
-        </p>
-        <h4>Why it mattered</h4>
-        <p>
-            DNS gave the expanding Internet a <b>distributed and scalable naming infrastructure</b>, allowing names to be mapped to network resources without requiring every Internet host to maintain a complete global list.
-        </p>
-        <p>
-            DNS remains a fundamental part of Internet infrastructure. It is used not only by the Web but also by email and many other Internet applications and services. 
-        </p>
-        <h4>Sources</h4>
-        <ul>
-            <li>RFC Editor — <i>RFC 882: Domain Names — Concepts and Facilities</i>: <a href="https://www.rfc-editor.org/rfc/rfc882.html">https://www.rfc-editor.org/rfc/rfc882.html</a></li>
-            <li>RFC Editor — <i>RFC 883: Domain Names — Implementation and Specification</i>: <a href="https://www.rfc-editor.org/rfc/rfc883.html">https://www.rfc-editor.org/rfc/rfc883.html</a></li>
-        </ul>
+
+    <article id="dns">
+        <header>
+            <h3>
+                <time datetime="1983">1983</time> — The Domain Name System Is Specified
+            </h3>
+        </header>
+
+        <section aria-labelledby="dns-happened">
+            <h4 id="dns-happened">What happened</h4>
+
+            <p>
+                As the Internet grew, the earlier method of distributing a single centralized
+                <code>HOSTS.TXT</code> file containing computer names and addresses became
+                increasingly difficult to scale.
+            </p>
+
+            <p>
+                Paul Mockapetris designed the <strong>Domain Name System (DNS)</strong> as a
+                distributed alternative. The original DNS architecture and implementation
+                were formally described in <strong>RFC 882 and RFC 883</strong> in
+                <time datetime="1983-11">November 1983</time>.
+            </p>
+
+            <p>
+                The specifications were later refined and replaced by RFC 1034 and RFC 1035
+                in 1987. RFC 1034 explicitly explains that rapid growth of the Internet made
+                the old centralized host-file system unsuitable.
+            </p>
+        </section>
+
+        <section aria-labelledby="dns-mattered">
+            <h4 id="dns-mattered">Why it mattered</h4>
+
+            <p>
+                DNS gave the expanding Internet a
+                <strong>distributed and scalable naming infrastructure</strong>, allowing
+                names to be mapped to network resources without requiring every Internet host
+                to maintain a complete global list.
+            </p>
+
+            <p>
+                DNS remains a fundamental part of Internet infrastructure. It is used not only
+                by the Web but also by email and many other Internet applications and services.
+            </p>
+        </section>
+
+        <footer>
+            <h4>Sources</h4>
+
+            <ul>
+                <li>
+                    RFC Editor — <cite>RFC 882: Domain Names — Concepts and Facilities</cite>:
+                    <a href="https://www.rfc-editor.org/rfc/rfc882.html">
+                        https://www.rfc-editor.org/rfc/rfc882.html
+                    </a>
+                </li>
+                <li>
+                    RFC Editor —
+                    <cite>RFC 883: Domain Names — Implementation and Specification</cite>:
+                    <a href="https://www.rfc-editor.org/rfc/rfc883.html">
+                        https://www.rfc-editor.org/rfc/rfc883.html
+                    </a>
+                </li>
+            </ul>
+        </footer>
     </article>
-    <article>
-        <h3>1986 — NSFNET Expands Academic Networking</h3>
-        <h4>What happened</h4>
-        <p>
-            In <b>1986</b>, the U.S. National Science Foundation launched <b>NSFNET</b>, initially connecting five university-based supercomputer centers and providing researchers with access to high-performance computing resources. 
-        </p>
-        <p>
-            NSFNET connected with ARPANET and regional academic networks and rapidly expanded. NSF states that it grew from approximately <b>2,000 connected computers in 1986 to more than two million by 1993</b>, becoming the de facto U.S. Internet backbone. 
-        </p>
-        <h4>Why it mattered</h4>
-        <p>
-            NSFNET moved Internet networking beyond its earlier military and specialized research origins and made TCP/IP networking accessible to a much broader academic community.
-        </p>
-        <p>
-            Its high-speed backbone and associated regional networks provided much of the infrastructure from which the larger civilian and eventually commercial Internet grew during the late 1980s and early 1990s.
-        </p>
-        <h4>Sources</h4>
-        <ul>
-            <li>U.S. National Science Foundation — <i>Birth of the Commercial Internet</i>: <a href="https://www.nsf.gov/impacts/internet">https://www.nsf.gov/impacts/internet</a></li>
-            <li>U.S. National Science Foundation — <i>The Internet</i>: <a href="https://www.nsf.gov/about/history/nsf0050/pdf/internet.pdf">https://www.nsf.gov/about/history/nsf0050/pdf/internet.pdf</a></li>
-        </ul>
+
+    <article id="nsfnet">
+        <header>
+            <h3>
+                <time datetime="1986">1986</time> — NSFNET Expands Academic Networking
+            </h3>
+        </header>
+
+        <section aria-labelledby="nsfnet-happened">
+            <h4 id="nsfnet-happened">What happened</h4>
+
+            <p>
+                In 1986, the U.S. National Science Foundation launched
+                <strong>NSFNET</strong>, initially connecting five university-based
+                supercomputer centers and providing researchers with access to
+                high-performance computing resources.
+            </p>
+
+            <p>
+                NSFNET connected with ARPANET and regional academic networks and rapidly
+                expanded. NSF states that it grew from approximately
+                <strong>2,000 connected computers in 1986 to more than two million by 1993</strong>,
+                becoming the de facto U.S. Internet backbone.
+            </p>
+        </section>
+
+        <section aria-labelledby="nsfnet-mattered">
+            <h4 id="nsfnet-mattered">Why it mattered</h4>
+
+            <p>
+                NSFNET moved Internet networking beyond its earlier military and specialized
+                research origins and made TCP/IP networking accessible to a much broader
+                academic community.
+            </p>
+
+            <p>
+                Its high-speed backbone and associated regional networks provided much of
+                the infrastructure from which the larger civilian and eventually commercial
+                Internet grew during the late 1980s and early 1990s.
+            </p>
+        </section>
+
+        <footer>
+            <h4>Sources</h4>
+
+            <ul>
+                <li>
+                    U.S. National Science Foundation —
+                    <cite>Birth of the Commercial Internet</cite>:
+                    <a href="https://www.nsf.gov/impacts/internet">
+                        https://www.nsf.gov/impacts/internet
+                    </a>
+                </li>
+                <li>
+                    U.S. National Science Foundation — <cite>The Internet</cite>:
+                    <a href="https://www.nsf.gov/about/history/nsf0050/pdf/internet.pdf">
+                        https://www.nsf.gov/about/history/nsf0050/pdf/internet.pdf
+                    </a>
+                </li>
+            </ul>
+        </footer>
     </article>
-    <article>
-        <h3>1989 — Border Gateway Protocol Is Introduced</h3>
-        <h4>What happened</h4>
-        <p>
-            In <b>June 1989</b>, Kirk Lougheed and Yakov Rekhter published <b>RFC 1105</b>, defining the original <b>Border Gateway Protocol (BGP)</b>.
-        </p>
-        <p>
-            BGP was designed to exchange network reachability information between independent <b>Autonomous Systems</b>, and the RFC noted that implementations already existed for Cisco routers and the NSFNET switching system. 
-        </p>
-        <h4>Why it mattered</h4>
-        <p>
-            As the Internet evolved from a relatively hierarchical research network into a system made up of independently managed networks, it required a scalable way for those networks to tell one another which destinations they could reach.
-        </p>
-        <p>
-            BGP became the Internet's principal <b>interdomain routing system</b>. Modern BGP-4 continues this function by exchanging reachability and path information between Autonomous Systems and allowing routing policies to be applied between independently operated networks. 
-        </p>
-        <h4>Sources</h4>
-        <ul>
-            <li>RFC Editor — <i>RFC 1105: Border Gateway Protocol (BGP)</i>: <a href="https://www.rfc-editor.org/info/rfc1105/">https://www.rfc-editor.org/info/rfc1105/</a></li>
-            <li>RFC Editor — <i>RFC 4271: A Border Gateway Protocol 4 (BGP-4)</i>: <a href="https://www.rfc-editor.org/info/rfc4271/">https://www.rfc-editor.org/info/rfc4271/</a></li>
-        </ul>
+
+    <article id="bgp">
+        <header>
+            <h3>
+                <time datetime="1989">1989</time> — Border Gateway Protocol Is Introduced
+            </h3>
+        </header>
+
+        <section aria-labelledby="bgp-happened">
+            <h4 id="bgp-happened">What happened</h4>
+
+            <p>
+                In <time datetime="1989-06">June 1989</time>, Kirk Lougheed and Yakov
+                Rekhter published <strong>RFC 1105</strong>, defining the original
+                <strong>Border Gateway Protocol (BGP)</strong>.
+            </p>
+
+            <p>
+                BGP was designed to exchange network reachability information between
+                independent <strong>Autonomous Systems</strong>, and the RFC noted that
+                implementations already existed for Cisco routers and the NSFNET switching
+                system.
+            </p>
+        </section>
+
+        <section aria-labelledby="bgp-mattered">
+            <h4 id="bgp-mattered">Why it mattered</h4>
+
+            <p>
+                As the Internet evolved from a relatively hierarchical research network into
+                a system made up of independently managed networks, it required a scalable
+                way for those networks to tell one another which destinations they could reach.
+            </p>
+
+            <p>
+                BGP became the Internet's principal <strong>interdomain routing system</strong>.
+                Modern BGP-4 continues this function by exchanging reachability and path
+                information between Autonomous Systems and allowing routing policies to be
+                applied between independently operated networks.
+            </p>
+        </section>
+
+        <footer>
+            <h4>Sources</h4>
+
+            <ul>
+                <li>
+                    RFC Editor — <cite>RFC 1105: Border Gateway Protocol (BGP)</cite>:
+                    <a href="https://www.rfc-editor.org/info/rfc1105/">
+                        https://www.rfc-editor.org/info/rfc1105/
+                    </a>
+                </li>
+                <li>
+                    RFC Editor — <cite>RFC 4271: A Border Gateway Protocol 4 (BGP-4)</cite>:
+                    <a href="https://www.rfc-editor.org/info/rfc4271/">
+                        https://www.rfc-editor.org/info/rfc4271/
+                    </a>
+                </li>
+            </ul>
+        </footer>
     </article>
-    <article>
-        <h3>1995 — NSFNET Backbone Retires and the Commercial Internet Takes Over</h3>
-        <h4>What happened</h4>
-        <p>
-            During the early 1990s, commercial Internet providers built increasingly extensive network infrastructure. As private Internet services expanded, NSF withdrew from operating a national backbone and <b>shut down the NSFNET backbone in 1995</b>. 
-        </p>
-        <p>
-            Rather than relying on one federally sponsored backbone, Internet connectivity increasingly came from interconnected commercial and other independently operated networks.
-        </p>
-        <h4>Why it mattered</h4>
-        <p>
-            The transition marked an important shift from a research-oriented backbone toward the <b>commercial, decentralized network-of-networks model</b> associated with the modern Internet.
-        </p>
-        <p>
-            The Internet did not suddenly become commercial on one single date; commercial networking had already been developing for several years. The retirement of NSFNET in 1995 is nevertheless a useful infrastructure milestone because it clearly marks the end of the NSF-operated national backbone and the growing dominance of private Internet infrastructure. 
-        </p>
-        <h4>Sources</h4>
-        <ul>
-            <li>U.S. National Science Foundation — <i>Birth of the Commercial Internet</i>: <a href="https://www.nsf.gov/impacts/internet">https://www.nsf.gov/impacts/internet</a></li>
-        </ul>
+
+    <article id="commercial-internet">
+        <header>
+            <h3>
+                <time datetime="1995">1995</time> — NSFNET Backbone Retires and the Commercial Internet Takes Over
+            </h3>
+        </header>
+
+        <section aria-labelledby="commercial-internet-happened">
+            <h4 id="commercial-internet-happened">What happened</h4>
+
+            <p>
+                During the early 1990s, commercial Internet providers built increasingly
+                extensive network infrastructure. As private Internet services expanded,
+                NSF withdrew from operating a national backbone and
+                <strong>shut down the NSFNET backbone in 1995</strong>.
+            </p>
+
+            <p>
+                Rather than relying on one federally sponsored backbone, Internet connectivity
+                increasingly came from interconnected commercial and other independently
+                operated networks.
+            </p>
+        </section>
+
+        <section aria-labelledby="commercial-internet-mattered">
+            <h4 id="commercial-internet-mattered">Why it mattered</h4>
+
+            <p>
+                The transition marked an important shift from a research-oriented backbone
+                toward the <strong>commercial, decentralized network-of-networks model</strong>
+                associated with the modern Internet.
+            </p>
+
+            <p>
+                The Internet did not suddenly become commercial on one single date; commercial
+                networking had already been developing for several years. The retirement of
+                NSFNET in 1995 is nevertheless a useful infrastructure milestone because it
+                clearly marks the end of the NSF-operated national backbone and the growing
+                dominance of private Internet infrastructure.
+            </p>
+        </section>
+
+        <footer>
+            <h4>Sources</h4>
+
+            <ul>
+                <li>
+                    U.S. National Science Foundation —
+                    <cite>Birth of the Commercial Internet</cite>:
+                    <a href="https://www.nsf.gov/impacts/internet">
+                        https://www.nsf.gov/impacts/internet
+                    </a>
+                </li>
+            </ul>
+        </footer>
     </article>
-    <article>
-        <h3>1998 — IPv6 Is Standardized</h3>
-        <h4>What happened</h4>
-        <p>
-            In <b>December 1998</b>, <b>RFC 2460</b> specified Internet Protocol Version 6 (<b>IPv6</b>) as an Internet standards-track protocol.
-        </p>
-        <p>
-            IPv6 was explicitly designed as the successor to IPv4. Among its most significant changes was an increase in address size from <b>32 bits in IPv4 to 128 bits in IPv6</b>, providing an enormously larger address space. 
-        </p>
-        <h4>Why it mattered</h4>
-        <p>
-            The architects of IPv4 had not designed its approximately 4.3-billion-address space for a future containing billions of computers, phones, routers, servers, sensors, and other connected devices.
-        </p>
-        <p>
-            IPv6 created a long-term addressing architecture capable of supporting continued Internet expansion. Its development also demonstrates an important characteristic of Internet infrastructure: major protocols can evolve while maintaining interoperability during long transition periods.
-        </p>
-        <h4>Sources</h4>
-        <ul>
-            <li>RFC Editor — <i>RFC 2460: Internet Protocol, Version 6 (IPv6) Specification</i>: <a href="https://www.rfc-editor.org/info/rfc2460/">https://www.rfc-editor.org/info/rfc2460/</a></li>
-            <li>RFC Editor — <i>RFC 8200: Internet Protocol, Version 6 (IPv6) Specification</i>: <a href="https://www.rfc-editor.org/info/rfc8200/">https://www.rfc-editor.org/info/rfc8200/</a></li>
-        </ul>
+
+    <article id="ipv6-standardized">
+        <header>
+            <h3>
+                <time datetime="1998">1998</time> — IPv6 Is Standardized
+            </h3>
+        </header>
+
+        <section aria-labelledby="ipv6-standardized-happened">
+            <h4 id="ipv6-standardized-happened">What happened</h4>
+
+            <p>
+                In <time datetime="1998-12">December 1998</time>,
+                <strong>RFC 2460</strong> specified Internet Protocol Version 6
+                (<strong>IPv6</strong>) as an Internet standards-track protocol.
+            </p>
+
+            <p>
+                IPv6 was explicitly designed as the successor to IPv4. Among its most
+                significant changes was an increase in address size from
+                <strong>32 bits in IPv4 to 128 bits in IPv6</strong>, providing an
+                enormously larger address space.
+            </p>
+        </section>
+
+        <section aria-labelledby="ipv6-standardized-mattered">
+            <h4 id="ipv6-standardized-mattered">Why it mattered</h4>
+
+            <p>
+                The architects of IPv4 had not designed its approximately 4.3-billion-address
+                space for a future containing billions of computers, phones, routers, servers,
+                sensors, and other connected devices.
+            </p>
+
+            <p>
+                IPv6 created a long-term addressing architecture capable of supporting
+                continued Internet expansion. Its development also demonstrates an important
+                characteristic of Internet infrastructure: major protocols can evolve while
+                maintaining interoperability during long transition periods.
+            </p>
+        </section>
+
+        <footer>
+            <h4>Sources</h4>
+
+            <ul>
+                <li>
+                    RFC Editor —
+                    <cite>RFC 2460: Internet Protocol, Version 6 (IPv6) Specification</cite>:
+                    <a href="https://www.rfc-editor.org/info/rfc2460/">
+                        https://www.rfc-editor.org/info/rfc2460/
+                    </a>
+                </li>
+                <li>
+                    RFC Editor —
+                    <cite>RFC 8200: Internet Protocol, Version 6 (IPv6) Specification</cite>:
+                    <a href="https://www.rfc-editor.org/info/rfc8200/">
+                        https://www.rfc-editor.org/info/rfc8200/
+                    </a>
+                </li>
+            </ul>
+        </footer>
     </article>
-    <article>
-        <h3>2012 — World IPv6 Launch</h3>
-        <h4>What happened</h4>
-        <p>
-            On <b>6 June 2012</b>, the Internet Society coordinated <b>World IPv6 Launch</b>. Major Internet service providers, networking-equipment manufacturers, and large online services committed to enabling IPv6 permanently rather than merely conducting a temporary test. 
-        </p>
-        <p>
-            At the start of the event, the Internet Society reported that more than <b>3,000 registered websites</b> and over <b>60 network operators and ISPs</b> had committed to IPv6 deployment, together with major home-router vendors. 
-        </p>
-        <h4>Why it mattered</h4>
-        <p>
-            IPv6 had existed as a standardized technology for years, but standardization alone did not guarantee deployment. World IPv6 Launch represented a major shift from experimentation toward <b>permanent production use of IPv6 across Internet infrastructure</b>.
-        </p>
-        <p>
-            IPv4 remains extensively used, so 2012 should not be described as the date on which the Internet "switched" from IPv4 to IPv6. Instead, it marked a significant acceleration of the long-term transition toward dual IPv4/IPv6 operation and eventually greater IPv6 adoption.
-        </p>
-        <h4>Sources</h4>
-        <ul>
-            <li>Internet Society — <i>World IPv6 Launch Unites Industry Leaders to Redefine the Global Internet</i>: <a href="https://www.internetsociety.org/news/press-releases/2012/world-ipv6-launch-unites-industry-leaders-to-redefine-the-global-internet/">https://www.internetsociety.org/news/press-releases/2012/world-ipv6-launch-unites-industry-leaders-to-redefine-the-global-internet/</a></li>
-            <li>Internet Society — <i>And So Begins World IPv6 Launch!</i>: <a href="https://www.internetsociety.org/blog/2012/06/and-so-begins-world-ipv6-launch-2/">https://www.internetsociety.org/blog/2012/06/and-so-begins-world-ipv6-launch-2/</a></li>
-        </ul>
+
+    <article id="world-ipv6-launch">
+        <header>
+            <h3>
+                <time datetime="2012">2012</time> — World IPv6 Launch
+            </h3>
+        </header>
+
+        <section aria-labelledby="world-ipv6-launch-happened">
+            <h4 id="world-ipv6-launch-happened">What happened</h4>
+
+            <p>
+                On <time datetime="2012-06-06">6 June 2012</time>, the Internet Society
+                coordinated <strong>World IPv6 Launch</strong>. Major Internet service
+                providers, networking-equipment manufacturers, and large online services
+                committed to enabling IPv6 permanently rather than merely conducting a
+                temporary test.
+            </p>
+
+            <p>
+                At the start of the event, the Internet Society reported that more than
+                <strong>3,000 registered websites</strong> and over
+                <strong>60 network operators and ISPs</strong> had committed to IPv6
+                deployment, together with major home-router vendors.
+            </p>
+        </section>
+
+        <section aria-labelledby="world-ipv6-launch-mattered">
+            <h4 id="world-ipv6-launch-mattered">Why it mattered</h4>
+
+            <p>
+                IPv6 had existed as a standardized technology for years, but standardization
+                alone did not guarantee deployment. World IPv6 Launch represented a major
+                shift from experimentation toward
+                <strong>permanent production use of IPv6 across Internet infrastructure</strong>.
+            </p>
+
+            <p>
+                IPv4 remains extensively used, so 2012 should not be described as the date
+                on which the Internet "switched" from IPv4 to IPv6. Instead, it marked a
+                significant acceleration of the long-term transition toward dual IPv4/IPv6
+                operation and eventually greater IPv6 adoption.
+            </p>
+        </section>
+
+        <footer>
+            <h4>Sources</h4>
+
+            <ul>
+                <li>
+                    Internet Society —
+                    <cite>World IPv6 Launch Unites Industry Leaders to Redefine the Global Internet</cite>:
+                    <a href="https://www.internetsociety.org/news/press-releases/2012/world-ipv6-launch-unites-industry-leaders-to-redefine-the-global-internet/">
+                        https://www.internetsociety.org/news/press-releases/2012/world-ipv6-launch-unites-industry-leaders-to-redefine-the-global-internet/
+                    </a>
+                </li>
+                <li>
+                    Internet Society — <cite>And So Begins World IPv6 Launch!</cite>:
+                    <a href="https://www.internetsociety.org/blog/2012/06/and-so-begins-world-ipv6-launch-2/">
+                        https://www.internetsociety.org/blog/2012/06/and-so-begins-world-ipv6-launch-2/
+                    </a>
+                </li>
+            </ul>
+        </footer>
     </article>
 </section>
-<section>
-    <h2>Source Verification Notes</h2>
-    <article>
+
+<aside id="verification-notes" aria-labelledby="verification-notes-heading">
+    <h2 id="verification-notes-heading">Source Verification Notes</h2>
+
+    <section>
         <h3>Packet switching did not have one uncontested inventor</h3>
+
         <p>
-            Leonard Kleinrock's July 1961 work is frequently identified as an early theoretical foundation for packet switching, but Internet Society's historical account also emphasizes that researchers including <b>Paul Baran at RAND</b> and <b>Donald Davies and Roger Scantlebury at NPL</b> independently developed related packet-network concepts. The term <b>"packet"</b> itself came from the British NPL work. It is therefore misleading to attribute the entire invention of packet switching to one person. 
+            Leonard Kleinrock's July 1961 work is frequently identified as an early
+            theoretical foundation for packet switching, but Internet Society's
+            historical account also emphasizes that researchers including
+            <strong>Paul Baran at RAND</strong> and
+            <strong>Donald Davies and Roger Scantlebury at NPL</strong>
+            independently developed related packet-network concepts. The term
+            <strong>"packet"</strong> itself came from the British NPL work. It is
+            therefore misleading to attribute the entire invention of packet switching
+            to one person.
         </p>
-    </article>
-    <article>
+    </section>
+
+    <section>
         <h3>1969 is the beginning of ARPANET, not necessarily the Internet itself</h3>
+
         <p>
-            The October 1969 UCLA-to-SRI transmission is well documented as the first host-to-host ARPANET message. However, ARPANET was initially a single packet-switched network rather than the later global <b>inter-network</b> built around TCP/IP. 
+            The October 1969 UCLA-to-SRI transmission is well documented as the first
+            host-to-host ARPANET message. However, ARPANET was initially a single
+            packet-switched network rather than the later global
+            <strong>inter-network</strong> built around TCP/IP.
         </p>
+
         <p>
-            For this reason, descriptions such as "the first Internet message" are historically understandable but technically simplified.
+            For this reason, descriptions such as "the first Internet message" are
+            historically understandable but technically simplified.
         </p>
-    </article>
-    <article>
+    </section>
+
+    <section>
         <h3>TCP/IP did not appear all at once</h3>
+
         <p>
-            Cerf and Kahn began their internetworking work in <b>1973</b>, published their influential paper in <b>May 1974</b>, and the protocol architecture continued evolving afterward. The original TCP design incorporated responsibilities that were later divided between TCP and IP. 
+            Cerf and Kahn began their internetworking work in <strong>1973</strong>,
+            published their influential paper in <strong>May 1974</strong>, and the
+            protocol architecture continued evolving afterward. The original TCP design
+            incorporated responsibilities that were later divided between TCP and IP.
         </p>
+
         <p>
-            RFC 791 and RFC 793 in 1981 represent mature separate specifications, while <b>1 January 1983</b> represents the crucial operational transition of ARPANET to TCP/IP. These are therefore treated as separate milestones.
+            RFC 791 and RFC 793 in 1981 represent mature separate specifications, while
+            <strong>1 January 1983</strong> represents the crucial operational transition
+            of ARPANET to TCP/IP. These are therefore treated as separate milestones.
         </p>
-    </article>
-    <article>
+    </section>
+
+    <section>
         <h3>DNS has several possible milestone dates</h3>
+
         <p>
-            DNS was developed during the early 1980s. <b>November 1983</b> is used here because RFC 882 and RFC 883 provide clear primary-source dates for the original DNS specifications. 
+            DNS was developed during the early 1980s. <strong>November 1983</strong> is
+            used here because RFC 882 and RFC 883 provide clear primary-source dates for
+            the original DNS specifications.
         </p>
+
         <p>
-            The better-known <b>RFC 1034 and RFC 1035</b>, published in 1987, later replaced these original specifications. Thus, 1983 represents the introduction of the DNS architecture, while 1987 represents an important later standardization stage.
+            The better-known <strong>RFC 1034 and RFC 1035</strong>, published in 1987,
+            later replaced these original specifications. Thus, 1983 represents the
+            introduction of the DNS architecture, while 1987 represents an important
+            later standardization stage.
         </p>
-    </article>
-    <article>
+    </section>
+
+    <section>
         <h3>Commercialization was a process, not a single-day event</h3>
+
         <p>
-            Commercial Internet services began developing before 1995. The <b>1995 retirement of the NSFNET backbone</b> is used as a milestone because the National Science Foundation explicitly associates the change with the rapid growth of commercial Internet infrastructure. 
+            Commercial Internet services began developing before 1995. The
+            <strong>1995 retirement of the NSFNET backbone</strong> is used as a milestone
+            because the National Science Foundation explicitly associates the change with
+            the rapid growth of commercial Internet infrastructure.
         </p>
+
         <p>
-            It should therefore be interpreted as a major transition point rather than the literal first appearance of commercial Internet access.
+            It should therefore be interpreted as a major transition point rather than
+            the literal first appearance of commercial Internet access.
         </p>
-    </article>
-    <article>
+    </section>
+
+    <section>
         <h3>IPv6 also has more than one valid milestone date</h3>
+
         <p>
-            IPv6 development predated RFC 2460, and the RFC itself was later replaced by <b>RFC 8200 in July 2017</b>, which made the updated IPv6 specification an Internet Standard. 
+            IPv6 development predated RFC 2460, and the RFC itself was later replaced by
+            <strong>RFC 8200 in July 2017</strong>, which made the updated IPv6
+            specification an Internet Standard.
         </p>
+
         <p>
-            This timeline uses <b>1998</b> for the major protocol-specification milestone and <b>2012</b> for the large-scale permanent-deployment milestone.
+            This timeline uses <strong>1998</strong> for the major protocol-specification
+            milestone and <strong>2012</strong> for the large-scale permanent-deployment
+            milestone.
         </p>
-    </article>
-    <article>
+    </section>
+
+    <section>
         <h3>The Web is intentionally excluded from the milestone list</h3>
+
         <p>
-            The World Wide Web was invented at CERN in <b>1989</b>, with the first browser and server operating by the end of 1990. 
+            The World Wide Web was invented at CERN in <strong>1989</strong>, with the
+            first browser and server operating by the end of 1990.
         </p>
+
         <p>
-            These are enormously important events in computing history, but they concern an <b>application and information system running over the Internet</b>, rather than the underlying global network infrastructure itself. Consequently, Web milestones such as the first website, HTTP, HTML, and the Mosaic browser are not included as primary Internet-infrastructure milestones here.
+            These are enormously important events in computing history, but they concern
+            an <strong>application and information system running over the Internet</strong>,
+            rather than the underlying global network infrastructure itself. Consequently,
+            Web milestones such as the first website, HTTP, HTML, and the Mosaic browser
+            are not included as primary Internet-infrastructure milestones here.
         </p>
-    </article>
-</section>
-<section>
-    <h2>References</h2>
+    </section>
+</aside>
+
+<section id="references" aria-labelledby="references-heading">
+    <h2 id="references-heading">References</h2>
+
     <ul>
-        <li>Internet Society — <i>A Brief History of the Internet</i>: <a href="https://www.internetsociety.org/internet/history-internet/brief-history-internet/">https://www.internetsociety.org/internet/history-internet/brief-history-internet/</a></li>
-        <li>Internet Society — <i>How It Works</i>: <a href="https://www.internetsociety.org/internet/how-it-works/">https://www.internetsociety.org/internet/how-it-works/</a></li>
-        <li>Internet Society — <i>About the Internet</i>: <a href="https://www.internetsociety.org/internet/">https://www.internetsociety.org/internet/</a></li>
-        <li>Internet Society — <i>Who Makes the Internet Work: The Internet Ecosystem</i>: <a href="https://www.internetsociety.org/internet/who-makes-it-work/">https://www.internetsociety.org/internet/who-makes-it-work/</a></li>
-        <li>Internet Society — <i>World IPv6 Launch Solidifies Global Support for New Internet Protocol</i>: <a href="https://www.internetsociety.org/news/press-releases/2012/world-ipv6-launch-solidifies-global-support-for-new-internet-protocol/">https://www.internetsociety.org/news/press-releases/2012/world-ipv6-launch-solidifies-global-support-for-new-internet-protocol/</a></li>
-        <li>Internet Society — <i>World IPv6 Launch Unites Industry Leaders to Redefine the Global Internet</i>: <a href="https://www.internetsociety.org/news/press-releases/2012/world-ipv6-launch-unites-industry-leaders-to-redefine-the-global-internet/">https://www.internetsociety.org/news/press-releases/2012/world-ipv6-launch-unites-industry-leaders-to-redefine-the-global-internet/</a></li>
-        <li>Internet Society — <i>And So Begins World IPv6 Launch!</i>: <a href="https://www.internetsociety.org/blog/2012/06/and-so-begins-world-ipv6-launch-2/">https://www.internetsociety.org/blog/2012/06/and-so-begins-world-ipv6-launch-2/</a></li>
-        <li>DARPA — <i>ARPANET</i>: <a href="https://www.darpa.mil/news/features/arpanet">https://www.darpa.mil/news/features/arpanet</a></li>
-        <li>UCLA — Leonard Kleinrock, <i>The Day the Infant Internet Uttered its First Words</i>: <a href="https://www.lk.cs.ucla.edu/internet_first_words.html">https://www.lk.cs.ucla.edu/internet_first_words.html</a></li>
-        <li>UCLA — <i>Pioneers and visionaries to celebrate internet's 50th anniversary</i>: <a href="https://newsroom.ucla.edu/releases/internet-50-symposium-ucla">https://newsroom.ucla.edu/releases/internet-50-symposium-ucla</a></li>
-        <li>Computer History Museum — <i>Internet History: 1960s</i>: <a href="https://www.computerhistory.org/internethistory/1960s/">https://www.computerhistory.org/internethistory/1960s/</a></li>
-        <li>U.S. National Science Foundation — <i>Birth of the Commercial Internet</i>: <a href="https://www.nsf.gov/impacts/internet">https://www.nsf.gov/impacts/internet</a></li>
-        <li>U.S. National Science Foundation — <i>The Internet</i>: <a href="https://www.nsf.gov/about/history/nsf0050/pdf/internet.pdf">https://www.nsf.gov/about/history/nsf0050/pdf/internet.pdf</a></li>
-        <li>RFC Editor — <i>RFC 675: Specification of Internet Transmission Control Program</i>: <a href="https://www.rfc-editor.org/info/rfc675/">https://www.rfc-editor.org/info/rfc675/</a></li>
-        <li>RFC Editor — <i>RFC 791: Internet Protocol</i>: <a href="https://www.rfc-editor.org/info/rfc791/">https://www.rfc-editor.org/info/rfc791/</a></li>
-        <li>RFC Editor — <i>RFC 793: Transmission Control Protocol</i>: <a href="https://www.rfc-editor.org/info/rfc793/">https://www.rfc-editor.org/info/rfc793/</a></li>
-        <li>RFC Editor — <i>RFC 882: Domain Names — Concepts and Facilities</i>: <a href="https://www.rfc-editor.org/rfc/rfc882.html">https://www.rfc-editor.org/rfc/rfc882.html</a></li>
-        <li>RFC Editor — <i>RFC 883: Domain Names — Implementation and Specification</i>: <a href="https://www.rfc-editor.org/rfc/rfc883.html">https://www.rfc-editor.org/rfc/rfc883.html</a></li>
-        <li>RFC Editor — <i>RFC 1034: Domain Names — Concepts and Facilities</i>: <a href="https://www.rfc-editor.org/info/rfc1034/">https://www.rfc-editor.org/info/rfc1034/</a></li>
-        <li>RFC Editor — <i>RFC 1105: Border Gateway Protocol (BGP)</i>: <a href="https://www.rfc-editor.org/info/rfc1105/">https://www.rfc-editor.org/info/rfc1105/</a></li>
-        <li>RFC Editor — <i>RFC 2460: Internet Protocol, Version 6 (IPv6) Specification</i>: <a href="https://www.rfc-editor.org/info/rfc2460/">https://www.rfc-editor.org/info/rfc2460/</a></li>
-        <li>RFC Editor — <i>RFC 4271: A Border Gateway Protocol 4 (BGP-4)</i>: <a href="https://www.rfc-editor.org/info/rfc4271/">https://www.rfc-editor.org/info/rfc4271/</a></li>
-        <li>RFC Editor — <i>RFC 8200: Internet Protocol, Version 6 (IPv6) Specification</i>: <a href="https://www.rfc-editor.org/info/rfc8200/">https://www.rfc-editor.org/info/rfc8200/</a></li>
-        <li>CERN — <i>The Birth of the Web</i>: <a href="https://home.cern/science/computing/the-birth-of-the-web/">https://home.cern/science/computing/the-birth-of-the-web/</a></li>
-        <li>CERN — <i>A Short History of the Web</i>: <a href="https://home.cern/science/computing/the-birth-of-the-web/short-history-web/">https://home.cern/science/computing/the-birth-of-the-web/short-history-web/</a></li>
+        <li>
+            Internet Society — <cite>A Brief History of the Internet</cite>:
+            <a href="https://www.internetsociety.org/internet/history-internet/brief-history-internet/">
+                https://www.internetsociety.org/internet/history-internet/brief-history-internet/
+            </a>
+        </li>
+
+        <li>
+            Internet Society — <cite>How It Works</cite>:
+            <a href="https://www.internetsociety.org/internet/how-it-works/">
+                https://www.internetsociety.org/internet/how-it-works/
+            </a>
+        </li>
+
+        <li>
+            Internet Society — <cite>About the Internet</cite>:
+            <a href="https://www.internetsociety.org/internet/">
+                https://www.internetsociety.org/internet/
+            </a>
+        </li>
+
+        <li>
+            Internet Society — <cite>Who Makes the Internet Work: The Internet Ecosystem</cite>:
+            <a href="https://www.internetsociety.org/internet/who-makes-it-work/">
+                https://www.internetsociety.org/internet/who-makes-it-work/
+            </a>
+        </li>
+
+        <li>
+            Internet Society —
+            <cite>World IPv6 Launch Solidifies Global Support for New Internet Protocol</cite>:
+            <a href="https://www.internetsociety.org/news/press-releases/2012/world-ipv6-launch-solidifies-global-support-for-new-internet-protocol/">
+                https://www.internetsociety.org/news/press-releases/2012/world-ipv6-launch-solidifies-global-support-for-new-internet-protocol/
+            </a>
+        </li>
+
+        <li>
+            Internet Society —
+            <cite>World IPv6 Launch Unites Industry Leaders to Redefine the Global Internet</cite>:
+            <a href="https://www.internetsociety.org/news/press-releases/2012/world-ipv6-launch-unites-industry-leaders-to-redefine-the-global-internet/">
+                https://www.internetsociety.org/news/press-releases/2012/world-ipv6-launch-unites-industry-leaders-to-redefine-the-global-internet/
+            </a>
+        </li>
+
+        <li>
+            Internet Society — <cite>And So Begins World IPv6 Launch!</cite>:
+            <a href="https://www.internetsociety.org/blog/2012/06/and-so-begins-world-ipv6-launch-2/">
+                https://www.internetsociety.org/blog/2012/06/and-so-begins-world-ipv6-launch-2/
+            </a>
+        </li>
+
+        <li>
+            DARPA — <cite>ARPANET</cite>:
+            <a href="https://www.darpa.mil/news/features/arpanet">
+                https://www.darpa.mil/news/features/arpanet
+            </a>
+        </li>
+
+        <li>
+            UCLA — Leonard Kleinrock,
+            <cite>The Day the Infant Internet Uttered its First Words</cite>:
+            <a href="https://www.lk.cs.ucla.edu/internet_first_words.html">
+                https://www.lk.cs.ucla.edu/internet_first_words.html
+            </a>
+        </li>
+
+        <li>
+            Computer History Museum — <cite>Internet History: 1960s</cite>:
+            <a href="https://www.computerhistory.org/internethistory/1960s/">
+                https://www.computerhistory.org/internethistory/1960s/
+            </a>
+        </li>
+
+        <li>
+            U.S. National Science Foundation —
+            <cite>Birth of the Commercial Internet</cite>:
+            <a href="https://www.nsf.gov/impacts/internet">
+                https://www.nsf.gov/impacts/internet
+            </a>
+        </li>
+
+        <li>
+            RFC Editor — <cite>RFC 675</cite>:
+            <a href="https://www.rfc-editor.org/info/rfc675/">
+                https://www.rfc-editor.org/info/rfc675/
+            </a>
+        </li>
+
+        <li>
+            RFC Editor — <cite>RFC 791</cite>:
+            <a href="https://www.rfc-editor.org/info/rfc791/">
+                https://www.rfc-editor.org/info/rfc791/
+            </a>
+        </li>
+
+        <li>
+            RFC Editor — <cite>RFC 793</cite>:
+            <a href="https://www.rfc-editor.org/info/rfc793/">
+                https://www.rfc-editor.org/info/rfc793/
+            </a>
+        </li>
+
+        <li>
+            RFC Editor — <cite>RFC 882</cite>:
+            <a href="https://www.rfc-editor.org/rfc/rfc882.html">
+                https://www.rfc-editor.org/rfc/rfc882.html
+            </a>
+        </li>
+
+        <li>
+            RFC Editor — <cite>RFC 883</cite>:
+            <a href="https://www.rfc-editor.org/rfc/rfc883.html">
+                https://www.rfc-editor.org/rfc/rfc883.html
+            </a>
+        </li>
+
+        <li>
+            RFC Editor — <cite>RFC 1034</cite>:
+            <a href="https://www.rfc-editor.org/info/rfc1034/">
+                https://www.rfc-editor.org/info/rfc1034/
+            </a>
+        </li>
+
+        <li>
+            RFC Editor — <cite>RFC 1105</cite>:
+            <a href="https://www.rfc-editor.org/info/rfc1105/">
+                https://www.rfc-editor.org/info/rfc1105/
+            </a>
+        </li>
+
+        <li>
+            RFC Editor — <cite>RFC 2460</cite>:
+            <a href="https://www.rfc-editor.org/info/rfc2460/">
+                https://www.rfc-editor.org/info/rfc2460/
+            </a>
+        </li>
+
+        <li>
+            RFC Editor — <cite>RFC 4271</cite>:
+            <a href="https://www.rfc-editor.org/info/rfc4271/">
+                https://www.rfc-editor.org/info/rfc4271/
+            </a>
+        </li>
+
+        <li>
+            RFC Editor — <cite>RFC 8200</cite>:
+            <a href="https://www.rfc-editor.org/info/rfc8200/">
+                https://www.rfc-editor.org/info/rfc8200/
+            </a>
+        </li>
+
+        <li>
+            CERN — <cite>The Birth of the Web</cite>:
+            <a href="https://home.cern/science/computing/the-birth-of-the-web/">
+                https://home.cern/science/computing/the-birth-of-the-web/
+            </a>
+        </li>
     </ul>
 </section>
 {% endblock %}
