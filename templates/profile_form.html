@@ -9,18 +9,15 @@
 {% endblock %}
 
 {% block content %}
+{% set data = {} %}
+{% set skills = [] %}
+{% set software = [] %}
 <section>
     <h2>Engineering Student Profile</h2>
     <p>Complete this form to provide information about your academic background, technical skills, internship experience, and Final Year Project preferences.</p>
 
     <form action="{{ url_for('submit_profile') }}" method="post">
         <input type="hidden" name="form_version" value="2026-2027">
-        {% if errors %}
-        <div class="form-errors" role="alert">
-            <p>Please correct the following:</p>
-            <ul>{% for error in errors %}<li>{{ error }}</li>{% endfor %}</ul>
-        </div>
-        {% endif %}
 
         <fieldset>
             <legend>1. Personal Information</legend>
@@ -118,9 +115,8 @@
             <p>
                 <label for="graduation_month">Expected Graduation Month &amp; Year:</label>
                 <input type="month" id="graduation_month"
-                       name="graduation_month" min="{{ today.strftime('%Y-%m') }}"
+                       name="graduation_month"
                        value="{{ data.get('graduation_month', '') }}" required>
-                <small>Spring: Jan–May · Summer: Jun–Aug · Fall: Sep–Dec.</small>
             </p>
 
             <fieldset>
@@ -258,14 +254,13 @@
             <p>
                 <label for="meeting_date">Preferred Meeting Date:</label>
                 <input type="date" id="meeting_date" name="meeting_date"
-                       min="{{ today.isoformat() }}" value="{{ data.get('meeting_date', '') }}">
+                       value="{{ data.get('meeting_date', '') }}">
             </p>
 
             <p>
                 <label for="meeting_time">Preferred Meeting Time:</label>
                 <input type="time" id="meeting_time" name="meeting_time"
                        value="{{ data.get('meeting_time', '') }}">
-                <small>Enter both a date and time if you want a meeting.</small>
             </p>
         </fieldset>
 
