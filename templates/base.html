@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <title>{% block title %}My Portfolio{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+    {% block head %}{% endblock %}
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to content</a>

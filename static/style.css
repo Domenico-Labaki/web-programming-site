@@ -1026,7 +1026,7 @@ body > footer p + p { margin-top: 4px; }
   border-top-style: solid !important;
   background: var(--glass-regular);
   border: 1px solid var(--glass-border);
-  border-top: 3px solid var(--blue) !important;
+  border-top: 3px solid var(--profile-accent, var(--blue)) !important;
   border-radius: var(--radius-panel);
   padding: 22px 26px !important;
   backdrop-filter: blur(var(--blur-regular)) saturate(var(--saturate));

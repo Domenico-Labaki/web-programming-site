@@ -7,25 +7,25 @@ Reads the exact field `name` values from the profile form; `skills` and
 <style>
   /* Small, profile-specific touches. The rest comes from your own style.css. */
   .profile { max-width: 860px; }
-  .profile-header { border-top: 6px solid "{{ data.get('project_color', '#336699') }}"; padding-top: 1rem; margin-bottom: 1.5rem; }
-  .profile-title { color: "{{ data.get('project_color', '#336699') }}"; margin: .25rem 0 .5rem; }
+  .profile-header { border-top: 6px solid {{ data.get('project_color', '#336699') }}; padding-top: 1rem; margin-bottom: 1.5rem; }
+  .profile-title { color: {{ data.get('project_color', '#336699') }}; margin: .25rem 0 .5rem; }
   .profile-contact { font-size: .95rem; }
   .profile-contact span { margin-right: 1rem; white-space: nowrap; }
   .profile section { margin-bottom: 1.6rem; }
-  .profile h2 { border-bottom: 2px solid "{{ data.get('project_color', '#336699') }}";
+  .profile h2 { border-bottom: 2px solid {{ data.get('project_color', '#336699') }};
                 display: inline-block; padding-bottom: .15rem; }
   .profile dl { display: grid; grid-template-columns: 220px 1fr; gap: .35rem 1rem; margin: 0; }
   .profile dt { font-weight: 600; color: #475569; }
   .profile dd { margin: 0; }
   .chips { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; margin: .3rem 0 0; }
-  .chip { border: 1px solid "{{ data.get('project_color', '#336699') }}";
+  .chip { border: 1px solid {{ data.get('project_color', '#336699') }};
           border-radius: 999px; padding: .2rem .7rem; font-size: .9rem; }
   .swatch { display: inline-block; width: 1rem; height: 1rem; border-radius: 3px;
             border: 1px solid #cbd5e1; vertical-align: middle;
-            background: "{{ data.get('project_color', '#336699') }}"; }
+            background: {{ data.get('project_color', '#336699') }}; }
 </style>
 {% endblock %} {% block content %}
-<article class="profile">
+<article class="profile" style="--profile-accent: {{ data.get('project_color', '#336699') }}">
   <header class="profile-header">
     <h1>{{ data.get('fullname') }}</h1>
     {% if data.get('major') %}
