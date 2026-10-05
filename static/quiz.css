@@ -1,0 +1,291 @@
+/* Reuse the portfolio's fonts, colours, surfaces, and spacing from style.css.
+   Keep every rule inside the quiz so the header and site controls are unaffected. */
+
+/* The base template already supplies the outer main's responsive padding. */
+main.container {
+  --quiz-accent: var(--blue-dark);
+  width: 100%;
+  max-width: 760px;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 0;
+  color-scheme: light;
+  overflow-wrap: anywhere;
+}
+
+body.dark main.container {
+  --quiz-accent: #93b4f5;
+  color-scheme: dark;
+}
+
+.container > h1 {
+  margin: 0 0 24px;
+  color: var(--ink);
+  font-size: var(--page-title-size);
+  font-weight: var(--page-title-weight);
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+/* One glass surface for each view; answers inside it stay flat. */
+.container > section {
+  margin: 0;
+  padding: 28px;
+  background: var(--glass-regular);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-glass);
+  backdrop-filter: blur(var(--blur-regular)) saturate(var(--saturate));
+  -webkit-backdrop-filter: blur(var(--blur-regular)) saturate(var(--saturate));
+  animation: none;
+}
+
+.container #progress {
+  display: inline-block;
+  margin: 0 0 16px;
+  padding: 4px 10px;
+  color: var(--quiz-accent);
+  background: var(--blue-light);
+  border-radius: var(--radius-badge);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.container #questionText {
+  margin: 0 0 24px;
+  padding: 0;
+  border: 0;
+  font-size: clamp(18px, 2.5vw, 22px);
+  line-height: 1.5;
+  text-wrap: wrap;
+}
+
+/* Full answer rows are clickable; native radios retain keyboard behaviour.
+   A moving gradient and small lift replace the previous left-edge accent. */
+.container #choices {
+  display: grid;
+  gap: 12px;
+}
+
+.container .choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+  min-height: 48px;
+  padding: 14px 16px;
+  color: var(--ink);
+  background: linear-gradient(110deg, var(--canvas), var(--blue-light-strong), var(--canvas));
+  background-size: 220% 100%;
+  background-position: 0% 50%;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-input);
+  font-size: 15px;
+  line-height: 1.6;
+  cursor: pointer;
+  transition: background-position 400ms var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+.container .choice input[type="radio"] {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin: 3px 0 0;
+  accent-color: var(--quiz-accent);
+  cursor: pointer;
+}
+
+/* :has() styles the existing label from its radio's state; no JS changes needed. */
+.container .choice:has(input:checked) {
+  background-image: linear-gradient(110deg, var(--blue-light), var(--blue-light-strong));
+  border-color: var(--quiz-accent);
+  box-shadow: 0 0 0 2px var(--blue-light-strong), 0 4px 12px rgb(45 108 223 / 10%);
+}
+
+.container .choice:has(input:focus-visible),
+.container button:focus-visible {
+  outline: 3px solid var(--quiz-accent);
+  outline-offset: 3px;
+}
+
+/* Four navigation columns on desktop, with a separate primary submit action. */
+.container .navigation {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+}
+
+.container button {
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 16px;
+  color: var(--ink);
+  background: var(--canvas);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-input);
+  font: inherit;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.container button.submit {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  color: #fff;
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.container button:disabled {
+  color: var(--muted);
+  background: var(--canvas-2);
+  border-color: var(--border);
+  border-style: dashed;
+  cursor: not-allowed;
+}
+
+/* Limit hover effects to pointer devices, and never highlight disabled buttons. */
+@media (hover: hover) {
+  .container .choice:hover {
+    background-position: 100% 50%;
+    border-color: var(--quiz-accent);
+    box-shadow: 0 6px 18px rgb(45 108 223 / 14%);
+    transform: translateY(-2px);
+  }
+
+  .container .navigation button:hover:not(:disabled) {
+    background: var(--blue-light-strong);
+    border-color: var(--quiz-accent);
+  }
+
+  .container button.submit:hover:not(:disabled) {
+    background: var(--blue-hover);
+    border-color: var(--blue-hover);
+  }
+
+  .container button.retry:hover {
+    background: var(--blue-light-strong);
+    border-color: var(--quiz-accent);
+    transform: translateY(-2px);
+  }
+
+  .container #performanceText:hover {
+    background-position: 100% 50%;
+    box-shadow: 0 6px 18px rgb(45 108 223 / 14%);
+    transform: translateY(-2px);
+  }
+}
+
+.container button:active:not(:disabled) {
+  background: var(--blue-light-strong);
+  border-color: var(--quiz-accent);
+}
+
+.container button.submit:active:not(:disabled) {
+  background: var(--blue-dark);
+  border-color: var(--blue-dark);
+}
+
+/* JavaScript reveals this panel with inline display: block after submission. */
+.container #resultsPanel {
+  display: none;
+}
+
+/* Keep the heading and retry action on one row, including narrow screens. */
+.container .results-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 3px solid var(--blue);
+}
+
+.container .results-heading h2 {
+  min-width: 0;
+  margin: 0;
+}
+
+.container button.retry {
+  flex-shrink: 0;
+  color: var(--quiz-accent);
+  background: var(--blue-light);
+  transition: background var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+.container #scoreText {
+  margin: 20px 0 4px;
+  color: var(--ink);
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+.container #percentageText {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+/* A soft gradient highlights every performance message without implying success. */
+.container #performanceText {
+  margin-bottom: 28px;
+  padding: 12px 16px;
+  color: var(--quiz-accent);
+  background: linear-gradient(110deg, var(--blue-light), var(--blue-light-strong), var(--blue-light));
+  background-size: 220% 100%;
+  background-position: 0% 50%;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-badge);
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgb(45 108 223 / 8%);
+  transition: background-position 400ms var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+/* Preserve correction line breaks while wrapping long sentences and words. */
+.container #correction {
+  max-width: 100%;
+  margin: 0;
+  padding: 20px;
+  color: var(--ink);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-input);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* Tighten panel spacing and wrap navigation into two rows on phones. */
+@media (max-width: 560px) {
+  .container > section {
+    padding: 20px 16px;
+  }
+
+  .container .navigation {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .container #correction {
+    padding: 16px;
+  }
+}
+
+/* Shared style.css already disables transitions when reduced motion is requested. */

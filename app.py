@@ -47,6 +47,7 @@ weekly_work = [
     {"week": 2, "title": "History of the Internet (AI)", "url": "/internet-history-ai"},
     {"week": 2, "title": "History of the Web (AI)", "url": "/web-history-ai"},
     {"week": 4, "title": "Engineering Profile", "url": "/submit-profile"},
+    {"week": 5, "title": "JavaScript app", "url": "/quiz"},
 ]
 
 @app.route("/")
@@ -95,6 +96,11 @@ def submit_profile():
 
     # First visit (GET): just show the empty form.
     return render_template("profile_form.html", weekly_work=weekly_work)
+
+
+@app.route("/quiz", methods=["GET", "POST"])
+def quiz():
+    return render_template("quiz.html", weekly_work=weekly_work)
 
 
 if __name__ == "__main__":
