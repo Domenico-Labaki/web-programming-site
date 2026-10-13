@@ -40,6 +40,9 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+from quiz_api import init_quiz
+init_quiz(app)
+
 weekly_work = [
     {"week": 1, "title": "Live site launched", "url": "/week1"},
     {"week": 2, "title": "History of the Internet", "url": "/internet-history"},
