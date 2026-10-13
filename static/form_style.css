@@ -1,31 +1,26 @@
 /* This sheet only matches the section that directly contains the profile form. */
 
 /* Give the introduction comfortable space before the first group of fields. */
-main > section:has(> form) > p {
+main > section.profile-form > p {
   margin-bottom: 28px;
   color: var(--muted);
 }
 
 /* Keep the form within the available page width. */
-main > section:has(> form) > form {
+main > section.profile-form > form {
   min-width: 0;
 }
 
 /* Make each main field group a single calm glass panel, like the site's articles. */
-main > section:has(> form) > form > fieldset {
+main > section.profile-form > form > fieldset {
   min-width: 0;
   margin: 0 0 24px;
   padding: 24px 26px 26px;
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-panel);
   background: var(--glass-regular);
-  box-shadow: var(--shadow-glass);
-  backdrop-filter: blur(var(--blur-regular)) saturate(var(--saturate));
-  -webkit-backdrop-filter: blur(var(--blur-regular)) saturate(var(--saturate));
 }
 
 /* Make group titles clear without adding a second card inside the panel. */
-main > section:has(> form) > form > fieldset > legend {
+main > section.profile-form > form > fieldset > legend {
   padding: 0 8px;
   color: var(--ink);
   font-size: 16px;
@@ -35,18 +30,18 @@ main > section:has(> form) > form > fieldset > legend {
 }
 
 /* Space normal field rows consistently and let long content shrink safely. */
-main > section:has(> form) form fieldset > p {
+main > section.profile-form form fieldset > p {
   min-width: 0;
   margin: 0 0 20px;
 }
 
 /* Remove unused space after the last row of a field group. */
-main > section:has(> form) form fieldset > p:last-child {
+main > section.profile-form form fieldset > p:last-child {
   margin-bottom: 0;
 }
 
 /* Give labels immediately before text controls their own line. */
-main > section:has(> form) form p > label:first-child {
+main > section.profile-form form p > label:first-child {
   display: block;
   margin-bottom: 7px;
   color: var(--ink);
@@ -54,7 +49,7 @@ main > section:has(> form) form p > label:first-child {
 }
 
 /* Use an opaque, theme-aware fill so entered values stay readable over glass. */
-main > section:has(> form) form :is(input:not([type='hidden']):not([type='radio']):not([type='checkbox']):not([type='color']), select, textarea) {
+main > section.profile-form form :is(input:not([type='hidden']):not([type='radio']):not([type='checkbox']):not([type='color']), select, textarea) {
   display: block;
   width: 100%;
   min-width: 0;
@@ -70,23 +65,23 @@ main > section:has(> form) form :is(input:not([type='hidden']):not([type='radio'
 }
 
 /* Let native date, time, and select widgets use dark controls in dark mode. */
-body.dark main > section:has(> form) form :is(input:not([type='hidden']):not([type='radio']):not([type='checkbox']), select, textarea) {
+body.dark main > section.profile-form form :is(input:not([type='hidden']):not([type='radio']):not([type='checkbox']), select, textarea) {
   color-scheme: dark;
 }
 
 /* Keep examples visible while still quieter than entered text. */
-main > section:has(> form) form :is(input, textarea)::placeholder {
+main > section.profile-form form :is(input, textarea)::placeholder {
   color: var(--muted);
   opacity: 1;
 }
 
 /* Make multi-select and long descriptions large enough to use comfortably. */
-main > section:has(> form) form :is(select[multiple], textarea) {
+main > section.profile-form form :is(select[multiple], textarea) {
   min-height: 132px;
 }
 
 /* Keep a useful native color swatch instead of stretching it across the form. */
-main > section:has(> form) form input[type='color'] {
+main > section.profile-form form input[type='color'] {
   display: block;
   width: 72px;
   height: 44px;
@@ -98,7 +93,7 @@ main > section:has(> form) form input[type='color'] {
 }
 
 /* Keep radio and checkbox controls aligned with their adjacent labels. */
-main > section:has(> form) form :is(input[type='radio'], input[type='checkbox']) {
+main > section.profile-form form :is(input[type='radio'], input[type='checkbox']) {
   width: 18px;
   height: 18px;
   margin: 0 8px 0 0;
@@ -107,12 +102,12 @@ main > section:has(> form) form :is(input[type='radio'], input[type='checkbox'])
   color-scheme: light;
 }
 
-body.dark main > section:has(> form) form :is(input[type='radio'], input[type='checkbox']) {
+body.dark main > section.profile-form form :is(input[type='radio'], input[type='checkbox']) {
   color-scheme: dark;
 }
 
 /* Make choice labels easy to tap while allowing long choices to wrap. */
-main > section:has(> form) form :is(input[type='radio'], input[type='checkbox']) + label {
+main > section.profile-form form :is(input[type='radio'], input[type='checkbox']) + label {
   display: inline-block;
   max-width: calc(100% - 32px);
   min-height: 36px;
@@ -122,12 +117,12 @@ main > section:has(> form) form :is(input[type='radio'], input[type='checkbox'])
 }
 
 /* Separate choice rows even where the existing markup uses line breaks. */
-main > section:has(> form) form p > input[type='checkbox'] {
+main > section.profile-form form p > input[type='checkbox'] {
   margin-top: 4px;
 }
 
 /* Use a flat divider for choice groups nested within an outer panel. */
-main > section:has(> form) form fieldset fieldset {
+main > section.profile-form form fieldset fieldset {
   min-width: 0;
   margin: 0 0 20px;
   padding: 14px 0 0;
@@ -136,21 +131,21 @@ main > section:has(> form) form fieldset fieldset {
 }
 
 /* Make the nested group heading look like a clear question. */
-main > section:has(> form) form fieldset fieldset legend {
+main > section.profile-form form fieldset fieldset legend {
   padding: 0 8px 0 0;
   color: var(--ink);
   font-weight: 600;
 }
 
 /* Set the final confirmation apart from the data-entry panels. */
-main > section:has(> form) > form > p {
+main > section.profile-form > form > p {
   margin: 8px 0 20px;
   padding: 12px 0;
   border-bottom: 1px solid var(--rule);
 }
 
 /* Make both actions comfortably sized and consistent with site corners. */
-main > section:has(> form) form > button {
+main > section.profile-form form > button {
   min-height: 44px;
   padding: 10px 18px;
   border: 1px solid transparent;
@@ -162,44 +157,38 @@ main > section:has(> form) form > button {
 }
 
 /* Give submission the site's primary blue action treatment. */
-main > section:has(> form) form > button[type='submit'] {
+main > section.profile-form form > button[type='submit'] {
   margin: 0 8px 8px 0;
   background: var(--blue);
   color: #fff;
 }
 
 /* Darken the primary action on hover. */
-main > section:has(> form) form > button[type='submit']:hover {
+main > section.profile-form form > button[type='submit']:hover {
   background: var(--blue-dark);
 }
 
 /* Keep reset visibly secondary while preserving theme contrast. */
-main > section:has(> form) form > button[type='reset'] {
+main > section.profile-form form > button[type='reset'] {
   background: var(--code-bg);
   color: var(--ink);
   border-color: var(--border-strong);
 }
 
 /* Show a subtle change when the secondary action is hovered. */
-main > section:has(> form) form > button[type='reset']:hover {
+main > section.profile-form form > button[type='reset']:hover {
   background: var(--blue-light);
   border-color: var(--blue);
 }
 
-/* Strengthen keyboard focus on fields against both theme surfaces. */
-main > section:has(> form) form :is(input, select, textarea, button):focus-visible {
-  outline: 3px solid var(--blue);
-  outline-offset: 2px;
-}
-
 /* Give narrow screens smaller panel padding and full-width action buttons. */
 @media (max-width: 743px) {
-  main > section:has(> form) > form > fieldset {
+  main > section.profile-form > form > fieldset {
     padding: 20px;
   }
 
   /* Stack the two actions so each remains easy to tap on a phone. */
-  main > section:has(> form) form > button {
+  main > section.profile-form form > button {
     display: block;
     width: 100%;
     margin: 0 0 12px;
@@ -208,7 +197,7 @@ main > section:has(> form) form :is(input, select, textarea, button):focus-visib
 
 /* Let the form print as plain readable content without glass effects. */
 @media print {
-  main > section:has(> form) > form > fieldset {
+  main > section.profile-form > form > fieldset {
     background: #fff;
     border-color: #d4dbe5;
     box-shadow: none;

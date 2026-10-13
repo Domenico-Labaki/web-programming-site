@@ -32,11 +32,6 @@ body.dark main.container {
   margin: 0;
   padding: 28px;
   background: var(--glass-regular);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-panel);
-  box-shadow: var(--shadow-glass);
-  backdrop-filter: blur(var(--blur-regular)) saturate(var(--saturate));
-  -webkit-backdrop-filter: blur(var(--blur-regular)) saturate(var(--saturate));
   animation: none;
 }
 
@@ -161,11 +156,10 @@ body.dark main.container {
   .container .choice:hover {
     background-position: 100% 50%;
     border-color: var(--quiz-accent);
-    box-shadow: 0 6px 18px rgb(45 108 223 / 14%);
-    transform: translateY(-2px);
   }
 
-  .container .navigation button:hover:not(:disabled) {
+  .container .navigation button:hover:not(:disabled),
+  .container button.retry:hover {
     background: var(--blue-light-strong);
     border-color: var(--quiz-accent);
   }
@@ -176,13 +170,15 @@ body.dark main.container {
   }
 
   .container button.retry:hover {
-    background: var(--blue-light-strong);
-    border-color: var(--quiz-accent);
     transform: translateY(-2px);
   }
 
   .container #performanceText:hover {
     background-position: 100% 50%;
+  }
+
+  .container .choice:hover,
+  .container #performanceText:hover {
     box-shadow: 0 6px 18px rgb(45 108 223 / 14%);
     transform: translateY(-2px);
   }

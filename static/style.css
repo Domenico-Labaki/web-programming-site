@@ -162,12 +162,6 @@ body.dark {
   border-radius: 4px;
 }
 
-a:focus-visible,
-button:focus-visible {
-  outline: 3px solid var(--blue);
-  outline-offset: 2px;
-}
-
 /* Skip link — becomes visible on focus even though not in current HTML;
    styling is harmless when the element is absent. */
 .skip-link {
@@ -459,26 +453,30 @@ nav a.is-current {
 /* --------------------------------------------------------------------------
    5. Floating utilities — theme and back-to-top controls share one column
    -------------------------------------------------------------------------- */
-#theme-toggle {
+#theme-toggle,
+#back-to-top {
   position: fixed;
   right: 20px;
   bottom: 20px;
   z-index: 85;
   width: 44px;
   height: 44px;
+  border: 1px solid var(--glass-border);
+  line-height: 1;
+  cursor: pointer;
+}
+
+#theme-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-size: 19px;
-  line-height: 1;
   color: var(--muted);
   background: var(--glass-subtle);
-  border: 1px solid var(--glass-border);
   border-radius: 999px;
   backdrop-filter: blur(var(--blur-regular)) saturate(var(--saturate));
   -webkit-backdrop-filter: blur(var(--blur-regular)) saturate(var(--saturate));
   box-shadow: var(--shadow-subtle);
-  cursor: pointer;
   transition:
     color var(--duration-fast) var(--ease-out),
     border-color var(--duration-fast) var(--ease-out),
@@ -503,22 +501,13 @@ body.back-to-top-visible #theme-toggle {
 #theme-toggle:active { transform: translateY(0) scale(0.98); }
 
 #back-to-top {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  z-index: 85;
-  width: 44px;
-  height: 44px;
   display: inline-grid;
   place-items: center;
   color: var(--blue);
   background: var(--glass-strong);
-  border: 1px solid var(--glass-border);
   border-radius: 50%;
   box-shadow: var(--shadow-glass);
   font-size: 24px;
-  line-height: 1;
-  cursor: pointer;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -730,15 +719,25 @@ figcaption {
    Articles, aside-inner and references are floating glass panels.
    Nested sections inside a glass panel are transparent, separated by rules.
    -------------------------------------------------------------------------- */
-article {
-  background: var(--glass-regular);
+/* Shared glass structure; each surface keeps its own fill and spacing. */
+article,
+aside#verification-notes,
+section#references,
+.weekly-list,
+.profile-header,
+.container > section,
+main > section.profile-form > form > fieldset {
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-panel);
-  padding: 26px;
-  margin-bottom: 16px;
   backdrop-filter: blur(var(--blur-regular)) saturate(var(--saturate));
   -webkit-backdrop-filter: blur(var(--blur-regular)) saturate(var(--saturate));
   box-shadow: var(--shadow-glass);
+}
+
+article {
+  background: var(--glass-regular);
+  padding: 26px;
+  margin-bottom: 16px;
   transition:
     border-color var(--duration-base) var(--ease-out),
     box-shadow var(--duration-base) var(--ease-out),
@@ -835,12 +834,7 @@ section > h2 {
 /* When aside contains multiple inner sections, treat the aside itself as glass */
 aside#verification-notes {
   background: var(--glass-regular);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-panel);
   padding: 26px;
-  backdrop-filter: blur(var(--blur-regular)) saturate(var(--saturate));
-  -webkit-backdrop-filter: blur(var(--blur-regular)) saturate(var(--saturate));
-  box-shadow: var(--shadow-glass);
 }
 
 aside#verification-notes > h2 { margin-top: 0; }
@@ -861,12 +855,7 @@ aside#verification-notes > section:last-child {
 /* References section (ul of links) — also a quiet glass panel when alone */
 section#references {
   background: var(--glass-subtle);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-panel);
   padding: 22px 26px;
-  backdrop-filter: blur(var(--blur-regular)) saturate(var(--saturate));
-  -webkit-backdrop-filter: blur(var(--blur-regular)) saturate(var(--saturate));
-  box-shadow: var(--shadow-glass);
 }
 
 section#references ul {
@@ -897,16 +886,10 @@ section#references li:last-child { border-bottom: none; }
   grid-template-columns: 1fr;
   gap: 10px;
   list-style: none;
-  padding: 0;
   margin: 0;
   /* single containing band illusion */
   background: var(--glass-regular);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-panel);
   padding: 12px;
-  backdrop-filter: blur(var(--blur-regular)) saturate(var(--saturate));
-  -webkit-backdrop-filter: blur(var(--blur-regular)) saturate(var(--saturate));
-  box-shadow: var(--shadow-glass);
 }
 
 .weekly-list li {
@@ -924,7 +907,6 @@ section#references li:last-child { border-bottom: none; }
     transform var(--duration-fast) var(--ease-out),
     background var(--duration-fast) var(--ease-out);
   overflow: clip;
-  border-left: 1px solid var(--border);
 }
 
 .weekly-list li::after {
@@ -1022,16 +1004,9 @@ body > footer p + p { margin-top: 4px; }
 }
 
 .profile-header {
-  border-top-width: 3px !important;
-  border-top-style: solid !important;
   background: var(--glass-regular);
-  border: 1px solid var(--glass-border);
   border-top: 3px solid var(--profile-accent, var(--blue)) !important;
-  border-radius: var(--radius-panel);
   padding: 22px 26px !important;
-  backdrop-filter: blur(var(--blur-regular)) saturate(var(--saturate));
-  -webkit-backdrop-filter: blur(var(--blur-regular)) saturate(var(--saturate));
-  box-shadow: var(--shadow-glass);
 }
 
 .profile h2 {
@@ -1077,12 +1052,10 @@ body > footer p + p { margin-top: 4px; }
 @media (max-width: 389px) {
   body > header,
   body > footer {
-    width: calc(100% - 16px);
     margin-left: 8px;
     margin-right: 8px;
   }
   main { padding-left: 16px; padding-right: 16px; }
-  article, aside#verification-notes, section#references { padding: 18px; }
 }
 
 /* Below 744 — forms/detail grids stack, panels tighten, drawers full-screen */
@@ -1096,8 +1069,6 @@ body > footer p + p { margin-top: 4px; }
   }
 
   #theme-toggle {
-    width: 44px;
-    height: 44px;
     right: 16px;
     bottom: 16px;
   }
@@ -1131,15 +1102,18 @@ body > footer p + p { margin-top: 4px; }
 }
 
 /* 744 – 1023 — medium phones / tablets */
-@media (min-width: 744px) and (max-width: 1023px) {
+@media (min-width: 744px) and (max-width: 768px) {
   main { padding: 28px 24px 56px; }
+}
+
+@media (min-width: 744px) and (max-width: 1023px) {
   body > header { padding-left: 24px; padding-right: 24px; }
 }
 
 /* Below 1024 — desktop sidebar would become drawer; here header stays centred
    but page gains top clearance conceptually. */
 @media (max-width: 1023px) {
-  body > header { width: calc(100% - 20px); }
+  body > header,
   body > footer { width: calc(100% - 20px); }
 }
 
@@ -1169,9 +1143,6 @@ body > footer p + p { margin-top: 4px; }
   :root { --content-max: 920px; }
   body > header { max-width: 940px; }
   body > footer { max-width: 940px; }
-}
-
-@media (min-width: 1536px) {
 }
 
 /* --------------------------------------------------------------------------

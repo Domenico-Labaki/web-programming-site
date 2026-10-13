@@ -7,8 +7,8 @@ const title = document.querySelector('body > header h1');
 const navViewport = document.querySelector('.nav-viewport');
 const navTrack = navViewport?.querySelector('.nav-track');
 const nav = navTrack?.querySelector('.nav-group-original');
-const navGroups = navTrack ? [...navTrack.querySelectorAll('.nav-group')] : [];
-const navShifts = [...document.querySelectorAll('.nav-shift')];
+const navGroups = navTrack ? navTrack.querySelectorAll('.nav-group') : [];
+const navShifts = document.querySelectorAll('.nav-shift');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const headerVisualizer = document.querySelector('.header-visualizer-grid');
 let allNavLinks = [];
@@ -102,13 +102,21 @@ const cloneNavLinks = () => {
             link.tabIndex = -1;
         });
     });
-    allNavLinks = [...navTrack.querySelectorAll('a')];
+    allNavLinks = navTrack.querySelectorAll('a');
 };
 
 const updateNavMetrics = () => {
     if (!nav || !navGroups[0]) return;
     navMiddleStart = nav.offsetLeft;
     navCycleWidth = navMiddleStart - navGroups[0].offsetLeft;
+};
+
+// Temporarily disable smooth scrolling when repositioning the looping navigation.
+const scrollNavInstantly = (reposition) => {
+    const previousBehavior = navViewport.style.scrollBehavior;
+    navViewport.style.scrollBehavior = 'auto';
+    reposition();
+    navViewport.style.scrollBehavior = previousBehavior;
 };
 
 let isNormalizingNav = false;
@@ -123,24 +131,22 @@ const normalizeNavScroll = () => {
     if (nextScrollLeft === navViewport.scrollLeft) return;
 
     isNormalizingNav = true;
-    const previousBehavior = navViewport.style.scrollBehavior;
-    navViewport.style.scrollBehavior = 'auto';
-    navViewport.scrollLeft = nextScrollLeft;
-    navViewport.style.scrollBehavior = previousBehavior;
+    scrollNavInstantly(() => {
+        navViewport.scrollLeft = nextScrollLeft;
+    });
     isNormalizingNav = false;
 };
 
 const centerCurrentNavLink = () => {
     const current = nav?.querySelector('[aria-current="page"]');
     if (!navViewport || !nav) return;
-    const previousBehavior = navViewport.style.scrollBehavior;
-    navViewport.style.scrollBehavior = 'auto';
-    if (current) {
-        current.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'center' });
-    } else {
-        navViewport.scrollLeft = navMiddleStart;
-    }
-    navViewport.style.scrollBehavior = previousBehavior;
+    scrollNavInstantly(() => {
+        if (current) {
+            current.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'center' });
+        } else {
+            navViewport.scrollLeft = navMiddleStart;
+        }
+    });
     normalizeNavScroll();
     updateNavLinkScale();
 };
@@ -153,11 +159,16 @@ const updateNavLinkScale = () => {
         const viewportCenter = viewportRect.left + viewportRect.width / 2;
         const scaleRange = Math.max(viewportRect.width * 0.55, 1);
 
-        allNavLinks.forEach((link) => {
+        // Read all positions before applying styles to avoid alternating reads and writes.
+        const scales = [];
+        for (const link of allNavLinks) {
             const linkRect = link.getBoundingClientRect();
             const distance = Math.min(Math.abs(linkRect.left + linkRect.width / 2 - viewportCenter) / scaleRange, 1);
-            link.style.setProperty('--nav-scale', (1.1 - distance * 0.2).toFixed(3));
-        });
+            scales.push((1.1 - distance * 0.2).toFixed(3));
+        }
+        for (let i = 0; i < allNavLinks.length; i++) {
+            allNavLinks[i].style.setProperty('--nav-scale', scales[i]);
+        }
     });
 };
 
@@ -166,18 +177,19 @@ const moveNavOneButton = (direction) => {
     normalizeNavScroll();
     const viewportCenter = navViewport.scrollLeft + navViewport.clientWidth / 2;
     const viewportLeft = navViewport.getBoundingClientRect().left;
-    const linkCenters = allNavLinks.map((link) => {
-        const linkRect = link.getBoundingClientRect();
-        return navViewport.scrollLeft + linkRect.left - viewportLeft + linkRect.width / 2;
-    });
-    const targetIndex = direction > 0
-        ? linkCenters.findIndex((center) => center > viewportCenter + 4)
-        : linkCenters.findLastIndex
-            ? linkCenters.findLastIndex((center) => center < viewportCenter - 4)
-            : linkCenters.reduce((last, center, index) => center < viewportCenter - 4 ? index : last, -1);
-    const target = allNavLinks[targetIndex < 0 ? (direction > 0 ? allNavLinks.length - 1 : 0) : targetIndex];
-    if (!target) return;
-    const targetCenter = linkCenters[targetIndex < 0 ? (direction > 0 ? allNavLinks.length - 1 : 0) : targetIndex];
+    let targetIndex = direction > 0 ? allNavLinks.length - 1 : 0;
+    const startIndex = direction > 0 ? 0 : allNavLinks.length - 1;
+    for (let i = startIndex; i >= 0 && i < allNavLinks.length; i += direction) {
+        const linkRect = allNavLinks[i].getBoundingClientRect();
+        const center = navViewport.scrollLeft + linkRect.left - viewportLeft + linkRect.width / 2;
+        if ((direction > 0 && center > viewportCenter + 4) ||
+            (direction < 0 && center < viewportCenter - 4)) {
+            targetIndex = i;
+            break;
+        }
+    }
+    const targetRect = allNavLinks[targetIndex].getBoundingClientRect();
+    const targetCenter = navViewport.scrollLeft + targetRect.left - viewportLeft + targetRect.width / 2;
     navViewport.scrollTo({
         left: targetCenter - navViewport.clientWidth / 2,
         behavior: prefersReducedMotion.matches ? 'auto' : 'smooth'
@@ -239,7 +251,9 @@ toggle.addEventListener('click', () => {
 document.querySelectorAll('button, nav a, main a').forEach((control) => {
     control.addEventListener('mouseenter', () => showReaction('hover'));
     control.addEventListener('mouseleave', () => showReaction('idle'));
-    control.addEventListener('click', () => showReaction('click'));
+    if (control !== toggle && !control.matches('a[href]')) {
+        control.addEventListener('click', () => showReaction('click'));
+    }
 });
 
 document.querySelectorAll('a[href]').forEach((link) => {
@@ -249,8 +263,11 @@ document.querySelectorAll('a[href]').forEach((link) => {
     });
 });
 
+let backToTopVisible;
 const updateBackToTop = () => {
     const visible = window.scrollY > 320;
+    if (visible === backToTopVisible) return;
+    backToTopVisible = visible;
     backToTop.classList.toggle('is-visible', visible);
     body.classList.toggle('back-to-top-visible', visible);
     backToTop.setAttribute('aria-hidden', String(!visible));
