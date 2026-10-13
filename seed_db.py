@@ -17,8 +17,6 @@ import json
 from flask import Flask
 from quiz_api import db, Question, database_uri
 
-#I postgresql://quiz_eas7_user:lYIKxbxAJQnKVC2tahvPTbj5K5ttuvDK@dpg-db17ba6gekts73chvpr0-a/quiz_eas7
-#E postgresql://quiz_eas7_user:lYIKxbxAJQnKVC2tahvPTbj5K5ttuvDK@dpg-db17ba6gekts73chvpr0-a.virginia-postgres.render.com/quiz_eas7
 QUESTIONS = [
   {
     "question": "Which company publishes the Need for Speed franchise?",

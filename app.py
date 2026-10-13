@@ -1,39 +1,5 @@
 """
-Web Programming — Flask application (Week 4).
-
-Download this file from e-learning and REPLACE all the contents of your existing
-app.py with it. Then run your app as usual.
-
-WHAT THIS FILE DOES (the "black box" for this week)
----------------------------------------------------
-It adds the "Engineering Student Profile" form. You do NOT need to understand this
-code yet — server-side form handling is taught in a later session. For now:
-
-  GET  /submit-profile   -> shows your form   (you build templates/profile_form.html)
-  POST /submit-profile   -> reads the submitted data and shows your profile page
-                            (renders templates/profile.html, which extends your
-                             base.html so it appears in YOUR design / CSS)
-
-HOW THE DATA REACHES THE PROFILE PAGE
--------------------------------------
-When the form is submitted, this route reads every field the form sends and hands
-it to profile.html. Three variables are available inside profile.html:
-
-  data      -> a dictionary of all single-value fields, keyed by the field `name`,
-               e.g. data['fullname'], data['student_id'], data['email'],
-               data['major'], data['gpa'], data['project_title'], ...
-  skills    -> a LIST of the ticked "skills" checkboxes
-  software  -> a LIST of the selected "software" options (from the multiple <select>)
-
-Note: `skills` and `software` can hold several values, so they are read as lists.
-Every other field is a single value inside `data`.
-
-Example inside profile.html (which extends your base.html):
-
-  <h1>{{ data['fullname'] }}</h1>
-  <p>{{ data['major'] }}</p>
-  <p>Skills: {{ skills | join(', ') }}</p>
-  <p>Software: {{ software | join(', ') }}</p>
+Web Programming — Flask application.
 """
 
 from flask import Flask, render_template, request
