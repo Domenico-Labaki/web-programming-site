@@ -196,11 +196,6 @@ function buildCorrection() {
   return correction;
 }
 
-
-// PROVIDED INTERFACE CODE
-//
-// DOM manipulation and events will be studied later.
-
 // SUBMIT QUIZ
 function submitQuiz() {
   const score = calculateScore();
@@ -212,17 +207,13 @@ function submitQuiz() {
 
 function renderQuestion() {
   const q = questions[currentQuestion];
-
   
   // QUESTION NUMBER
-  document.getElementById("progress").textContent =
-    `Question ${currentQuestion + 1} of ${questions.length}`;
-
+  document.getElementById("progress").textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
   
   // QUESTION
   document.getElementById("questionText").textContent = q.question;
 
-  
   // CHOICES
   const choicesContainer = document.getElementById("choices");
   choicesContainer.innerHTML = "";
@@ -233,13 +224,11 @@ function renderQuestion() {
     radio.type = "radio";
     radio.name = "answer";
     radio.value = i;
-    // Restore an answer previously selected
-    // by the user.
+    // Restore an answer previously selected by the user.
     if (userAnswers[currentQuestion] === i) {
       radio.checked = true;
     }
-    // When the user selects this answer,
-    // save its index.
+    // When the user selects this answer, save its index.
     radio.onclick = function () {
       saveAnswer(i);
     };
