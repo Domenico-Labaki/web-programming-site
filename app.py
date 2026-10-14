@@ -17,6 +17,7 @@ weekly_work = [
     {"week": 2, "title": "History of the Web (AI)", "url": "/web-history-ai"},
     {"week": 4, "title": "Engineering Profile", "url": "/submit-profile"},
     {"week": 5, "title": "JavaScript app", "url": "/quiz"},
+    {"week": 6, "title": "Profile Form Validation", "url": "/submit-validated-profile"},
 ]
 
 @app.route("/")
@@ -60,11 +61,17 @@ def submit_profile():
         skills = request.form.getlist("skills")         # checkboxes -> list
         software = request.form.getlist("software")     # multiple <select> -> list
         return render_template(
-            "profile.html", data=data, skills=skills, software=software
+            "profile.html", data=data, skills=skills, software=software,
+            weekly_work=weekly_work
         )
 
     # First visit (GET): just show the empty form.
     return render_template("profile_form.html", weekly_work=weekly_work)
+
+
+@app.route("/submit-validated-profile")
+def submit_validated_profile():
+    return render_template("profile_form_validated.html", weekly_work=weekly_work)
 
 
 @app.route("/quiz", methods=["GET", "POST"])

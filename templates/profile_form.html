@@ -24,31 +24,22 @@
 
             <p>
                 <label for="student_id">Student ID:</label>
-                <input type="text" id="student_id" name="student_id"
-                       pattern="[0-9]{9}" maxlength="9"
-                       title="Enter exactly 9 digits" placeholder="202312345" value="{{ data.get('student_id', '') }}" required>
+                <input type="text" id="student_id" name="student_id" pattern="[0-9]{9}" maxlength="9" title="Enter exactly 9 digits" placeholder="202312345" value="{{ data.get('student_id', '') }}" required>
             </p>
 
             <p>
                 <label for="fullname">Full Name:</label>
-                <input type="text" id="fullname" name="fullname"
-                       maxlength="80" placeholder="First name and last name" value="{{ data.get('fullname', '') }}" required>
+                <input type="text" id="fullname" name="fullname" maxlength="80" placeholder="First name and last name" value="{{ data.get('fullname', '') }}" required>
             </p>
 
             <p>
                 <label for="email">USEK Email:</label>
-                <input type="email" id="email" name="email"
-                       pattern="[A-Za-z0-9._%+\-]+@net\.usek\.edu\.lb"
-                       title="Use your @net.usek.edu.lb email address"
-                       placeholder="student@net.usek.edu.lb" value="{{ data.get('email', '') }}" required>
+                <input type="email" id="email" name="email" pattern="[A-Za-z0-9._%+\-]+@net\.usek\.edu\.lb" title="Use your @net.usek.edu.lb email address" placeholder="student@net.usek.edu.lb" value="{{ data.get('email', '') }}" required>
             </p>
 
             <p>
                 <label for="phone">Mobile Number:</label>
-                <input type="tel" id="phone" name="phone"
-                       pattern="(\+961|00961|0)?[ -]?(3|[78][0-9])[ -]?[0-9]{3}[ -]?[0-9]{3}"
-                       title="Enter a Lebanese mobile number, such as +961 70 123456"
-                       placeholder="+961 70 123456" value="{{ data.get('phone', '') }}">
+                <input type="tel" id="phone" name="phone" pattern="(\+961|00961|0)?[ -]?(3|[78][0-9])[ -]?[0-9]{3}[ -]?[0-9]{3}" title="Enter a Lebanese mobile number, such as +961 70 123456" placeholder="+961 70 123456" value="{{ data.get('phone', '') }}">
             </p>
 
             <p>
@@ -58,14 +49,12 @@
 
             <p>
                 <label for="portfolio">GitHub:</label>
-                <input type="url" id="portfolio" name="portfolio"
-                       placeholder="https://github.com/username" value="{{ data.get('portfolio', '') }}">
+                <input type="url" id="portfolio" name="portfolio" placeholder="https://github.com/username" value="{{ data.get('portfolio', '') }}">
             </p>
 
             <p>
                 <label for="gin446">GIN446 Website:</label>
-                <input type="url" id="gin446" name="gin446"
-                       placeholder="Your Render website link" value="{{ data.get('gin446', '') }}">
+                <input type="url" id="gin446" name="gin446" placeholder="Your Render website link" value="{{ data.get('gin446', '') }}">
             </p>
         </fieldset>
 
@@ -85,49 +74,39 @@
 
             <p>
                 <label for="gpa">Current GPA / 100:</label>
-                <input type="number" id="gpa" name="gpa"
-                       min="40" max="100" step="0.01"
-                       placeholder="85.50" value="{{ data.get('gpa', '') }}" required>
+                <input type="number" id="gpa" name="gpa" min="40" max="100" step="0.01" placeholder="85.50" value="{{ data.get('gpa', '') }}" required>
             </p>
 
             <p>
                 <label for="credits">Credits Completed:</label>
-                <input type="number" id="credits" name="credits"
-                       min="0" max="148" step="1" value="{{ data.get('credits', '') }}" required>
+                <input type="number" id="credits" name="credits" min="0" max="148" step="1" value="{{ data.get('credits', '') }}" required>
             </p>
 
             <fieldset>
                 <legend>Expected Graduation</legend>
 
-                <input type="radio" id="graduation_spring" name="graduation"
-                       value="spring" {% if data.get('graduation') == 'spring' %}checked{% endif %} required>
+                <input type="radio" id="graduation_spring" name="graduation" value="spring" {% if data.get('graduation') == 'spring' %}checked{% endif %} required>
                 <label for="graduation_spring">Spring</label>
 
-                <input type="radio" id="graduation_summer" name="graduation"
-                       value="summer" {% if data.get('graduation') == 'summer' %}checked{% endif %}>
+                <input type="radio" id="graduation_summer" name="graduation" value="summer" {% if data.get('graduation') == 'summer' %}checked{% endif %}>
                 <label for="graduation_summer">Summer</label>
 
-                <input type="radio" id="graduation_fall" name="graduation"
-                       value="fall" {% if data.get('graduation') == 'fall' %}checked{% endif %}>
+                <input type="radio" id="graduation_fall" name="graduation" value="fall" {% if data.get('graduation') == 'fall' %}checked{% endif %}>
                 <label for="graduation_fall">Fall</label>
             </fieldset>
 
             <p>
                 <label for="graduation_month">Expected Graduation Month &amp; Year:</label>
-                <input type="month" id="graduation_month"
-                       name="graduation_month"
-                       value="{{ data.get('graduation_month', '') }}" required>
+                <input type="month" id="graduation_month" name="graduation_month" value="{{ data.get('graduation_month', '') }}" required>
             </p>
 
             <fieldset>
                 <legend>Have you completed an engineering internship?</legend>
 
-                <input type="radio" id="internship_yes"
-                       name="internship_completed" value="yes" {% if data.get('internship_completed') == 'yes' %}checked{% endif %} required>
+                <input type="radio" id="internship_yes" name="internship_completed" value="yes" {% if data.get('internship_completed') == 'yes' %}checked{% endif %} required>
                 <label for="internship_yes">Yes</label>
 
-                <input type="radio" id="internship_no"
-                       name="internship_completed" value="no" {% if data.get('internship_completed') == 'no' %}checked{% endif %}>
+                <input type="radio" id="internship_no" name="internship_completed" value="no" {% if data.get('internship_completed') == 'no' %}checked{% endif %}>
                 <label for="internship_no">No</label>
             </fieldset>
         </fieldset>
@@ -138,36 +117,28 @@
             <p>Select all areas in which you have experience:</p>
 
             <p>
-                <input type="checkbox" id="skill_programming"
-                       name="skills" value="programming" {% if 'programming' in skills %}checked{% endif %}>
+                <input type="checkbox" id="skill_programming" name="skills" value="programming" {% if 'programming' in skills %}checked{% endif %}>
                 <label for="skill_programming">Programming</label><br>
 
-                <input type="checkbox" id="skill_embedded"
-                       name="skills" value="embedded-systems" {% if 'embedded-systems' in skills %}checked{% endif %}>
+                <input type="checkbox" id="skill_embedded" name="skills" value="embedded-systems" {% if 'embedded-systems' in skills %}checked{% endif %}>
                 <label for="skill_embedded">Embedded Systems</label><br>
 
-                <input type="checkbox" id="skill_electronics"
-                       name="skills" value="electronics" {% if 'electronics' in skills %}checked{% endif %}>
+                <input type="checkbox" id="skill_electronics" name="skills" value="electronics" {% if 'electronics' in skills %}checked{% endif %}>
                 <label for="skill_electronics">Electronics</label><br>
 
-                <input type="checkbox" id="skill_networks"
-                       name="skills" value="computer-networks" {% if 'computer-networks' in skills %}checked{% endif %}>
+                <input type="checkbox" id="skill_networks" name="skills" value="computer-networks" {% if 'computer-networks' in skills %}checked{% endif %}>
                 <label for="skill_networks">Computer Networks</label><br>
 
-                <input type="checkbox" id="skill_telecommunications"
-                       name="skills" value="telecommunications" {% if 'telecommunications' in skills %}checked{% endif %}>
+                <input type="checkbox" id="skill_telecommunications" name="skills" value="telecommunications" {% if 'telecommunications' in skills %}checked{% endif %}>
                 <label for="skill_telecommunications">Telecommunications</label><br>
 
-                <input type="checkbox" id="skill_biomedical"
-                       name="skills" value="biomedical-instrumentation" {% if 'biomedical-instrumentation' in skills %}checked{% endif %}>
+                <input type="checkbox" id="skill_biomedical" name="skills" value="biomedical-instrumentation" {% if 'biomedical-instrumentation' in skills %}checked{% endif %}>
                 <label for="skill_biomedical">Biomedical Instrumentation</label><br>
 
-                <input type="checkbox" id="skill_ai"
-                       name="skills" value="artificial-intelligence-machine-learning" {% if 'artificial-intelligence-machine-learning' in skills %}checked{% endif %}>
+                <input type="checkbox" id="skill_ai" name="skills" value="artificial-intelligence-machine-learning" {% if 'artificial-intelligence-machine-learning' in skills %}checked{% endif %}>
                 <label for="skill_ai">Artificial Intelligence / Machine Learning</label><br>
 
-                <input type="checkbox" id="skill_signal"
-                       name="skills" value="signal-processing" {% if 'signal-processing' in skills %}checked{% endif %}>
+                <input type="checkbox" id="skill_signal" name="skills" value="signal-processing" {% if 'signal-processing' in skills %}checked{% endif %}>
                 <label for="skill_signal">Signal Processing</label>
             </p>
 
@@ -197,8 +168,7 @@
 
             <p>
                 <label for="project_title">Proposed Project Title:</label>
-                <input type="text" id="project_title" name="project_title"
-                       maxlength="100" placeholder="Enter a tentative project title" value="{{ data.get('project_title', '') }}" required>
+                <input type="text" id="project_title" name="project_title" maxlength="100" placeholder="Enter a tentative project title" value="{{ data.get('project_title', '') }}" required>
             </p>
 
             <p>
@@ -234,39 +204,32 @@
 
             <p>
                 <label for="description">Brief Project Description:</label><br>
-                <textarea id="description" name="description" rows="5" cols="40"
-                          maxlength="500"
-                          placeholder="Describe the problem, proposed solution, and expected outcome..." required>{{ data.get('description', '') }}</textarea>
+                <textarea id="description" name="description" rows="5" cols="40" maxlength="500" placeholder="Describe the problem, proposed solution, and expected outcome..." required>{{ data.get('description', '') }}</textarea>
             </p>
 
             <p>
                 <label for="team_size">Preferred Team Size:</label>
-                <input type="number" id="team_size" name="team_size"
-                       min="1" max="6" step="1" value="{{ data.get('team_size', '2') }}" required>
+                <input type="number" id="team_size" name="team_size" min="1" max="6" step="1" value="{{ data.get('team_size', '2') }}" required>
             </p>
 
             <p>
                 <label for="project_color">Choose a color for your project dashboard:</label>
-                <input type="color" id="project_color" name="project_color"
-                       value="{{ data.get('project_color', '#336699') }}">
+                <input type="color" id="project_color" name="project_color" value="{{ data.get('project_color', '#336699') }}">
             </p>
 
             <p>
                 <label for="meeting_date">Preferred Meeting Date:</label>
-                <input type="date" id="meeting_date" name="meeting_date"
-                       value="{{ data.get('meeting_date', '') }}">
+                <input type="date" id="meeting_date" name="meeting_date" value="{{ data.get('meeting_date', '') }}">
             </p>
 
             <p>
                 <label for="meeting_time">Preferred Meeting Time:</label>
-                <input type="time" id="meeting_time" name="meeting_time"
-                       value="{{ data.get('meeting_time', '') }}">
+                <input type="time" id="meeting_time" name="meeting_time" value="{{ data.get('meeting_time', '') }}">
             </p>
         </fieldset>
 
         <p>
-            <input type="checkbox" id="confirmation"
-                   name="confirmation" value="yes" {% if data.get('confirmation') == 'yes' %}checked{% endif %} required>
+            <input type="checkbox" id="confirmation" name="confirmation" value="yes" {% if data.get('confirmation') == 'yes' %}checked{% endif %} required>
             <label for="confirmation">I confirm that the information provided is accurate.</label>
         </p>
 

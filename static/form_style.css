@@ -145,7 +145,8 @@ main > section.profile-form > form > p {
 }
 
 /* Make both actions comfortably sized and consistent with site corners. */
-main > section.profile-form form > button {
+main > section.profile-form form > button,
+main > section.profile-form .review-actions > button {
   min-height: 44px;
   padding: 10px 18px;
   border: 1px solid transparent;
@@ -157,28 +158,99 @@ main > section.profile-form form > button {
 }
 
 /* Give submission the site's primary blue action treatment. */
-main > section.profile-form form > button[type='submit'] {
+main > section.profile-form form > button[type='submit'],
+main > section.profile-form #confirm-profile {
   margin: 0 8px 8px 0;
   background: var(--blue);
   color: #fff;
 }
 
 /* Darken the primary action on hover. */
-main > section.profile-form form > button[type='submit']:hover {
+main > section.profile-form form > button[type='submit']:hover,
+main > section.profile-form #confirm-profile:hover:not(:disabled) {
   background: var(--blue-dark);
 }
 
 /* Keep reset visibly secondary while preserving theme contrast. */
-main > section.profile-form form > button[type='reset'] {
+main > section.profile-form form > button[type='reset'],
+main > section.profile-form #edit-profile {
   background: var(--code-bg);
   color: var(--ink);
   border-color: var(--border-strong);
 }
 
 /* Show a subtle change when the secondary action is hovered. */
-main > section.profile-form form > button[type='reset']:hover {
+main > section.profile-form form > button[type='reset']:hover,
+main > section.profile-form #edit-profile:hover:not(:disabled) {
   background: var(--blue-light);
   border-color: var(--blue);
+}
+
+main > section.profile-form > :is(#profile-form, #profile-review).is-hidden {
+  display: none;
+}
+
+main > section.profile-form > .profile-review {
+  min-width: 0;
+  margin: 0 0 24px;
+  padding: 24px 26px 26px;
+  color: var(--ink);
+  background: var(--glass-regular);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-panel);
+  backdrop-filter: blur(var(--blur-regular)) saturate(var(--saturate));
+  -webkit-backdrop-filter: blur(var(--blur-regular)) saturate(var(--saturate));
+  box-shadow: var(--shadow-glass);
+}
+
+main > section.profile-form #review-heading {
+  margin: 0 0 12px;
+  color: var(--ink);
+}
+
+main > section.profile-form #review-values {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  margin: 24px 0;
+}
+
+main > section.profile-form #review-values > :is(dt, dd) {
+  min-width: 0;
+  margin: 0;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule);
+  overflow-wrap: anywhere;
+}
+
+main > section.profile-form #review-values > dt {
+  padding-right: 20px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+main > section.profile-form #review-values > dd {
+  color: var(--ink);
+  white-space: pre-wrap;
+}
+
+main > section.profile-form .review-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+main > section.profile-form .review-actions > #confirm-profile {
+  margin: 0;
+}
+
+main > section.profile-form .review-actions > button:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+main > section.profile-form .review-actions > button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
 }
 
 /* Give narrow screens smaller panel padding and full-width action buttons. */
@@ -192,6 +264,27 @@ main > section.profile-form form > button[type='reset']:hover {
     display: block;
     width: 100%;
     margin: 0 0 12px;
+  }
+
+  main > section.profile-form > .profile-review {
+    padding: 20px;
+  }
+
+  main > section.profile-form #review-values {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  main > section.profile-form #review-values > dt {
+    padding: 12px 0 4px;
+    border-bottom: 0;
+  }
+
+  main > section.profile-form #review-values > dd {
+    padding: 0 0 12px;
+  }
+
+  main > section.profile-form .review-actions > button {
+    width: 100%;
   }
 }
 
