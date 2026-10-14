@@ -1,6 +1,4 @@
-// ======================================================
 // QUESTIONS
-// ======================================================
 const questions = [
   {
     question: "Which company publishes the Need for Speed franchise?",
@@ -91,23 +89,20 @@ const questions = [
   },
 ];
 
-// ======================================================
+
 // APPLICATION STATE
-// ======================================================
 let currentQuestion = 0;
 const userAnswers = new Array(questions.length);
 
-// ======================================================
+
 // SAVE AN ANSWER
-// ======================================================
 function saveAnswer(choiceIndex) {
   //   Save the user's answer for the current question.
   userAnswers[currentQuestion] = choiceIndex;
 }
 
-// ======================================================
+
 // NAVIGATION
-// ======================================================
 function goNext() {
   //   Move to the next question if not at the last question.
   if (currentQuestion < questions.length - 1) {
@@ -135,9 +130,8 @@ function goLast() {
   renderQuestion();
 }
 
-// ======================================================
+
 // CALCULATE SCORE
-// ======================================================
 function calculateScore() {
   //   Calculate the user's score based on their answers.
   let score = 0;
@@ -149,18 +143,16 @@ function calculateScore() {
   return score;
 }
 
-// ======================================================
+
 // CALCULATE PERCENTAGE
-// ======================================================
 function calculatePercentage(score) {
   //   Calculate the percentage score based on the total number of questions.
   const percentage = (score / questions.length) * 100;
   return Number(percentage.toFixed(0));
 }
 
-// ======================================================
+
 // PERFORMANCE MESSAGE
-// ======================================================
 function getPerformanceMessage(percentage) {
   //   Return a performance message based on the percentage score.
   if (percentage >= 80) {
@@ -174,9 +166,8 @@ function getPerformanceMessage(percentage) {
   }
 }
 
-// ======================================================
+
 // BUILD CORRECTION
-// ======================================================
 function buildCorrection() {
   let correction = "";
 
@@ -205,15 +196,12 @@ function buildCorrection() {
   return correction;
 }
 
-// ======================================================
+
 // PROVIDED INTERFACE CODE
 //
 // DOM manipulation and events will be studied later.
-// ======================================================
 
-// ======================================================
 // SUBMIT QUIZ
-// ======================================================
 function submitQuiz() {
   const score = calculateScore();
   const percentage = calculatePercentage(score);
@@ -225,20 +213,17 @@ function submitQuiz() {
 function renderQuestion() {
   const q = questions[currentQuestion];
 
-  // --------------------------------------------------
+  
   // QUESTION NUMBER
-  // --------------------------------------------------
   document.getElementById("progress").textContent =
     `Question ${currentQuestion + 1} of ${questions.length}`;
 
-  // --------------------------------------------------
+  
   // QUESTION
-  // --------------------------------------------------
   document.getElementById("questionText").textContent = q.question;
 
-  // --------------------------------------------------
+  
   // CHOICES
-  // --------------------------------------------------
   const choicesContainer = document.getElementById("choices");
   choicesContainer.innerHTML = "";
   for (let i = 0; i < q.choices.length; i++) {
@@ -263,9 +248,8 @@ function renderQuestion() {
     choicesContainer.appendChild(label);
   }
 
-  // --------------------------------------------------
+  
   // NAVIGATION BUTTONS
-  // --------------------------------------------------
   document.getElementById("firstBtn").disabled = currentQuestion === 0;
   document.getElementById("previousBtn").disabled = currentQuestion === 0;
   document.getElementById("nextBtn").disabled =
@@ -274,9 +258,8 @@ function renderQuestion() {
     currentQuestion === questions.length - 1;
 }
 
-// ======================================================
+
 // DISPLAY RESULTS
-// ======================================================
 function showResults(score, percentage, message, correction) {
   document.getElementById("quizPanel").style.display = "none";
   document.getElementById("resultsPanel").style.display = "block";
@@ -288,7 +271,6 @@ function showResults(score, percentage, message, correction) {
   document.getElementById("correction").textContent = correction;
 }
 
-// ======================================================
+
 // START APPLICATION
-// ======================================================
 renderQuestion();
