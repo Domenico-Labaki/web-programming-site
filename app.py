@@ -3,10 +3,11 @@ Web Programming — Flask application.
 """
 
 from flask import Flask, render_template, request
+from quiz_api import init_quiz
+from validators import validate_profile
 
 app = Flask(__name__)
 
-from quiz_api import init_quiz
 init_quiz(app)
 
 weekly_work = [
@@ -18,7 +19,12 @@ weekly_work = [
     {"week": 4, "title": "Engineering Profile", "url": "/submit-profile"},
     {"week": 5, "title": "JavaScript app", "url": "/quiz"},
     {"week": 6, "title": "Profile Form Validation", "url": "/submit-validated-profile"},
+    {"week": 7, "title": "Live Quiz with Fetch", "url": "/live-quiz"},
 ]
+
+@app.context_processor
+def inject_weekly_work():
+    return {"weekly_work": weekly_work}
 
 @app.route("/")
 def home():
@@ -77,6 +83,24 @@ def submit_validated_profile():
 @app.route("/quiz", methods=["GET", "POST"])
 def quiz():
     return render_template("quiz.html", weekly_work=weekly_work)
+
+@app.route("/profile-validated", methods=["GET", "POST"])
+def profile_validated():
+    if request.method == "POST":
+        errors, cleaned = validate_profile(request.form)
+        if errors:
+            # something's wrong -> re-show the FORM with errors + what was typed
+            return render_template(
+                "profile-form-validated.html",
+                errors=errors,
+                data=request.form,
+                sel_skills=request.form.getlist("skills"),
+                sel_software=request.form.getlist("software"),
+            )
+        # all good -> show the profile
+        return render_template("profile_validated.html", data=cleaned, skills=cleaned.get("skills", []), software=cleaned.get("software", []))
+    # first visit (GET): empty form
+    return render_template("profile-form-validated.html", errors={}, data={}, sel_skills=[], sel_software=[])
 
 
 if __name__ == "__main__":
