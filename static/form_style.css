@@ -298,3 +298,13 @@ main > section.profile-form .review-actions > button:disabled {
     -webkit-backdrop-filter: none;
   }
 }
+
+main > section.profile-form .error {
+  display: block;
+  margin-top: 7px;
+  color: #c62828;
+}
+
+body.dark main > section.profile-form .error {
+  color: #ff8a80;
+}
