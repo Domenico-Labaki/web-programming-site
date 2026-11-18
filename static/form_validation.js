@@ -33,6 +33,43 @@ const profileFieldLabels = {
 };
 let profileReviewIsOpen = false;
 let profileIsSubmitting = false;
+function validateProfileFields(trimDescription = false) {
+    const description = profileForm.elements.namedItem('description');
+    const studentId = profileForm.elements.namedItem('student_id');
+    const graduationMonth = profileForm.elements.namedItem('graduation_month');
+    const meetingDate = profileForm.elements.namedItem('meeting_date');
+    if (trimDescription) {
+        description.value = description.value.trim();
+    }
+    description.setCustomValidity(description.value.trim() ? '' : 'Enter a project description.');
+
+    const currentYear = new Date().getFullYear();
+    let idError = '';
+    if (studentId.value && !/^[0-9]{9}$/.test(studentId.value)) {
+        idError = 'Student ID must be exactly 9 digits.';
+    } else if (studentId.value && (Number(studentId.value.slice(0, 4)) < 1950 || Number(studentId.value.slice(0, 4)) > currentYear)) {
+        idError = `Student ID must start with an enrollment year from 1950 to ${currentYear}.`;
+    }
+    studentId.setCustomValidity(idError);
+
+    const term = profileForm.elements.namedItem('graduation').value;
+    const month = Number(graduationMonth.value.slice(5));
+    const termMonths = { spring: [1, 5], summer: [6, 8], fall: [9, 12] };
+    const range = termMonths[term];
+    graduationMonth.setCustomValidity(graduationMonth.value && range && (month < range[0] || month > range[1])
+        ? 'Choose a month matching the graduation term: spring Jan–May, summer Jun–Aug, fall Sep–Dec.' : '');
+
+    let meetingError = '';
+    if (meetingDate.value) {
+        const [year, month, day] = meetingDate.value.split('-').map(Number);
+        const weekday = new Date(year, month - 1, day).getDay();
+        if (weekday === 0 || weekday === 6) {
+            meetingError = 'Choose a weekday (Monday–Friday).';
+        }
+    }
+    meetingDate.setCustomValidity(meetingError);
+}
+
 function showProfileForm() {
     profileReviewPanel.classList.add('is-hidden');
     profileForm.classList.remove('is-hidden');
@@ -81,8 +118,19 @@ function buildProfileReview() {
 
 if (profileForm && profileReviewPanel && profileReviewValues && profileReviewHeading && profileEditButton && profileConfirmButton) {
     profileForm.noValidate = true;
+    for (const eventName of ['input', 'change']) {
+        profileForm.addEventListener(eventName, () => validateProfileFields());
+    }
+    profileForm.addEventListener('reset', () => {
+        for (const control of profileForm.elements) {
+            if (typeof control.setCustomValidity === 'function') {
+                control.setCustomValidity('');
+            }
+        }
+    });
     profileForm.addEventListener('submit', (event) => {
         event.preventDefault();
+        validateProfileFields(true);
         if (profileIsSubmitting || !profileForm.reportValidity()) {
             return;
         }
@@ -101,6 +149,7 @@ if (profileForm && profileReviewPanel && profileReviewValues && profileReviewHea
             return;
         }
         showProfileForm();
+        validateProfileFields(true);
         if (!profileForm.reportValidity()) {
             return;
         }

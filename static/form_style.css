@@ -116,7 +116,23 @@ main > section.profile-form form :is(input[type='radio'], input[type='checkbox']
   cursor: pointer;
 }
 
-/* Separate choice rows even where the existing markup uses line breaks. */
+/* Keep each radio with its label and space all options consistently. */
+main > section.profile-form .radio-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+main > section.profile-form .radio-option {
+  display: inline-flex;
+  align-items: center;
+}
+
+main > section.profile-form form .radio-option > input[type='radio'] + label {
+  max-width: none;
+}
+
+/* Separate checkbox rows where the existing markup uses line breaks. */
 main > section.profile-form form p > input[type='checkbox'] {
   margin-top: 4px;
 }

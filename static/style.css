@@ -1113,6 +1113,8 @@ body > footer p + p { margin-top: 4px; }
 /* Below 1024 — desktop sidebar would become drawer; here header stays centred
    but page gains top clearance conceptually. */
 @media (max-width: 1023px) {
+  #bear-widget { display: none; }
+
   body > header,
   body > footer { width: calc(100% - 20px); }
 }

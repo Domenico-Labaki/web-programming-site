@@ -1,7 +1,7 @@
 import re
 from datetime import date
 
-STUDENT_ID = re.compile(r"^\d{9}$")
+STUDENT_ID = re.compile(r"^[0-9]{9}$")
 FULLNAME = re.compile(r"^[A-Za-z][A-Za-z .'\-]{1,79}$")
 EMAIL = re.compile(r"^[A-Za-z0-9._%+\-]+@net\.usek\.edu\.lb$")
 PHONE = re.compile(
@@ -24,7 +24,8 @@ SKILLS = {"programming", "embedded-systems", "electronics", "computer-networks",
 SOFTWARE = {"MATLAB", "Simulink", "LabVIEW", "LTspice", "Vivado", "SolidWorks", "Proteus"}
 PROJECT_AREAS = {"artificial-intelligence", "web-applications", "cybersecurity", "internet-of-things", "power-systems", "renewable-energy", "control-systems", "medical-imaging", "biosensors", "medical-devices", "wireless-communications", "5g-6g-networks"}
 
-REQUIRED = {"student_id", "fullname", "email", "major", "graduation"}
+REQUIRED = {"student_id", "fullname", "email", "major", "graduation", "description"}
+GRADUATION_MONTHS = {"spring": range(1, 6), "summer": range(6, 9), "fall": range(9, 13)}
 
 def validate_profile(form):
     errors = {}
@@ -37,6 +38,8 @@ def validate_profile(form):
     student_id = form.get("student_id", "").strip()
     if student_id != "" and not STUDENT_ID.fullmatch(student_id):
         errors["student_id"] = "Student ID must be exactly 9 digits."
+    elif student_id and not 1950 <= int(student_id[:4]) <= date.today().year:
+        errors["student_id"] = f"Student ID must start with an enrollment year from 1950 to {date.today().year}."
     cleaned["student_id"] = student_id
 
     fullname = form.get("fullname", "").strip()
@@ -104,6 +107,9 @@ def validate_profile(form):
     graduation_month = form.get("graduation_month", "").strip()
     if graduation_month != "" and not MONTH.fullmatch(graduation_month):
         errors["graduation_month"] = "Use the month picker (YYYY-MM)."
+    elif graduation_month and graduation in GRADUATION_MONTHS:
+        if int(graduation_month[5:]) not in GRADUATION_MONTHS[graduation]:
+            errors["graduation_month"] = "Choose a month matching the graduation term: spring Jan–May, summer Jun–Aug, fall Sep–Dec."
     cleaned["graduation_month"] = graduation_month
 
     internship_completed = form.get("internship_completed", "").strip().lower()
@@ -170,8 +176,12 @@ def validate_profile(form):
     cleaned["project_color"] = project_color
 
     meeting_date = form.get("meeting_date", "").strip()
-    if meeting_date != "" and parse_date(meeting_date) is None:
-        errors["meeting_date"] = "Not a valid date."
+    if meeting_date != "":
+        meeting_day = parse_date(meeting_date)
+        if meeting_day is None:
+            errors["meeting_date"] = "Not a valid date."
+        elif meeting_day.weekday() >= 5:
+            errors["meeting_date"] = "Choose a weekday (Monday–Friday)."
     cleaned["meeting_date"] = meeting_date
 
     meeting_time = form.get("meeting_time", "").strip()

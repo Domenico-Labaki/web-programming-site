@@ -86,14 +86,22 @@
             <fieldset>
                 <legend>Expected Graduation</legend>
 
-                <input type="radio" id="graduation_spring" name="graduation" value="spring" {% if data.get('graduation') == 'spring' %}checked{% endif %} required>
-                <label for="graduation_spring">Spring</label>
+                <div class="radio-options">
+                    <span class="radio-option">
+                        <input type="radio" id="graduation_spring" name="graduation" value="spring" {% if data.get('graduation') == 'spring' %}checked{% endif %} required>
+                        <label for="graduation_spring">Spring</label>
+                    </span>
 
-                <input type="radio" id="graduation_summer" name="graduation" value="summer" {% if data.get('graduation') == 'summer' %}checked{% endif %}>
-                <label for="graduation_summer">Summer</label>
+                    <span class="radio-option">
+                        <input type="radio" id="graduation_summer" name="graduation" value="summer" {% if data.get('graduation') == 'summer' %}checked{% endif %}>
+                        <label for="graduation_summer">Summer</label>
+                    </span>
 
-                <input type="radio" id="graduation_fall" name="graduation" value="fall" {% if data.get('graduation') == 'fall' %}checked{% endif %}>
-                <label for="graduation_fall">Fall</label>
+                    <span class="radio-option">
+                        <input type="radio" id="graduation_fall" name="graduation" value="fall" {% if data.get('graduation') == 'fall' %}checked{% endif %}>
+                        <label for="graduation_fall">Fall</label>
+                    </span>
+                </div>
             </fieldset>
 
             <p>
@@ -104,11 +112,17 @@
             <fieldset>
                 <legend>Have you completed an engineering internship?</legend>
 
-                <input type="radio" id="internship_yes" name="internship_completed" value="yes" {% if data.get('internship_completed') == 'yes' %}checked{% endif %} required>
-                <label for="internship_yes">Yes</label>
+                <div class="radio-options">
+                    <span class="radio-option">
+                        <input type="radio" id="internship_yes" name="internship_completed" value="yes" {% if data.get('internship_completed') == 'yes' %}checked{% endif %} required>
+                        <label for="internship_yes">Yes</label>
+                    </span>
 
-                <input type="radio" id="internship_no" name="internship_completed" value="no" {% if data.get('internship_completed') == 'no' %}checked{% endif %}>
-                <label for="internship_no">No</label>
+                    <span class="radio-option">
+                        <input type="radio" id="internship_no" name="internship_completed" value="no" {% if data.get('internship_completed') == 'no' %}checked{% endif %}>
+                        <label for="internship_no">No</label>
+                    </span>
+                </div>
             </fieldset>
         </fieldset>
 
