@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Domenico's GIN446 web programming portfolio, with weekly coursework, JavaScript quizzes, and engineering profile forms.">
     <meta name="theme-color" content="#2d6cdf">
     <meta name="color-scheme" content="light dark">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <title>{% block title %}My Portfolio{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/bear/happy.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
     {% block head %}{% endblock %}
 </head>
@@ -17,7 +19,11 @@
         <div class="header-visualizer" aria-hidden="true">
             <div class="header-visualizer-grid"></div>
         </div>
-        <h1>Domenico's Web Portfolio</h1>
+        {% if page_has_title %}
+            <p class="site-title">Domenico's Web Portfolio</p>
+        {% else %}
+            <h1 class="site-title">Domenico's Web Portfolio</h1>
+        {% endif %}
         {% if request.path != "/" %}
             <div class="nav-shell">
                 <button class="nav-shift nav-shift-left" type="button" aria-label="Show previous navigation button">‹</button>
@@ -39,7 +45,7 @@
     </header>
 
     <button id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false"><span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span><span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span></button>
-    <div id="bear-widget" aria-live="polite" aria-label="Friendly site guide"><img id="bear-sprite" class="bear-sprite" src="{{ url_for('static', filename='images/bear/happy.png') }}" alt="" aria-hidden="true"></div>
+    <div id="bear-widget" aria-hidden="true"><img id="bear-sprite" class="bear-sprite" src="{{ url_for('static', filename='images/bear/happy.png') }}" alt=""></div>
     <button id="back-to-top" type="button" aria-label="Back to top" aria-hidden="true" tabindex="-1"><span aria-hidden="true">↑</span></button>
 
     <main id="main-content" tabindex="-1">

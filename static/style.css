@@ -16,6 +16,12 @@
   --blue-light: #eef5ff;
   --blue-light-strong: #dbeafe;
   --blue-hover: #1f5ac4;
+  --link: #1f5ac4;
+  --link-hover: #19499b;
+  --focus: #1f5ac4;
+  --action: #1f5ac4;
+  --action-hover: #19499b;
+  --error-text: #a52228;
 
   /* Neutrals — light workspace */
   --ink: #20252e;
@@ -90,6 +96,10 @@
 
 /* Dark theme — tokens swapped, structure unchanged */
 body.dark {
+  --link: #a3c1fb;
+  --link-hover: #bed4ff;
+  --focus: #a3c1fb;
+  --error-text: #ffada6;
   --ink: #e8edf5;
   --muted: #94a3b8;
   --muted-2: #7f8da3;
@@ -157,19 +167,18 @@ body.dark {
 
 /* Focus — WCAG 2.1 AA, visible 3px global, 2px for fields */
 :focus-visible {
-  outline: 3px solid var(--blue);
+  outline: 3px solid var(--focus);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* Skip link — becomes visible on focus even though not in current HTML;
-   styling is harmless when the element is absent. */
+/* The skip link stays out of the way until it receives focus. */
 .skip-link {
   position: fixed;
   top: 12px;
   left: 12px;
   padding: 10px 14px;
-  background: var(--blue);
+  background: var(--action);
   color: #fff;
   border-radius: var(--radius-input);
   font-size: 13px;
@@ -214,7 +223,7 @@ body > header {
 body > header > * { position: relative; }
 
 /* Brand lockup — Domenico's Web Portfolio */
-body > header h1 {
+body > header .site-title {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -223,7 +232,7 @@ body > header h1 {
   font-weight: 650;
   letter-spacing: -0.03em;
   line-height: 1.15;
-  color: var(--blue);
+  color: var(--link);
   margin: 0 0 14px;
   text-wrap: balance;
   flex-wrap: wrap;
@@ -241,8 +250,8 @@ body > header h1 {
 
 @keyframes title-letter-in {
   0% { opacity: 0; color: var(--ink); transform: translateY(9px); }
-  55% { opacity: 1; color: var(--blue); transform: translateY(-3px); }
-  100% { opacity: 1; color: var(--blue); transform: translateY(0); }
+  55% { opacity: 1; color: var(--link); transform: translateY(-3px); }
+  100% { opacity: 1; color: var(--link); transform: translateY(0); }
 }
 
 #bear-widget {
@@ -325,7 +334,7 @@ body > header h1 {
   contain: layout paint;
 }
 
-body > header > h1,
+body > header > .site-title,
 .nav-shell {
   position: relative;
   z-index: 1;
@@ -358,6 +367,7 @@ body > header > h1,
 .nav-viewport {
   min-width: 0;
   flex: 1;
+  padding-block: 6px;
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -403,7 +413,7 @@ body > header > h1,
 }
 
 .nav-shift:hover {
-  color: var(--blue);
+  color: var(--link);
   background: var(--blue-light);
 }
 
@@ -432,7 +442,7 @@ nav a {
 }
 
 nav a:hover {
-  color: var(--blue);
+  color: var(--link-hover);
   background: var(--blue-light);
   border-color: rgba(45,108,223,0.14);
   text-decoration: none;
@@ -446,7 +456,7 @@ nav a:active {
 
 nav a[aria-current="page"],
 nav a.is-current {
-  color: var(--blue);
+  color: var(--link);
   font-weight: 650;
 }
 
@@ -546,6 +556,36 @@ main {
   max-width: var(--content-max);
   margin: 0 auto;
   padding: 32px 36px 64px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+#main-content,
+main :is(a, button, input, select, textarea, [tabindex="-1"]) {
+  scroll-margin-block-start: 9rem;
+}
+
+.page-title {
+  margin: 0 0 18px;
+  color: var(--ink);
+  font-size: var(--page-title-size);
+  font-weight: var(--page-title-weight);
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.feedback:not(:empty) {
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  background: var(--code-bg);
+  color: var(--ink);
+  border-inline-start: 3px solid var(--link);
+  border-radius: var(--radius-input);
+}
+
+.feedback-error:not(:empty) {
+  color: var(--error-text);
+  border-inline-start-color: currentColor;
 }
 
 section {
@@ -662,7 +702,7 @@ body.dark time {
 
 /* Links — calm blue, hover darkens, underline offset */
 a {
-  color: var(--blue);
+  color: var(--link);
   text-decoration: none;
   text-decoration-thickness: 1.5px;
   text-underline-offset: 2px;
@@ -670,11 +710,9 @@ a {
 }
 
 a:hover {
-  color: var(--blue-dark);
+  color: var(--link-hover);
   text-decoration: underline;
 }
-
-body.dark a:hover { color: #6ea0f2; }
 
 /* Inline code — opaque, never glass */
 code {
@@ -689,7 +727,7 @@ code {
   word-break: break-word;
 }
 
-a code { color: var(--blue); }
+a code { color: var(--link); }
 
 /* Images — panel radius, subtle border, no heavy shadow */
 img {
@@ -883,7 +921,7 @@ section#references li:last-child { border-bottom: none; }
    -------------------------------------------------------------------------- */
 .weekly-list {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
   gap: 10px;
   list-style: none;
   margin: 0;
@@ -897,6 +935,7 @@ section#references li:last-child { border-bottom: none; }
   display: flex;
   align-items: center;
   gap: 12px;
+  min-width: 0;
   background: #fff;
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -958,14 +997,12 @@ body.dark .weekly-list li {
   font-size: 14px;
   line-height: 1.4;
   text-decoration: none;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
 }
 
-.weekly-list li a:hover {
-  color: var(--blue);
-  text-decoration: none;
+.weekly-list li a:is(:hover, :focus-visible) {
+  color: var(--link);
+  text-decoration: underline;
 }
 
 /* --------------------------------------------------------------------------
@@ -1018,6 +1055,12 @@ body > footer p + p { margin-top: 4px; }
 }
 
 .profile dt { color: var(--muted) !important; }
+
+.profile .profile-title { color: var(--link); }
+
+.profile .profile-contact span { white-space: normal; }
+
+.profile dl { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
 
 .chips { gap: 6px !important; }
 
@@ -1095,10 +1138,6 @@ body > footer p + p { margin-top: 4px; }
 
   h2 { font-size: 18px; }
 
-  .weekly-list li a {
-    white-space: normal;
-    line-height: 1.45;
-  }
 }
 
 /* 744 – 1023 — medium phones / tablets */
@@ -1119,12 +1158,9 @@ body > footer p + p { margin-top: 4px; }
   body > footer { width: calc(100% - 20px); }
 }
 
-/* 481 legacy breakpoint replacement — keep weekly grid single column until 600 */
+/* Increase spacing once the grid has more room. */
 @media (min-width: 600px) {
-  .weekly-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    padding: 14px;
-  }
+  .weekly-list { padding: 14px; }
   .weekly-list li { padding: 16px 16px 16px 18px; }
 }
 

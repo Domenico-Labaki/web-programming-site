@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% set page_has_title = true %}
 
 {% block title %}
     Engineering Student Profile
@@ -6,6 +7,7 @@
 
 {% block head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='form_style.css') }}"/>
+    <script src="{{ url_for('static', filename='form_validation.js') }}" defer></script>
 {% endblock %}
 
 {% block content %}
@@ -13,8 +15,10 @@
 {% set skills = [] %}
 {% set software = [] %}
 <section class="profile-form">
-    <h2>Engineering Student Profile</h2>
+    <h1 class="page-title">Engineering Student Profile</h1>
     <p>Complete this form to provide information about your academic background, technical skills, internship experience, and Final Year Project preferences.</p>
+
+    <p class="feedback feedback-error" id="profile-error" role="alert"></p>
 
     <form action="{{ url_for('submit_profile') }}" method="post">
         <input type="hidden" name="form_version" value="2026-2027">
@@ -39,7 +43,7 @@
 
             <p>
                 <label for="phone">Mobile Number:</label>
-                <input type="tel" id="phone" name="phone" pattern="(\+961|00961|0)?[ -]?(3|[78][0-9])[ -]?[0-9]{3}[ -]?[0-9]{3}" title="Enter a Lebanese mobile number, such as +961 70 123456" placeholder="+961 70 123456" value="{{ data.get('phone', '') }}">
+                <input type="tel" id="phone" name="phone" pattern="(\+961|00961|0)?[ \-]?(3|[78][0-9])[ \-]?[0-9]{3}[ \-]?[0-9]{3}" title="Enter a Lebanese mobile number, such as +961 70 123456" placeholder="+961 70 123456" value="{{ data.get('phone', '') }}">
             </p>
 
             <p>
@@ -247,6 +251,7 @@
             <label for="confirmation">I confirm that the information provided is accurate.</label>
         </p>
 
+        <p class="feedback" id="profile-status" role="status" tabindex="-1"></p>
         <button type="submit">Submit Profile</button>
         <button type="reset">Clear Form</button>
     </form>

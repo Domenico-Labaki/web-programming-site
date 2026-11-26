@@ -177,14 +177,14 @@ main > section.profile-form .review-actions > button {
 main > section.profile-form form > button[type='submit'],
 main > section.profile-form #confirm-profile {
   margin: 0 8px 8px 0;
-  background: var(--blue);
+  background: var(--action);
   color: #fff;
 }
 
 /* Darken the primary action on hover. */
-main > section.profile-form form > button[type='submit']:hover,
+main > section.profile-form form > button[type='submit']:hover:not(:disabled),
 main > section.profile-form #confirm-profile:hover:not(:disabled) {
-  background: var(--blue-dark);
+  background: var(--action-hover);
 }
 
 /* Keep reset visibly secondary while preserving theme contrast. */
@@ -196,7 +196,7 @@ main > section.profile-form #edit-profile {
 }
 
 /* Show a subtle change when the secondary action is hovered. */
-main > section.profile-form form > button[type='reset']:hover,
+main > section.profile-form form > button[type='reset']:hover:not(:disabled),
 main > section.profile-form #edit-profile:hover:not(:disabled) {
   background: var(--blue-light);
   border-color: var(--blue);
@@ -259,13 +259,11 @@ main > section.profile-form .review-actions > #confirm-profile {
   margin: 0;
 }
 
-main > section.profile-form .review-actions > button:focus-visible {
-  outline: 3px solid var(--blue);
-  outline-offset: 2px;
-}
-
-main > section.profile-form .review-actions > button:disabled {
-  opacity: 0.65;
+main > section.profile-form :is(form, .review-actions) > button:disabled,
+main > section.profile-form :is(#confirm-profile, #edit-profile):disabled {
+  color: var(--muted);
+  background: var(--canvas-2);
+  border: 1px dashed var(--border-strong);
   cursor: not-allowed;
 }
 
@@ -318,9 +316,10 @@ main > section.profile-form .review-actions > button:disabled {
 main > section.profile-form .error {
   display: block;
   margin-top: 7px;
-  color: #c62828;
+  color: var(--error-text);
+  overflow-wrap: anywhere;
 }
 
-body.dark main > section.profile-form .error {
-  color: #ff8a80;
+main > section.profile-form form [aria-invalid="true"] {
+  border-color: var(--error-text);
 }

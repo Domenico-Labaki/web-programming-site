@@ -2,7 +2,7 @@
    Keep every rule inside the quiz so the header and site controls are unaffected. */
 
 /* The base template already supplies the outer main's responsive padding. */
-main.container {
+.quiz {
   --quiz-accent: var(--blue-dark);
   width: 100%;
   max-width: 760px;
@@ -13,29 +13,20 @@ main.container {
   overflow-wrap: anywhere;
 }
 
-body.dark main.container {
+body.dark .quiz {
   --quiz-accent: #93b4f5;
   color-scheme: dark;
 }
 
-.container > h1 {
-  margin: 0 0 24px;
-  color: var(--ink);
-  font-size: var(--page-title-size);
-  font-weight: var(--page-title-weight);
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-}
-
 /* One glass surface for each view; answers inside it stay flat. */
-.container > section {
+.quiz > section {
   margin: 0;
   padding: 28px;
   background: var(--glass-regular);
   animation: none;
 }
 
-.container #progress {
+.quiz #progress {
   display: inline-block;
   margin: 0 0 16px;
   padding: 4px 10px;
@@ -46,7 +37,7 @@ body.dark main.container {
   font-weight: 600;
 }
 
-.container #questionText {
+.quiz #questionText {
   margin: 0 0 24px;
   padding: 0;
   border: 0;
@@ -57,12 +48,16 @@ body.dark main.container {
 
 /* Full answer rows are clickable; native radios retain keyboard behaviour.
    A moving gradient and small lift replace the previous left-edge accent. */
-.container #choices {
+.quiz #choices {
   display: grid;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
   gap: 12px;
 }
 
-.container .choice {
+.quiz .choice {
   display: flex;
   align-items: flex-start;
   gap: 12px;
@@ -84,7 +79,7 @@ body.dark main.container {
     transform var(--duration-base) var(--ease-out);
 }
 
-.container .choice input[type="radio"] {
+.quiz .choice input[type="radio"] {
   flex: 0 0 auto;
   width: 18px;
   height: 18px;
@@ -94,20 +89,20 @@ body.dark main.container {
 }
 
 /* :has() styles the existing label from its radio's state; no JS changes needed. */
-.container .choice:has(input:checked) {
+.quiz .choice:has(input:checked) {
   background-image: linear-gradient(110deg, var(--blue-light), var(--blue-light-strong));
   border-color: var(--quiz-accent);
   box-shadow: 0 0 0 2px var(--blue-light-strong), 0 4px 12px rgb(45 108 223 / 10%);
 }
 
-.container .choice:has(input:focus-visible),
-.container button:focus-visible {
+.quiz .choice:has(input:focus-visible),
+.quiz button:focus-visible {
   outline: 3px solid var(--quiz-accent);
   outline-offset: 3px;
 }
 
 /* Four navigation columns on desktop, with a separate primary submit action. */
-.container .navigation {
+.quiz .navigation {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
@@ -116,7 +111,7 @@ body.dark main.container {
   border-top: 1px solid var(--rule);
 }
 
-.container button {
+.quiz button {
   min-width: 0;
   min-height: 44px;
   padding: 10px 16px;
@@ -134,16 +129,17 @@ body.dark main.container {
     border-color var(--duration-fast) var(--ease-out);
 }
 
-.container button.submit {
+.quiz button.submit {
   display: block;
   width: 100%;
   margin-top: 20px;
   color: #fff;
-  background: var(--blue);
-  border-color: var(--blue);
+  background: var(--action);
+  border-color: var(--action);
 }
 
-.container button:disabled {
+.quiz button:disabled,
+.quiz .choice:has(input:disabled) {
   color: var(--muted);
   background: var(--canvas-2);
   border-color: var(--border);
@@ -153,54 +149,51 @@ body.dark main.container {
 
 /* Limit hover effects to pointer devices, and never highlight disabled buttons. */
 @media (hover: hover) {
-  .container .choice:hover {
+  .quiz .choice:hover:not(:has(input:disabled)) {
     background-position: 100% 50%;
     border-color: var(--quiz-accent);
   }
 
-  .container .navigation button:hover:not(:disabled),
-  .container button.retry:hover {
+  .quiz .navigation button:hover:not(:disabled),
+  .quiz button.retry:hover:not(:disabled) {
     background: var(--blue-light-strong);
     border-color: var(--quiz-accent);
   }
 
-  .container button.submit:hover:not(:disabled) {
-    background: var(--blue-hover);
-    border-color: var(--blue-hover);
+  .quiz button.submit:hover:not(:disabled) {
+    background: var(--action-hover);
+    border-color: var(--action-hover);
   }
 
-  .container button.retry:hover {
+  .quiz button.retry:hover:not(:disabled) {
     transform: translateY(-2px);
   }
 
-  .container #performanceText:hover {
+  .quiz #performanceText:hover {
     background-position: 100% 50%;
   }
 
-  .container .choice:hover,
-  .container #performanceText:hover {
+  .quiz .choice:hover:not(:has(input:disabled)),
+  .quiz #performanceText:hover {
     box-shadow: 0 6px 18px rgb(45 108 223 / 14%);
     transform: translateY(-2px);
   }
 }
 
-.container button:active:not(:disabled) {
+.quiz button:active:not(:disabled) {
   background: var(--blue-light-strong);
   border-color: var(--quiz-accent);
 }
 
-.container button.submit:active:not(:disabled) {
+.quiz button.submit:active:not(:disabled) {
   background: var(--blue-dark);
   border-color: var(--blue-dark);
 }
 
-/* JavaScript reveals this panel with inline display: block after submission. */
-.container #resultsPanel {
-  display: none;
-}
+.quiz [hidden] { display: none; }
 
 /* Keep the heading and retry action on one row, including narrow screens. */
-.container .results-heading {
+.quiz .results-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -209,12 +202,12 @@ body.dark main.container {
   border-bottom: 3px solid var(--blue);
 }
 
-.container .results-heading h2 {
+.quiz .results-heading h2 {
   min-width: 0;
   margin: 0;
 }
 
-.container button.retry {
+.quiz button.retry {
   flex-shrink: 0;
   color: var(--quiz-accent);
   background: var(--blue-light);
@@ -223,7 +216,7 @@ body.dark main.container {
     transform var(--duration-base) var(--ease-out);
 }
 
-.container #scoreText {
+.quiz #scoreText {
   margin: 20px 0 4px;
   color: var(--ink);
   font-size: clamp(22px, 3vw, 28px);
@@ -231,13 +224,13 @@ body.dark main.container {
   line-height: 1.4;
 }
 
-.container #percentageText {
+.quiz #percentageText {
   margin-bottom: 16px;
   font-size: 16px;
 }
 
 /* A soft gradient highlights every performance message without implying success. */
-.container #performanceText {
+.quiz #performanceText {
   margin-bottom: 28px;
   padding: 12px 16px;
   color: var(--quiz-accent);
@@ -254,7 +247,7 @@ body.dark main.container {
 }
 
 /* Preserve correction line breaks while wrapping long sentences and words. */
-.container #correction {
+.quiz #correction {
   max-width: 100%;
   margin: 0;
   padding: 20px;
@@ -271,15 +264,17 @@ body.dark main.container {
 
 /* Tighten panel spacing and wrap navigation into two rows on phones. */
 @media (max-width: 560px) {
-  .container > section {
+  .quiz > section {
     padding: 20px 16px;
   }
 
-  .container .navigation {
+  .quiz .navigation {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .container #correction {
+  .quiz .results-heading { flex-wrap: wrap; }
+
+  .quiz #correction {
     padding: 16px;
   }
 }

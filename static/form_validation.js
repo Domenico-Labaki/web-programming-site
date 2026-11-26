@@ -1,9 +1,12 @@
-const profileForm = document.getElementById('profile-form');
+const profileForm = document.querySelector('.profile-form > form');
 const profileReviewPanel = document.getElementById('profile-review');
 const profileReviewValues = document.getElementById('review-values');
 const profileReviewHeading = document.getElementById('review-heading');
 const profileEditButton = document.getElementById('edit-profile');
 const profileConfirmButton = document.getElementById('confirm-profile');
+const profileError = document.getElementById('profile-error');
+const profileStatus = document.getElementById('profile-status') ?? document.getElementById('profile-review-status');
+const profileErrorMessage = 'Profile could not be submitted. Review the errors beside the affected fields.';
 const profileFieldLabels = {
     form_version: 'Form Version',
     student_id: 'Student ID',
@@ -33,6 +36,85 @@ const profileFieldLabels = {
 };
 let profileReviewIsOpen = false;
 let profileIsSubmitting = false;
+
+function setProfileFieldError(control, message) {
+    const id = `error-${control.name}`;
+    let inlineError = document.getElementById(id);
+    if (message && !inlineError) {
+        inlineError = document.createElement('span');
+        inlineError.id = id;
+        inlineError.className = 'error';
+        const container = control.type === 'radio' ? control.closest('fieldset') : control.parentElement;
+        container.append(inlineError);
+    }
+    if (message) inlineError.textContent = message;
+    else inlineError?.remove();
+
+    for (const field of profileForm.elements) {
+        if (field.name !== control.name) continue;
+        const descriptions = (field.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean);
+        const otherDescriptions = descriptions.filter((description) => description !== id);
+        if (message) otherDescriptions.push(id);
+        if (otherDescriptions.length) field.setAttribute('aria-describedby', otherDescriptions.join(' '));
+        else field.removeAttribute('aria-describedby');
+        if (message) field.setAttribute('aria-invalid', 'true');
+        else field.removeAttribute('aria-invalid');
+    }
+}
+
+function beginProfileSubmission() {
+    if (profileIsSubmitting) return false;
+    profileIsSubmitting = true;
+    profileError.textContent = '';
+    profileStatus.textContent = 'Submitting profile…';
+    profileStatus.focus();
+    for (const action of profileForm.querySelectorAll('button')) action.disabled = true;
+    if (profileReviewPanel) {
+        profileConfirmButton.disabled = true;
+        profileEditButton.disabled = true;
+    }
+    return true;
+}
+
+if (profileForm) {
+    if (profileError.textContent) profileError.focus();
+    profileForm.addEventListener('invalid', (event) => {
+        const field = event.target;
+        setProfileFieldError(field, field.validationMessage);
+        profileError.textContent = profileErrorMessage;
+    }, true);
+    profileForm.addEventListener('input', (event) => {
+        const field = event.target;
+        if (!field.hasAttribute('aria-invalid')) return;
+        // Server messages apply to the last submitted value. Native errors follow the current value.
+        setProfileFieldError(field, profileReviewPanel || !profileForm.noValidate ? field.validationMessage : '');
+        if (!profileForm.querySelector('[aria-invalid="true"]')) profileError.textContent = '';
+    });
+    profileForm.addEventListener('reset', () => {
+        for (const field of profileForm.querySelectorAll('[aria-invalid="true"]')) {
+            setProfileFieldError(field, '');
+        }
+        profileError.textContent = '';
+    });
+    if (!profileReviewPanel) {
+        profileForm.addEventListener('submit', (event) => {
+            if (!beginProfileSubmission()) event.preventDefault();
+        });
+    }
+    window.addEventListener('pageshow', (event) => {
+        if (!event.persisted || !profileIsSubmitting) return;
+        profileIsSubmitting = false;
+        profileStatus.textContent = '';
+        for (const action of profileForm.querySelectorAll('button')) action.disabled = false;
+        if (profileReviewPanel) {
+            profileConfirmButton.disabled = false;
+            profileEditButton.disabled = false;
+        }
+    });
+}
+
+document.getElementById('profile-completion')?.focus();
+
 function validateProfileFields(trimDescription = false) {
     const description = profileForm.elements.namedItem('description');
     const studentId = profileForm.elements.namedItem('student_id');
@@ -118,9 +200,9 @@ function buildProfileReview() {
 
 if (profileForm && profileReviewPanel && profileReviewValues && profileReviewHeading && profileEditButton && profileConfirmButton) {
     profileForm.noValidate = true;
-    for (const eventName of ['input', 'change']) {
-        profileForm.addEventListener(eventName, () => validateProfileFields());
-    }
+    // Refresh custom validity before the shared bubbling input handler reads it.
+    profileForm.addEventListener('input', () => validateProfileFields(), true);
+    profileForm.addEventListener('change', () => validateProfileFields());
     profileForm.addEventListener('reset', () => {
         for (const control of profileForm.elements) {
             if (typeof control.setCustomValidity === 'function') {
@@ -148,13 +230,12 @@ if (profileForm && profileReviewPanel && profileReviewValues && profileReviewHea
         if (!profileReviewIsOpen || profileIsSubmitting) {
             return;
         }
-        showProfileForm();
         validateProfileFields(true);
-        if (!profileForm.reportValidity()) {
+        if (!profileForm.checkValidity()) {
+            showProfileForm();
+            profileForm.reportValidity();
             return;
         }
-        profileIsSubmitting = true;
-        profileConfirmButton.disabled = true;
-        HTMLFormElement.prototype.submit.call(profileForm);
+        if (beginProfileSubmission()) HTMLFormElement.prototype.submit.call(profileForm);
     });
 }

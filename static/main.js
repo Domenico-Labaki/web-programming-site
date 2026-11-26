@@ -3,7 +3,7 @@ const body = document.body;
 const bear = document.getElementById('bear-widget');
 const bearSprite = document.getElementById('bear-sprite');
 const backToTop = document.getElementById('back-to-top');
-const title = document.querySelector('body > header h1');
+const title = document.querySelector('.site-title');
 const navViewport = document.querySelector('.nav-viewport');
 const navTrack = navViewport?.querySelector('.nav-track');
 const nav = navTrack?.querySelector('.nav-group-original');
@@ -100,6 +100,7 @@ const cloneNavLinks = () => {
             if (link.hasAttribute('aria-current')) link.classList.add('is-current');
             link.removeAttribute('aria-current');
             link.tabIndex = -1;
+            link.addEventListener('mousedown', (event) => event.preventDefault());
         });
     });
     allNavLinks = navTrack.querySelectorAll('a');
@@ -121,7 +122,7 @@ const scrollNavInstantly = (reposition) => {
 
 let isNormalizingNav = false;
 const normalizeNavScroll = () => {
-    if (!navViewport || !nav || isNormalizingNav) return;
+    if (!navViewport || !nav || isNormalizingNav || nav.contains(document.activeElement)) return;
     if (!navCycleWidth) return;
 
     let nextScrollLeft = navViewport.scrollLeft;
@@ -137,9 +138,21 @@ const normalizeNavScroll = () => {
     isNormalizingNav = false;
 };
 
+const revealFocusedNavLink = (link) => {
+    const viewport = navViewport.getBoundingClientRect();
+    const position = link.getBoundingClientRect();
+    scrollNavInstantly(() => {
+        navViewport.scrollLeft += (position.left + position.right - viewport.left - viewport.right) / 2;
+    });
+};
+
 const centerCurrentNavLink = () => {
     const current = nav?.querySelector('[aria-current="page"]');
     if (!navViewport || !nav) return;
+    if (nav.contains(document.activeElement)) {
+        revealFocusedNavLink(document.activeElement);
+        return;
+    }
     scrollNavInstantly(() => {
         if (current) {
             current.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'center' });
@@ -201,8 +214,13 @@ cloneNavLinks();
 updateNavMetrics();
 navViewport?.addEventListener('scroll', normalizeNavScroll, { passive: true });
 navViewport?.addEventListener('scroll', updateNavLinkScale, { passive: true });
+nav?.addEventListener('focusin', (event) => {
+    // Keep the original link in view while it has focus, including on Shift+Tab.
+    revealFocusedNavLink(event.target);
+});
 window.addEventListener('resize', () => {
     updateNavMetrics();
+    if (nav?.contains(document.activeElement)) revealFocusedNavLink(document.activeElement);
     updateNavLinkScale();
 }, { passive: true });
 navShifts.forEach((control) => {

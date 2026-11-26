@@ -1,20 +1,23 @@
-{% extends "base.html" %} {% block title %}{{ data.get('fullname', 'Student
+{% extends "base.html" %}
+{% set page_has_title = true %}
+{% block title %}{{ data.get('fullname', 'Student
 Profile') }} — Profile{% endblock %} {# PROVIDED BY THE INSTRUCTOR — do not
 edit. Shows the Engineering Student Profile built from the submitted form.
 Extends base.html, so it appears in the student's own design (their style.css).
 Reads the exact field `name` values from the profile form; `skills` and
 `software` arrive as lists. #} {% block head %}
+<script src="{{ url_for('static', filename='form_validation.js') }}" defer></script>
 <style>
   /* Small, profile-specific touches. The rest comes from your own style.css. */
   .profile { max-width: 860px; }
   .profile-header { border-top: 6px solid {{ data.get('project_color', '#336699') }}; padding-top: 1rem; margin-bottom: 1.5rem; }
-  .profile-title { color: {{ data.get('project_color', '#336699') }}; margin: .25rem 0 .5rem; }
+  .profile-title { margin: .25rem 0 .5rem; }
   .profile-contact { font-size: .95rem; }
-  .profile-contact span { margin-right: 1rem; white-space: nowrap; }
+  .profile-contact span { margin-right: 1rem;  }
   .profile section { margin-bottom: 1.6rem; }
   .profile h2 { border-bottom: 2px solid {{ data.get('project_color', '#336699') }};
                 display: inline-block; padding-bottom: .15rem; }
-  .profile dl { display: grid; grid-template-columns: 220px 1fr; gap: .35rem 1rem; margin: 0; }
+  .profile dl { display: grid; gap: .35rem 1rem; margin: 0; }
   .profile dt { font-weight: 600; color: #475569; }
   .profile dd { margin: 0; }
   .chips { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; margin: .3rem 0 0; }
@@ -25,9 +28,10 @@ Reads the exact field `name` values from the profile form; `skills` and
             background: {{ data.get('project_color', '#336699') }}; }
 </style>
 {% endblock %} {% block content %}
+<p class="feedback" id="profile-completion" role="alert" tabindex="-1">Profile submitted successfully.</p>
 <article class="profile" style="--profile-accent: {{ data.get('project_color', '#336699') }}">
   <header class="profile-header">
-    <h1>{{ data.get('fullname') }}</h1>
+    <h1 class="page-title">{{ data.get('fullname') or 'Engineering Student Profile' }}</h1>
     {% if data.get('major') %}
     <p class="profile-title">{{ data.get('major') | title }} Engineering</p>
     {% endif %}

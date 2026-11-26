@@ -1,24 +1,37 @@
-{% extends "base.html" %} {% block title %} Quiz {% endblock %} {% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}" />
-{% endblock %} {% block content%}
-<main class="container">
-  <h1>JavaScript Quiz</h1>
+{% extends "base.html" %}
+{% set page_has_title = true %}
+{% block title %}{{ 'Live JavaScript Quiz' if live_quiz else 'JavaScript Quiz' }}{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}">
+{% endblock %}
+{% block content %}
+<div class="quiz">
+  <h1 class="page-title">{{ 'Live JavaScript Quiz' if live_quiz else 'JavaScript Quiz' }}</h1>
   <section id="quizPanel">
-    <p id="progress"></p>
-    <h2 id="questionText"></h2>
-    <div id="choices"></div>
-    <div class="navigation">
-      <button id="firstBtn" onclick="goFirst()">First</button>
-      <button id="previousBtn" onclick="goPrevious()">Previous</button>
-      <button id="nextBtn" onclick="goNext()">Next</button>
-      <button id="lastBtn" onclick="goLast()">Last</button>
+    {% if live_quiz %}
+      <p id="quiz-status" class="feedback" role="status" tabindex="-1"></p>
+      <p id="quiz-error" class="feedback feedback-error" role="alert"></p>
+      <button id="quiz-retry" type="button" class="retry" hidden>Retry</button>
+      <noscript><p>Enable JavaScript to load the quiz.</p></noscript>
+    {% endif %}
+    <div id="quiz-question" hidden>
+      <p id="progress"></p>
+      <h2 id="questionText" tabindex="-1"></h2>
+      <fieldset id="choices" aria-labelledby="questionText"></fieldset>
     </div>
-    <button class="submit" onclick="submitQuiz()">Submit Quiz</button>
+    <div class="navigation">
+      <button id="firstBtn" type="button" disabled>First</button>
+      <button id="previousBtn" type="button" disabled>Previous</button>
+      <button id="nextBtn" type="button" disabled>Next</button>
+      <button id="lastBtn" type="button" disabled>Last</button>
+    </div>
+    <button id="quiz-submit" class="submit" type="button" disabled>Submit Quiz</button>
   </section>
-  <section id="resultsPanel">
+  <p id="quiz-completion" class="feedback" role="alert"></p>
+  <section id="resultsPanel" aria-labelledby="results-heading" hidden>
     <div class="results-heading">
-      <h2>Quiz Results</h2>
-      <button type="button" class="retry" onclick="window.location.reload()">Retry</button>
+      <h2 id="results-heading" tabindex="-1">Quiz Results</h2>
+      <button type="button" class="retry" onclick="window.location.reload()">Retry Quiz</button>
     </div>
     <p id="scoreText"></p>
     <p id="percentageText"></p>
@@ -26,6 +39,6 @@
     <h3>Correction</h3>
     <pre id="correction"></pre>
   </section>
-</main>
-<script src="{{ url_for('static', filename='quiz.js') }}"></script>
+</div>
+<script type="module" src="{{ url_for('static', filename='live_quiz.js' if live_quiz else 'quiz.js') }}"></script>
 {% endblock %}
