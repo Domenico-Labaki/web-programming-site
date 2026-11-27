@@ -1,4 +1,5 @@
 {% extends "research/topic.html" %}
+{% from "research/figure.html" import research_figure %}
 {% block research_content %}
 <p>PHP is a programming language that can run on a web server. Flask is a Python web framework. Both can receive an HTTP request, validate its data, and return HTML or JSON.</p>
 <dl>
@@ -12,6 +13,11 @@
 <h3>The same plain-text response in both stacks</h3>
 <p>The PHP script handles <code>/hello.php?name=Sam</code>. The Flask route handles <code>/hello?name=Sam</code>. Both return <code>Hello, Sam</code> as plain text.</p>
 <h4>PHP</h4>
+{% call research_figure("php-logo.svg", 142, 77,
+    "PHP wordmark inside a purple oval") %}
+    In the PHP example, the server runs the script and makes the query parameter available through <code>$_GET</code>.
+    <span class="research-figure-credit">Colin Viebrock via <a href="https://commons.wikimedia.org/wiki/File:PHP-logo.svg">Wikimedia Commons</a>. Public-domain text logo.</span>
+{% endcall %}
 <pre><code>&lt;?php
 header('Content-Type: text/plain; charset=utf-8');
 $name = $_GET['name'] ?? '';
@@ -20,6 +26,11 @@ if (!is_string($name) || trim($name) === '') {
 }
 echo 'Hello, ' . trim($name);</code></pre>
 <h4>Flask</h4>
+{% call research_figure("flask-logo.svg", 184, 72,
+    "Flask wordmark next to a flask illustration") %}
+    In the Flask example, the framework dispatches the request to a Python route and exposes the parameter through <code>request.args</code>.
+    <span class="research-figure-credit">Armin Ronacher via <a href="https://commons.wikimedia.org/wiki/File:Flask_logo.svg">Wikimedia Commons</a>. Permission for referring to Flask.</span>
+{% endcall %}
 <pre><code>from flask import Flask, Response, request
 
 app = Flask(__name__)

@@ -1,4 +1,5 @@
 {% extends "research/topic.html" %}
+{% from "research/figure.html" import research_figure %}
 {% block research_content %}
 <p>A regular expression describes a text format. The HTML <code>pattern</code> attribute uses one to check the full value of a nonempty input. Write the expression directly in the attribute, without JavaScript's surrounding slash delimiters.</p>
 <h3>Example</h3>
@@ -7,6 +8,11 @@
 &lt;input id="course-code" name="course_code" type="text"
        pattern="[A-Z]{3}[0-9]{3}" required aria-describedby="course-hint"&gt;</code></pre>
 <p><code>[A-Z]{3}</code> matches exactly three uppercase ASCII letters. <code>[0-9]{3}</code> matches exactly three ASCII digits. <code>GIN446</code> passes. <code>gin446</code>, <code>GIN44</code>, and <code>XGIN446</code> fail with <code>patternMismatch</code>. An empty field fails because of <code>required</code>.</p>
+{% call research_figure("regex-match.png", 330, 190,
+    "Text with the letters he highlighted inside words such as the and heaven") %}
+    The highlighted matches show how a regex search can find part of a word. The HTML <code>pattern</code> above requires the entire course code to match.
+    <span class="research-figure-credit">Belbury via <a href="https://commons.wikimedia.org/wiki/File:Regular_expression_example.png">Wikimedia Commons</a>. <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a> (resized).</span>
+{% endcall %}
 <h3>Browser and server checks</h3>
 <p>The HTML standard compiles patterns with JavaScript's <code>v</code> flag, which affects character-class syntax. The server should validate the submitted value independently because callers can send requests without using the browser form. In this portfolio, the validated profile form uses separate browser and Flask checks.</p>
 {% endblock %}

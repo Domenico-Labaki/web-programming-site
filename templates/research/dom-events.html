@@ -1,4 +1,5 @@
 {% extends "research/topic.html" %}
+{% from "research/figure.html" import research_figure %}
 {% block research_content %}
 <p>A DOM event reports something that happened on a page. Use <code>input</code> to react as a user edits a field, <code>submit</code> to handle a form submission, and <code>click</code> to respond to activation of a native button by pointer or keyboard. Register listeners with <code>addEventListener()</code>.</p>
 <h3>How events travel</h3>
@@ -8,6 +9,11 @@
     <li><strong>Bubble.</strong> If the event bubbles, listeners on ancestors run on the way back up. A parent can use this to handle events from many children.</li>
 </ol>
 <p><code>event.target</code> identifies where the event was directed. <code>event.currentTarget</code> identifies the element running the listener. <code>preventDefault()</code> cancels a cancelable event's default action, while <code>stopPropagation()</code> affects how the event travels.</p>
+{% call research_figure("dom-event-flow.svg", 640, 690,
+    "Arrows trace capture down the DOM tree to a table cell and bubbling back up to the window") %}
+    The specification illustrates a click on a table cell. Follow the arrows down to the target and back through its ancestors. The list handler below uses that same bubbling phase.
+    <span class="research-figure-credit">Copyright © 2015 W3C® (MIT, ERCIM, Keio, Beihang) via <a href="https://www.w3.org/TR/2015/WD-uievents-20151215/#event-flow">W3C UI Events</a>. <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">W3C Software and Document License</a>.</span>
+{% endcall %}
 <h3>Example of event delegation</h3>
 <pre><code>&lt;ul id="choices"&gt;
     &lt;li&gt;&lt;button type="button" data-choice="a"&gt;Choice A&lt;/button&gt;&lt;/li&gt;

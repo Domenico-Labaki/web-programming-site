@@ -1,0 +1,7 @@
+{% macro research_figure(filename, width, height, alt) %}
+<figure class="research-figure">
+    <img src="{{ url_for('static', filename='images/research/' ~ filename) }}"
+         width="{{ width }}" height="{{ height }}" alt="{{ alt }}" loading="lazy" decoding="async">
+    <figcaption>{{ caller() }}</figcaption>
+</figure>
+{% endmacro %}

@@ -1,4 +1,5 @@
 {% extends "research/topic.html" %}
+{% from "research/figure.html" import research_figure %}
 {% block research_content %}
 <dl>
     <dt><code>&lt;datalist&gt;</code> offers suggestions</dt>
@@ -6,6 +7,11 @@
     <dt><code>&lt;select&gt;</code> offers a fixed set of choices</dt>
     <dd>Users choose from the available options. The form submits the selected option's <code>value</code> under the select control's <code>name</code>. Use <code>multiple</code> when several choices are allowed.</dd>
 </dl>
+{% call research_figure("select-option-groups.png", 246, 201,
+    "An open HTML select menu showing operating-system and hardware choices in Galician") %}
+    This open <code>&lt;select&gt;</code> groups its fixed choices under headings. In the example below, the city field instead uses <code>&lt;datalist&gt;</code> to suggest choices while still allowing a city the list omits.
+    <span class="research-figure-credit">Gallaecio via <a href="https://commons.wikimedia.org/wiki/File:HTML-select-optgroup-example-gl.png">Wikimedia Commons</a>. <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</span>
+{% endcall %}
 <h3>Example</h3>
 <pre><code>&lt;label for="city"&gt;City&lt;/label&gt;
 &lt;input id="city" name="city" list="city-suggestions"&gt;

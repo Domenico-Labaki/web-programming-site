@@ -1,4 +1,5 @@
 {% extends "research/topic.html" %}
+{% from "research/figure.html" import research_figure %}
 {% block research_content %}
 <h3>Two ways to create a button</h3>
 <p>Both <code>&lt;button type="button"&gt;</code> and <code>&lt;input type="button"&gt;</code> create a native, keyboard-accessible button. Neither submits a form automatically; JavaScript can give either one an action. Their main difference is how they hold their label. <a href="#source-button">[1]</a> <a href="#source-input">[2]</a></p>
@@ -8,14 +9,15 @@
     <dt><code>&lt;input type="button"&gt;</code></dt>
     <dd>Has no closing tag or child content. Its visible label comes from the <code>value</code> attribute, so it suits a simple text button. <a href="#source-input">[2]</a></dd>
 </dl>
+{% call research_figure("button-widget.png", 306, 91,
+    "A button labeled Button beside a text field and a dropdown in Firefox") %}
+    The control labeled “Button” shows what a simple text button looks like. Both HTML elements in the example below can produce that appearance, even though their labels come from different places.
+    <span class="research-figure-credit">MarkEchidna and Sikon via <a href="https://commons.wikimedia.org/wiki/File:Widgets.png">Wikimedia Commons</a>. <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> (cropped).</span>
+{% endcall %}
 <h3>Example</h3>
 <pre><code>&lt;button type="button"&gt;&lt;span&gt;Save&lt;/span&gt;&lt;/button&gt;
 &lt;input type="button" value="Save"&gt;</code></pre>
 <p><strong>Takeaway:</strong> Use an explicit <code>type</code> and choose <code>&lt;button&gt;</code> when you want flexible label content.</p>
-<figure>
-    <img src="{{ url_for('static', filename='images/research/html5.svg') }}" width="140" height="140" alt="Orange HTML5 shield and HTML wordmark" loading="lazy">
-    <figcaption>HTML5 logo — W3C, via <a href="https://commons.wikimedia.org/wiki/File:HTML5_logo_and_wordmark.svg">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>. Unmodified.</figcaption>
-</figure>
 {% endblock %}
 {% block research_sources %}
 <li id="source-button"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button">[1] MDN — The button element</a></li>

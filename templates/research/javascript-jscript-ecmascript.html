@@ -1,4 +1,5 @@
 {% extends "research/topic.html" %}
+{% from "research/figure.html" import research_figure %}
 {% block research_content %}
 <dl>
     <dt>JavaScript</dt>
@@ -8,6 +9,11 @@
     <dt>ECMAScript</dt>
     <dd>The language specified by ECMA-262. Ecma adopted the first edition in June 1997. JavaScript and JScript helped shape the standard, which gives implementations shared rules for syntax, types, and built-in objects.</dd>
 </dl>
+{% call research_figure("brendan-eich.jpg", 960, 720,
+    "Brendan Eich speaking onstage at the Grown-up JavaScript keynote") %}
+    Brendan Eich, who created JavaScript at Netscape, speaks at a later JavaScript keynote. The language he introduced at Netscape was one of the starting points for ECMAScript.
+    <span class="research-figure-credit">Jonas Strandell via <a href="https://commons.wikimedia.org/wiki/File:Brendan_Eich_(4693852906).jpg">Wikimedia Commons</a>. <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> (resized).</span>
+{% endcall %}
 <h3>Language features and browser APIs</h3>
 <pre><code>const scores = [12, 18];
 const doubled = scores.map(score =&gt; score * 2);

@@ -1,4 +1,5 @@
 {% extends "research/topic.html" %}
+{% from "research/figure.html" import research_figure %}
 {% block research_content %}
 <p>A CSS at-rule starts with <code>@</code> followed by a keyword. The keyword determines whether the rule ends with a semicolon or contains a block, and what the browser does with it.</p>
 <dl>
@@ -9,6 +10,11 @@
     <dt><code>@supports</code></dt>
     <dd>Applies a block when the browser supports the CSS feature being tested. Keep a basic layout outside the block so it works without that feature.</dd>
 </dl>
+{% call research_figure("css-media-large.png", 960, 467,
+    "Wide page grid with navigation, main content, and side content arranged in three columns") %}
+    A wide-screen grid can place the navigation and side content next to the main column. The <code>@media</code> rule below uses the same idea to enable a two-column card layout when there is enough space.
+    <span class="research-figure-credit">Hunsvotti via <a href="https://commons.wikimedia.org/wiki/File:CSS_grid_layout_media_query_large_screen_%E2%80%94_English.svg">Wikimedia Commons</a>. <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> (PNG rendering).</span>
+{% endcall %}
 <h3>Example</h3>
 <pre><code>@import url("base.css");
 

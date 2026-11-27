@@ -22,11 +22,28 @@
   margin: 8px 0 16px;
 }
 
-.research-topic figure {
-  margin: 24px 0 0;
+.research-figure {
+  max-width: 42rem;
+  margin: 1.5rem 0;
 }
 
-/* Preserve the diagram's original white background in both themes. */
-.research-topic figure img {
+.research-figure img {
+  height: auto;
+}
+
+.research-figure img[src$=".svg"],
+.research-figure img[src$=".png"] {
   background: #fff;
+}
+
+.research-figure figcaption {
+  max-width: 68ch;
+  font-size: 0.9375rem;
+  font-style: normal;
+}
+
+.research-figure-credit {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.875rem;
 }

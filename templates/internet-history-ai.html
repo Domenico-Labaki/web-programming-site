@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% from "research/figure.html" import research_figure %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='research.css') }}">
+{% endblock %}
 {% block title %}
     History of the Internet (AI)
 {% endblock %}
@@ -106,6 +110,12 @@
                 succeeded shortly afterward.
             </p>
         </section>
+
+        {% call research_figure("arpanet-1977.png", 960, 687,
+            "March 1977 logical map showing ARPANET computers and network links") %}
+            By March 1977, ARPANET had grown well beyond the four original sites. The logical map shows how the network’s hosts and links were organized.
+            <span class="research-figure-credit">ARPANET, via the Computer History Museum via <a href="https://commons.wikimedia.org/wiki/File:Arpanet_logical_map,_march_1977.png">Wikimedia Commons</a>. U.S. public domain (resized).</span>
+        {% endcall %}
 
         <section aria-labelledby="arpanet-mattered">
             <h4 id="arpanet-mattered">Why it mattered</h4>

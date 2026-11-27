@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% from "research/figure.html" import research_figure %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='research.css') }}">
+{% endblock %}
 {% block title %}
     History of the Web
 {% endblock %}
@@ -121,6 +125,12 @@
                 at CERN.
             </p>
         </section>
+
+        {% call research_figure("first-web-server.jpg", 960, 720,
+            "The first Web server at CERN, a NeXT workstation beside its monitor and keyboard") %}
+            Tim Berners-Lee used this NeXT workstation at CERN as the first Web server. The warning label asks people to keep it powered on so the server can keep responding.
+            <span class="research-figure-credit">Coolcaesar via <a href="https://commons.wikimedia.org/wiki/File:First_Web_Server.jpg">Wikimedia Commons</a>. <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> (resized).</span>
+        {% endcall %}
 
         <section aria-labelledby="core-technologies-mattered">
             <h4 id="core-technologies-mattered">Why it mattered</h4>
