@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Week X — Research Topics{% endblock %}
+{% block content %}
+<section aria-labelledby="research-heading">
+    <h2 id="research-heading">Week X — Research Topics</h2>
+    <p>Short notes on web development and programming. Choose a topic to read its comparison, example, and sources.</p>
+    <ul class="weekly-list">
+        {% for slug, title in topics.items() %}
+        <li data-week="WX"><a href="{{ url_for('research_topic', slug=slug) }}">{{ title }}</a></li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

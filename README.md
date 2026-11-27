@@ -34,5 +34,11 @@ Then open http://127.0.0.1:5000
 
 ## Notes
 
+- Research topics live at `/research` (Week X). To add one, add its slug and title
+  to `research_topics` in `app.py`, then create `templates/research/<slug>.html`
+  extending `research/topic.html`. Fill its `research_content` and
+  `research_sources` blocks, and credit each image's creator, source, and reuse
+  terms beneath it. The hub lists new entries automatically.
+
 - Never commit secrets. Put anything sensitive in a `.env` file, which is already ignored.
 - Add each week's page or feature and link it from the "Weekly Work" list on the home page.

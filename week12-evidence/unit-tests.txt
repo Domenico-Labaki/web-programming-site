@@ -1,0 +1,10 @@
+test_all_graduation_months_for_each_term (test_profile_validation.ProfileValidationTests.test_all_graduation_months_for_each_term) ... ok
+test_description_required_after_trimming (test_profile_validation.ProfileValidationTests.test_description_required_after_trimming) ... ok
+test_optional_meeting_date_and_weekdays (test_profile_validation.ProfileValidationTests.test_optional_meeting_date_and_weekdays) ... ok
+test_server_rejects_invalid_post_without_browser_checks (test_profile_validation.ProfileValidationTests.test_server_rejects_invalid_post_without_browser_checks) ... ok
+test_student_id_boundaries_and_ascii_format (test_profile_validation.ProfileValidationTests.test_student_id_boundaries_and_ascii_format) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.276s
+
+OK

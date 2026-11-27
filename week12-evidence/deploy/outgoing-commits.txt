@@ -1,0 +1,2 @@
+d3cd295e02744f2c4611faee35bebff740076c04 Improve portfolio accessibility and feedback for Week 12
+c66e1ee19b8e01d88151502c3f739b2d256f39bf Improve profile validation and responsive layout

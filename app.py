@@ -2,7 +2,7 @@
 Web Programming — Flask application.
 """
 
-from flask import Flask, render_template, request
+from flask import Flask, abort, render_template, request
 
 from quiz_api import init_quiz
 from validators import validate_profile
@@ -22,7 +22,28 @@ weekly_work = [
     {"week": 6, "title": "Profile Form Validation", "url": "/submit-validated-profile"},
     {"week": 7, "title": "Live Quiz with Fetch", "url": "/live-quiz"},
     {"week": 8, "title": "Server Validation", "url": "/profile-validated"},
+    {"week": "X", "title": "Research Topics", "url": "/research"},
 ]
+
+# Add a topic here and a matching template in templates/research/.
+research_topics = {
+    "button-vs-input": "button vs input type=button",
+    "nodelist-vs-htmlcollection": "NodeList vs HTMLCollection",
+    "arrays-lists-maps": "Arrays vs Lists vs Maps",
+}
+
+
+@app.route("/research")
+def research():
+    return render_template("research/index.html", topics=research_topics)
+
+
+@app.route("/research/<slug>")
+def research_topic(slug):
+    if slug not in research_topics:
+        abort(404)
+    return render_template(f"research/{slug}.html", topic_title=research_topics[slug])
+
 
 @app.context_processor
 def inject_weekly_work():

@@ -1,0 +1,59 @@
+[
+  {
+    "route": "/quiz",
+    "keyboardAnswer": true,
+    "resultFocus": true
+  },
+  {
+    "startupRetry": true,
+    "questionRetry": true,
+    "scoringRetry": true,
+    "preserved": "1",
+    "pendingDisabled": true,
+    "resultFocus": true,
+    "hits": {
+      "count": 2,
+      "question": 2
+    }
+  },
+  {
+    "route": "/submit-profile",
+    "inlineError": true,
+    "retained": true,
+    "pending": {
+      "text": "Submitting profile…",
+      "disabled": true,
+      "visible": true
+    },
+    "success": true,
+    "postCount": 1
+  },
+  {
+    "route": "/submit-validated-profile",
+    "inlineError": true,
+    "retained": true,
+    "pending": {
+      "text": "Submitting profile…",
+      "disabled": true,
+      "visible": true
+    },
+    "success": true,
+    "postCount": 1
+  },
+  {
+    "route": "/profile-validated",
+    "inlineError": true,
+    "retained": true,
+    "pending": {
+      "text": "Submitting profile…",
+      "disabled": true,
+      "visible": true
+    },
+    "success": true,
+    "postCount": 1
+  },
+  {
+    "navArrowButtons": true,
+    "reverseTabActivatedHome": true
+  }
+]

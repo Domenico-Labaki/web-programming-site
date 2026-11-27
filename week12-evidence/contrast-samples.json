@@ -1,0 +1,648 @@
+[
+  {
+    "theme": "light",
+    "route": "/",
+    "selector": ".site-title",
+    "color": [
+      31,
+      90,
+      196
+    ],
+    "x": 288,
+    "y": 43,
+    "label": "Domenico's Web Portfolio",
+    "background": [
+      253,
+      253,
+      255
+    ],
+    "ratio": 6.23
+  },
+  {
+    "theme": "light",
+    "route": "/",
+    "selector": ".weekly-list li a",
+    "color": [
+      32,
+      37,
+      46
+    ],
+    "x": 68,
+    "y": 209,
+    "label": "Live site launched",
+    "background": [
+      255,
+      255,
+      255
+    ],
+    "ratio": 15.38
+  },
+  {
+    "theme": "light",
+    "route": "/",
+    "selector": "footer p",
+    "color": [
+      94,
+      104,
+      120
+    ],
+    "x": 210,
+    "y": 816,
+    "label": "Web Programming — built with Flask and deployed on Render.",
+    "background": [
+      243,
+      245,
+      249
+    ],
+    "ratio": 5.16
+  },
+  {
+    "theme": "light",
+    "route": "/live-quiz",
+    "selector": ".page-title",
+    "color": [
+      32,
+      37,
+      46
+    ],
+    "x": 34,
+    "y": 172,
+    "label": "Live JavaScript Quiz",
+    "background": [
+      242,
+      244,
+      248
+    ],
+    "ratio": 13.97
+  },
+  {
+    "theme": "light",
+    "route": "/live-quiz",
+    "selector": ".nav-group-original a[aria-current]",
+    "color": [
+      31,
+      90,
+      196
+    ],
+    "x": 325,
+    "y": 92,
+    "label": "Live Quiz with Fetch",
+    "background": [
+      248,
+      249,
+      253
+    ],
+    "ratio": 6.02
+  },
+  {
+    "theme": "light",
+    "route": "/live-quiz",
+    "selector": "#progress",
+    "color": [
+      31,
+      90,
+      196
+    ],
+    "x": 72,
+    "y": 272,
+    "label": "Question 1 of 10",
+    "background": [
+      238,
+      245,
+      255
+    ],
+    "ratio": 5.77
+  },
+  {
+    "theme": "light",
+    "route": "/live-quiz",
+    "selector": "#questionText",
+    "color": [
+      32,
+      37,
+      46
+    ],
+    "x": 62,
+    "y": 313,
+    "label": "Which company publishes the Need for Speed franchise?",
+    "background": [
+      253,
+      253,
+      254
+    ],
+    "ratio": 15.13
+  },
+  {
+    "theme": "light",
+    "route": "/live-quiz",
+    "selector": ".choice",
+    "color": [
+      32,
+      37,
+      46
+    ],
+    "x": 79,
+    "y": 381,
+    "label": "Ubisoft",
+    "background": [
+      255,
+      255,
+      255
+    ],
+    "ratio": 15.38
+  },
+  {
+    "theme": "light",
+    "route": "/live-quiz",
+    "selector": "#quiz-submit",
+    "color": [
+      255,
+      255,
+      255
+    ],
+    "x": 353,
+    "y": 746,
+    "label": "Submit Quiz",
+    "background": [
+      31,
+      90,
+      196
+    ],
+    "ratio": 6.33
+  },
+  {
+    "theme": "light",
+    "route": "/live-quiz",
+    "selector": "#firstBtn",
+    "color": [
+      94,
+      104,
+      120
+    ],
+    "x": 123,
+    "y": 682,
+    "label": "First",
+    "background": [
+      241,
+      244,
+      249
+    ],
+    "ratio": 5.11
+  },
+  {
+    "theme": "light",
+    "route": "/submit-profile",
+    "selector": ".page-title",
+    "color": [
+      32,
+      37,
+      46
+    ],
+    "x": 34,
+    "y": 172,
+    "label": "Engineering Student Profile",
+    "background": [
+      242,
+      244,
+      248
+    ],
+    "ratio": 13.97
+  },
+  {
+    "theme": "light",
+    "route": "/submit-profile",
+    "selector": ".profile-form > p",
+    "color": [
+      94,
+      104,
+      120
+    ],
+    "x": 34,
+    "y": 229,
+    "label": "Complete this form to provide information about your academic background, techni",
+    "background": [
+      246,
+      248,
+      250
+    ],
+    "ratio": 5.29
+  },
+  {
+    "theme": "light",
+    "route": "/submit-profile",
+    "selector": "label[for=student_id]",
+    "color": [
+      32,
+      37,
+      46
+    ],
+    "x": 61,
+    "y": 412,
+    "label": "Student ID:",
+    "background": [
+      253,
+      253,
+      254
+    ],
+    "ratio": 15.13
+  },
+  {
+    "theme": "light",
+    "route": "/submit-profile",
+    "selector": "#student_id",
+    "color": [
+      94,
+      104,
+      120
+    ],
+    "x": 61,
+    "y": 439,
+    "label": "202312345",
+    "background": [
+      241,
+      245,
+      249
+    ],
+    "ratio": 5.14
+  },
+  {
+    "theme": "light",
+    "route": "/submit-profile",
+    "selector": "button[type=submit]",
+    "color": [
+      255,
+      255,
+      255
+    ],
+    "x": 53,
+    "y": 673,
+    "label": "Submit Profile",
+    "background": [
+      31,
+      90,
+      196
+    ],
+    "ratio": 6.33
+  },
+  {
+    "theme": "light",
+    "route": "/submit-profile",
+    "selector": "#profile-error",
+    "color": [
+      165,
+      34,
+      40
+    ],
+    "x": 51,
+    "y": 313,
+    "label": "Profile could not be submitted. Review the errors beside the affected fields.",
+    "background": [
+      241,
+      245,
+      249
+    ],
+    "ratio": 6.7
+  },
+  {
+    "theme": "light",
+    "route": "/submit-profile",
+    "selector": "#error-student_id",
+    "color": [
+      165,
+      34,
+      40
+    ],
+    "x": 61,
+    "y": 493,
+    "label": "Please fill out this field.",
+    "background": [
+      253,
+      253,
+      254
+    ],
+    "ratio": 7.22
+  },
+  {
+    "theme": "dark",
+    "route": "/",
+    "selector": ".site-title",
+    "color": [
+      163,
+      193,
+      251
+    ],
+    "x": 288,
+    "y": 43,
+    "label": "Domenico's Web Portfolio",
+    "background": [
+      36,
+      62,
+      101
+    ],
+    "ratio": 5.93
+  },
+  {
+    "theme": "dark",
+    "route": "/",
+    "selector": ".weekly-list li a",
+    "color": [
+      232,
+      237,
+      245
+    ],
+    "x": 68,
+    "y": 209,
+    "label": "Live site launched",
+    "background": [
+      28,
+      36,
+      48
+    ],
+    "ratio": 13.29
+  },
+  {
+    "theme": "dark",
+    "route": "/",
+    "selector": "footer p",
+    "color": [
+      148,
+      163,
+      184
+    ],
+    "x": 210,
+    "y": 816,
+    "label": "Web Programming — built with Flask and deployed on Render.",
+    "background": [
+      12,
+      19,
+      33
+    ],
+    "ratio": 7.24
+  },
+  {
+    "theme": "dark",
+    "route": "/live-quiz",
+    "selector": ".page-title",
+    "color": [
+      232,
+      237,
+      245
+    ],
+    "x": 34,
+    "y": 172,
+    "label": "Live JavaScript Quiz",
+    "background": [
+      12,
+      19,
+      32
+    ],
+    "ratio": 15.81
+  },
+  {
+    "theme": "dark",
+    "route": "/live-quiz",
+    "selector": ".nav-group-original a[aria-current]",
+    "color": [
+      163,
+      193,
+      251
+    ],
+    "x": 325,
+    "y": 92,
+    "label": "Live Quiz with Fetch",
+    "background": [
+      21,
+      30,
+      46
+    ],
+    "ratio": 9.21
+  },
+  {
+    "theme": "dark",
+    "route": "/live-quiz",
+    "selector": "#progress",
+    "color": [
+      147,
+      180,
+      245
+    ],
+    "x": 72,
+    "y": 272,
+    "label": "Question 1 of 10",
+    "background": [
+      23,
+      40,
+      68
+    ],
+    "ratio": 7.09
+  },
+  {
+    "theme": "dark",
+    "route": "/live-quiz",
+    "selector": "#questionText",
+    "color": [
+      232,
+      237,
+      245
+    ],
+    "x": 62,
+    "y": 313,
+    "label": "Which company publishes the Need for Speed franchise?",
+    "background": [
+      18,
+      27,
+      38
+    ],
+    "ratio": 14.76
+  },
+  {
+    "theme": "dark",
+    "route": "/live-quiz",
+    "selector": ".choice",
+    "color": [
+      232,
+      237,
+      245
+    ],
+    "x": 79,
+    "y": 381,
+    "label": "Ubisoft",
+    "background": [
+      59,
+      59,
+      59
+    ],
+    "ratio": 9.53
+  },
+  {
+    "theme": "dark",
+    "route": "/live-quiz",
+    "selector": "#quiz-submit",
+    "color": [
+      255,
+      255,
+      255
+    ],
+    "x": 353,
+    "y": 746,
+    "label": "Submit Quiz",
+    "background": [
+      31,
+      90,
+      196
+    ],
+    "ratio": 6.33
+  },
+  {
+    "theme": "dark",
+    "route": "/live-quiz",
+    "selector": "#firstBtn",
+    "color": [
+      148,
+      163,
+      184
+    ],
+    "x": 123,
+    "y": 682,
+    "label": "First",
+    "background": [
+      15,
+      23,
+      42
+    ],
+    "ratio": 6.96
+  },
+  {
+    "theme": "dark",
+    "route": "/submit-profile",
+    "selector": ".page-title",
+    "color": [
+      232,
+      237,
+      245
+    ],
+    "x": 34,
+    "y": 172,
+    "label": "Engineering Student Profile",
+    "background": [
+      12,
+      19,
+      32
+    ],
+    "ratio": 15.81
+  },
+  {
+    "theme": "dark",
+    "route": "/submit-profile",
+    "selector": ".profile-form > p",
+    "color": [
+      148,
+      163,
+      184
+    ],
+    "x": 34,
+    "y": 229,
+    "label": "Complete this form to provide information about your academic background, techni",
+    "background": [
+      11,
+      18,
+      28
+    ],
+    "ratio": 7.33
+  },
+  {
+    "theme": "dark",
+    "route": "/submit-profile",
+    "selector": "label[for=student_id]",
+    "color": [
+      232,
+      237,
+      245
+    ],
+    "x": 61,
+    "y": 412,
+    "label": "Student ID:",
+    "background": [
+      18,
+      27,
+      38
+    ],
+    "ratio": 14.76
+  },
+  {
+    "theme": "dark",
+    "route": "/submit-profile",
+    "selector": "#student_id",
+    "color": [
+      148,
+      163,
+      184
+    ],
+    "x": 61,
+    "y": 439,
+    "label": "202312345",
+    "background": [
+      21,
+      29,
+      41
+    ],
+    "ratio": 6.61
+  },
+  {
+    "theme": "dark",
+    "route": "/submit-profile",
+    "selector": "button[type=submit]",
+    "color": [
+      255,
+      255,
+      255
+    ],
+    "x": 53,
+    "y": 673,
+    "label": "Submit Profile",
+    "background": [
+      31,
+      90,
+      196
+    ],
+    "ratio": 6.33
+  },
+  {
+    "theme": "dark",
+    "route": "/submit-profile",
+    "selector": "#profile-error",
+    "color": [
+      255,
+      173,
+      166
+    ],
+    "x": 51,
+    "y": 313,
+    "label": "Profile could not be submitted. Review the errors beside the affected fields.",
+    "background": [
+      21,
+      29,
+      41
+    ],
+    "ratio": 9.5
+  },
+  {
+    "theme": "dark",
+    "route": "/submit-profile",
+    "selector": "#error-student_id",
+    "color": [
+      255,
+      173,
+      166
+    ],
+    "x": 61,
+    "y": 493,
+    "label": "Please fill out this field.",
+    "background": [
+      18,
+      27,
+      38
+    ],
+    "ratio": 9.73
+  }
+]

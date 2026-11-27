@@ -1,0 +1,28 @@
+{% extends "research/topic.html" %}
+{% block research_content %}
+<h3>Live collection or snapshot?</h3>
+<p>Both are array-like DOM collections: they have a <code>length</code> and indexed items, but are not JavaScript arrays. A <strong>live</strong> collection updates its membership as the DOM changes; a <strong>static</strong> collection keeps the same membership. <a href="#source-nodelist">[1]</a> <a href="#source-collection">[2]</a></p>
+<dl>
+    <dt><code>HTMLCollection</code></dt>
+    <dd>Contains elements only and is live. For example, <code>getElementsByTagName()</code> updates when matching elements are added or removed. <a href="#source-collection">[2]</a></dd>
+    <dt><code>NodeList</code></dt>
+    <dd>Can contain different node types, including text nodes. It can be live or static: <code>childNodes</code> is live, while <code>querySelectorAll()</code> returns a static NodeList of matching elements. <a href="#source-nodelist">[1]</a></dd>
+</dl>
+<h3>Example</h3>
+<pre><code>const box = document.createElement('div');
+box.innerHTML = '&lt;p&gt;First&lt;/p&gt;';
+const live = box.getElementsByTagName('p');
+const snapshot = box.querySelectorAll('p');
+box.appendChild(document.createElement('p'));
+console.log(live.length);     // 2: updated
+console.log(snapshot.length); // 1: unchanged</code></pre>
+<p><strong>Takeaway:</strong> Check the API that produced the collection. Use <code>Array.from(collection)</code> when you need array methods or fixed membership while editing the DOM. A snapshot still holds references to the original nodes; it does not freeze their content. <a href="#source-nodelist">[1]</a> <a href="#source-collection">[2]</a></p>
+<figure>
+    <img src="{{ url_for('static', filename='images/research/dom-model.svg') }}" width="340" height="352" alt="A DOM tree showing a document, HTML elements, attributes, and text nodes" loading="lazy">
+    <figcaption>DOM-model — Birger Eriksson, via <a href="https://commons.wikimedia.org/wiki/File:DOM-model.svg">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Unmodified.</figcaption>
+</figure>
+{% endblock %}
+{% block research_sources %}
+<li id="source-nodelist"><a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList">[1] MDN — NodeList, including live and static collections</a></li>
+<li id="source-collection"><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection">[2] MDN — HTMLCollection</a></li>
+{% endblock %}

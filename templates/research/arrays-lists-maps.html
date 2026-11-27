@@ -1,0 +1,32 @@
+{% extends "research/topic.html" %}
+{% block research_content %}
+<h3>Position or key?</h3>
+<p>Arrays and lists describe ordered sequences; maps associate keys with values. The exact meaning of “list” depends on the language, so these are not always three separate built-in types.</p>
+<dl>
+    <dt>Array — values by position</dt>
+    <dd>A JavaScript <code>Array</code> uses zero-based numeric indexes. It can grow or shrink, hold mixed value types, and use methods such as <code>push()</code>, <code>map()</code>, and <code>filter()</code>. <a href="#source-array">[1]</a></dd>
+    <dt>List — an ordered sequence</dt>
+    <dd>“List” does not automatically mean “linked list.” Python has a mutable, indexed <code>list</code> type with operations such as <code>append()</code>. In ordinary JavaScript, use an Array for this role; there is no separate built-in <code>List</code> collection. <a href="#source-list">[2]</a> <a href="#source-builtins">[3]</a></dd>
+    <dt>Map — values by key</dt>
+    <dd>A JavaScript <code>Map</code> stores unique keys paired with values. Keys can be strings, numbers, or objects. <code>set()</code> adds or updates an entry, <code>get()</code> retrieves it, and iteration follows insertion order. <a href="#source-map">[4]</a></dd>
+</dl>
+<h3>JavaScript example</h3>
+<pre><code>const topics = ['HTML', 'DOM']; // ordered list using an Array
+topics.push('JavaScript');
+console.log(topics[0]); // 'HTML'
+
+const scores = new Map([['Maya', 90]]);
+scores.set('Omar', 85);
+console.log(scores.get('Maya')); // 90</code></pre>
+<p><strong>Takeaway:</strong> Use an Array for an ordered sequence and a Map for lookup by key. The Array method <code>map()</code> transforms values into a new array; it does not create a <code>Map</code> collection. <a href="#source-array">[1]</a> <a href="#source-map">[4]</a></p>
+<figure>
+    <img src="{{ url_for('static', filename='images/research/javascript.svg') }}" width="140" height="140" alt="Yellow square with the letters JS, the unofficial JavaScript logo" loading="lazy">
+    <figcaption>Unofficial JavaScript logo — Chris Williams, via <a href="https://commons.wikimedia.org/wiki/File:Unofficial_JavaScript_logo_2.svg">Wikimedia Commons</a>. Unmodified; <a href="https://commons.wikimedia.org/wiki/File:Unofficial_JavaScript_logo_2.svg#Licensing">public-domain text logo</a>.</figcaption>
+</figure>
+{% endblock %}
+{% block research_sources %}
+<li id="source-array"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">[1] MDN — Array</a></li>
+<li id="source-list"><a href="https://docs.python.org/3/tutorial/datastructures.html">[2] Python documentation — Data structures and lists</a></li>
+<li id="source-builtins"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects">[3] MDN — JavaScript standard built-in objects</a></li>
+<li id="source-map"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">[4] MDN — Map</a></li>
+{% endblock %}

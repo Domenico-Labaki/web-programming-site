@@ -1,0 +1,32 @@
+/* Keep research examples readable within the existing page layout. */
+.research-topic pre {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 16px;
+  border-radius: var(--radius-input);
+  background: var(--code-bg);
+}
+
+.research-topic pre code {
+  padding: 0;
+  border: 0;
+  word-break: normal;
+}
+
+.research-topic dt {
+  margin-top: 16px;
+  font-weight: 600;
+}
+
+.research-topic dd {
+  margin: 8px 0 16px;
+}
+
+.research-topic figure {
+  margin: 24px 0 0;
+}
+
+/* Preserve the diagram's original white background in both themes. */
+.research-topic figure img {
+  background: #fff;
+}

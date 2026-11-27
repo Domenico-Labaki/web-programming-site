@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{{ topic_title }} — Research{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='research.css') }}">
+{% endblock %}
+{% block content %}
+<section class="research-topic" aria-labelledby="topic-heading">
+    <p><a href="{{ url_for('research') }}">← All research topics</a></p>
+    <h2 id="topic-heading">{{ topic_title }}</h2>
+    <article>
+        {% block research_content %}{% endblock %}
+    </article>
+    <section id="references" aria-labelledby="references-heading">
+        <h3 id="references-heading">Content sources</h3>
+        <ul>{% block research_sources %}{% endblock %}</ul>
+        <p>Image source and reuse terms are credited beneath the image.</p>
+    </section>
+</section>
+{% endblock %}
