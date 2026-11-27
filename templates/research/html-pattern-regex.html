@@ -1,0 +1,16 @@
+{% extends "research/topic.html" %}
+{% block research_content %}
+<p>A regular expression describes a text format. The HTML <code>pattern</code> attribute uses one to check the full value of a nonempty input. Write the expression directly in the attribute, without JavaScript's surrounding slash delimiters.</p>
+<h3>Example</h3>
+<pre><code>&lt;label for="course-code"&gt;Course code&lt;/label&gt;
+&lt;p id="course-hint"&gt;Use three capital letters and three digits, such as GIN446.&lt;/p&gt;
+&lt;input id="course-code" name="course_code" type="text"
+       pattern="[A-Z]{3}[0-9]{3}" required aria-describedby="course-hint"&gt;</code></pre>
+<p><code>[A-Z]{3}</code> matches exactly three uppercase ASCII letters. <code>[0-9]{3}</code> matches exactly three ASCII digits. <code>GIN446</code> passes. <code>gin446</code>, <code>GIN44</code>, and <code>XGIN446</code> fail with <code>patternMismatch</code>. An empty field fails because of <code>required</code>.</p>
+<h3>Browser and server checks</h3>
+<p>The HTML standard compiles patterns with JavaScript's <code>v</code> flag, which affects character-class syntax. The server should validate the submitted value independently because callers can send requests without using the browser form. In this portfolio, the validated profile form uses separate browser and Flask checks.</p>
+{% endblock %}
+{% block research_sources %}
+<li><a href="https://html.spec.whatwg.org/multipage/input.html#the-pattern-attribute">WHATWG HTML — The pattern attribute</a></li>
+<li><a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#security-forms">WHATWG HTML — Form validation and server checks</a></li>
+{% endblock %}

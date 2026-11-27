@@ -3,10 +3,12 @@
 {% block content %}
 <section aria-labelledby="research-heading">
     <h2 id="research-heading">Week X — Research Topics</h2>
-    <p>Short notes on web development and programming. Choose a topic to read its comparison, example, and sources.</p>
+    <p>Coursework research on web development and programming.</p>
     <ul class="weekly-list">
+        <li><a href="{{ url_for('internet_history') }}">History of the Internet</a></li>
+        <li><a href="{{ url_for('web_history') }}">History of the World Wide Web</a></li>
         {% for slug, title in topics.items() %}
-        <li data-week="WX"><a href="{{ url_for('research_topic', slug=slug) }}">{{ title }}</a></li>
+        <li><a href="{{ url_for('research_topic', slug=slug) }}">{{ title }}</a></li>
         {% endfor %}
     </ul>
 </section>

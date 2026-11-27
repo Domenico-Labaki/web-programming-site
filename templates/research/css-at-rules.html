@@ -1,0 +1,32 @@
+{% extends "research/topic.html" %}
+{% block research_content %}
+<p>A CSS at-rule starts with <code>@</code> followed by a keyword. The keyword determines whether the rule ends with a semicolon or contains a block, and what the browser does with it.</p>
+<dl>
+    <dt><code>@import</code></dt>
+    <dd>Loads another stylesheet into the cascade at the point of the import. Put imports before style rules and other at-rules, with exceptions for <code>@charset</code> and statement-form <code>@layer</code> declarations.</dd>
+    <dt><code>@media</code></dt>
+    <dd>Applies a block while a media query matches, such as a minimum viewport width or the user's reduced-motion preference.</dd>
+    <dt><code>@supports</code></dt>
+    <dd>Applies a block when the browser supports the CSS feature being tested. Keep a basic layout outside the block so it works without that feature.</dd>
+</dl>
+<h3>Example</h3>
+<pre><code>@import url("base.css");
+
+.cards { display: block; }
+
+@media (min-width: 48rem) {
+    @supports (display: grid) {
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+    }
+}</code></pre>
+<p>The cards stack by default. At a viewport width of at least <code>48rem</code>, browsers that support grid display them in two columns.</p>
+{% endblock %}
+{% block research_sources %}
+<li><a href="https://www.w3.org/TR/css-syntax-3/#at-rules">W3C CSS Syntax — At-rules</a></li>
+<li><a href="https://www.w3.org/TR/css-cascade-5/#at-import">W3C CSS Cascade — The @import rule</a></li>
+<li><a href="https://www.w3.org/TR/css-conditional-3/">W3C CSS Conditional Rules — @media and @supports</a></li>
+{% endblock %}

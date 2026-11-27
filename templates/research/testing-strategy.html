@@ -1,0 +1,28 @@
+{% extends "research/topic.html" %}
+{% block research_content %}
+<p>For this Flask portfolio, test validation rules with unit tests, request handling with Flask's test client, and interactions such as quiz retries and keyboard focus in a real browser. Choose the smallest test that can observe the failure.</p>
+<h3>What to test</h3>
+<dl>
+    <dt>Unit tests for profile rules</dt>
+    <dd>Run the validator with valid, invalid, and boundary values. Check that a whitespace-only description is rejected, that graduation months match the selected term, and that invalid student ID lengths produce a field error.</dd>
+    <dt>Integration tests for forms and JSON routes</dt>
+    <dd>Post invalid data directly to <code>/profile-validated</code> and assert that the form displays field errors. Seed an isolated test database for the quiz and verify that the count endpoint returns JSON, that a known question has the expected fields, and that an out-of-range index returns HTTP 404.</dd>
+    <dt>Browser tests for interactions</dt>
+    <dd>Complete a quiz using the keyboard and verify that focus moves to the result. Simulate a failed request in the test browser, retry it, and verify that the selected answer is preserved. Check the profile form for inline feedback and keyboard navigation.</dd>
+</dl>
+<h3>When to run the checks</h3>
+<ol>
+    <li>Run unit and integration checks before merging. For a new bug, add a small test that fails before the fix and passes afterward.</li>
+    <li>Run browser checks for changes to forms, quiz interactions, or navigation. Use repeatable fixtures and keep test data separate from production.</li>
+    <li>After deployment, smoke-test the public homepage, research hub, and quiz. Record the commit, environment, expected result, and actual result for any failure.</li>
+</ol>
+<h3>Starting point in this repository</h3>
+<p>The current suite uses Python's <code>unittest</code> and already checks profile validation boundaries and a direct invalid form submission. Run it locally with the command below. The quiz API and browser checks above describe the proposed coverage for this strategy.</p>
+<pre><code>python -m unittest discover -s tests -v</code></pre>
+<p><small>AI contribution. OpenAI Codex drafted this brief and checked the recommendations against the documentation and the portfolio's current routes and test suite.</small></p>
+{% endblock %}
+{% block research_sources %}
+<li><a href="https://flask.palletsprojects.com/en/stable/testing/">Pallets — Testing Flask applications</a></li>
+<li><a href="https://docs.pytest.org/en/stable/how-to/parametrize.html">pytest — Running one test across multiple cases</a></li>
+<li><a href="https://playwright.dev/docs/writing-tests">Playwright — Writing browser tests</a></li>
+{% endblock %}

@@ -27,7 +27,14 @@ weekly_work = [
 
 # Add a topic here and a matching template in templates/research/.
 research_topics = {
+    "css-at-rules": "CSS at-rules",
+    "html-pattern-regex": "Regular expressions in HTML forms",
     "button-vs-input": "button vs input type=button",
+    "datalist-vs-select": "datalist vs select",
+    "javascript-jscript-ecmascript": "JavaScript, JScript, and ECMAScript",
+    "dom-events": "HTML DOM events",
+    "php-vs-flask": "PHP vs Flask",
+    "testing-strategy": "Testing strategy",
     "nodelist-vs-htmlcollection": "NodeList vs HTMLCollection",
     "arrays-lists-maps": "Arrays vs Lists vs Maps",
 }

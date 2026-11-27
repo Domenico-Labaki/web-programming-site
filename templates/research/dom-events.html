@@ -1,0 +1,35 @@
+{% extends "research/topic.html" %}
+{% block research_content %}
+<p>A DOM event reports something that happened on a page. Use <code>input</code> to react as a user edits a field, <code>submit</code> to handle a form submission, and <code>click</code> to respond to activation of a native button by pointer or keyboard. Register listeners with <code>addEventListener()</code>.</p>
+<h3>How events travel</h3>
+<ol>
+    <li><strong>Capture.</strong> Capture listeners on ancestors run on the way toward the target.</li>
+    <li><strong>Target.</strong> Listeners on the target handle the event.</li>
+    <li><strong>Bubble.</strong> If the event bubbles, listeners on ancestors run on the way back up. A parent can use this to handle events from many children.</li>
+</ol>
+<p><code>event.target</code> identifies where the event was directed. <code>event.currentTarget</code> identifies the element running the listener. <code>preventDefault()</code> cancels a cancelable event's default action, while <code>stopPropagation()</code> affects how the event travels.</p>
+<h3>Example of event delegation</h3>
+<pre><code>&lt;ul id="choices"&gt;
+    &lt;li&gt;&lt;button type="button" data-choice="a"&gt;Choice A&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button type="button" data-choice="b"&gt;Choice B&lt;/button&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p id="selection" role="status"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+const choices = document.querySelector("#choices");
+const selection = document.querySelector("#selection");
+
+choices.addEventListener("click", (event) =&gt; {
+    const button = event.target.closest("button[data-choice]");
+    if (button &amp;&amp; choices.contains(button)) {
+        selection.textContent = "Selected " + button.textContent;
+    }
+});
+&lt;/script&gt;</code></pre>
+<p>The listener on the list handles either button and any buttons inserted later. <code>closest()</code> also finds the button when a nested element inside it receives the click.</p>
+{% endblock %}
+{% block research_sources %}
+<li><a href="https://dom.spec.whatwg.org/#dispatching-events">WHATWG DOM — Dispatching events</a></li>
+<li><a href="https://dom.spec.whatwg.org/#interface-event">WHATWG DOM — The Event interface</a></li>
+<li><a href="https://www.w3schools.com/jsref/dom_obj_event.asp">Week 6 further reading — W3Schools event reference</a></li>
+{% endblock %}

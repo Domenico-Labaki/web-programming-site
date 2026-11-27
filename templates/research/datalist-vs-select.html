@@ -1,0 +1,28 @@
+{% extends "research/topic.html" %}
+{% block research_content %}
+<dl>
+    <dt><code>&lt;datalist&gt;</code> offers suggestions</dt>
+    <dd>Connect a text input's <code>list</code> attribute to the datalist's <code>id</code>. Users can pick a suggestion or type another value. The input's <code>name</code> and current value are what the form submits.</dd>
+    <dt><code>&lt;select&gt;</code> offers a fixed set of choices</dt>
+    <dd>Users choose from the available options. The form submits the selected option's <code>value</code> under the select control's <code>name</code>. Use <code>multiple</code> when several choices are allowed.</dd>
+</dl>
+<h3>Example</h3>
+<pre><code>&lt;label for="city"&gt;City&lt;/label&gt;
+&lt;input id="city" name="city" list="city-suggestions"&gt;
+&lt;datalist id="city-suggestions"&gt;
+    &lt;option value="Beirut"&gt;
+    &lt;option value="Jounieh"&gt;
+&lt;/datalist&gt;
+
+&lt;label for="delivery"&gt;Delivery method&lt;/label&gt;
+&lt;select id="delivery" name="delivery" required&gt;
+    &lt;option value=""&gt;Choose a method&lt;/option&gt;
+    &lt;option value="pickup"&gt;Pickup&lt;/option&gt;
+    &lt;option value="courier"&gt;Courier&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+<p>A user can type <code>Byblos</code> as their city. The delivery method must be one of the offered values, and the server should check that it received <code>pickup</code> or <code>courier</code>.</p>
+{% endblock %}
+{% block research_sources %}
+<li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element">WHATWG HTML — The datalist element</a></li>
+<li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">WHATWG HTML — The select element</a></li>
+{% endblock %}

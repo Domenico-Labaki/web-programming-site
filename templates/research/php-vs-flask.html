@@ -1,0 +1,41 @@
+{% extends "research/topic.html" %}
+{% block research_content %}
+<p>PHP is a programming language that can run on a web server. Flask is a Python web framework. Both can receive an HTTP request, validate its data, and return HTML or JSON.</p>
+<dl>
+    <dt>Routing and input</dt>
+    <dd>A small PHP site can map a URL to a script such as <code>hello.php</code> and read the query string from <code>$_GET</code>. Larger PHP applications often route requests through a single entry point. Flask maps a URL to a Python function and exposes the query string through <code>request.args</code>.</dd>
+    <dt>HTML and templates</dt>
+    <dd>PHP can embed code in HTML and use <code>htmlspecialchars()</code> to escape text before placing it in HTML. Flask commonly renders separate Jinja templates, with automatic escaping enabled for HTML templates rendered by <code>render_template()</code>.</dd>
+    <dt>Deployment and databases</dt>
+    <dd>LAMP stands for Linux, Apache, MySQL, and PHP in this comparison. WordPress is a PHP application that supports MySQL or MariaDB. This portfolio uses Flask with Gunicorn and uses SQLite locally. Its quiz can use PostgreSQL on Render.</dd>
+</dl>
+<h3>The same plain-text response in both stacks</h3>
+<p>The PHP script handles <code>/hello.php?name=Sam</code>. The Flask route handles <code>/hello?name=Sam</code>. Both return <code>Hello, Sam</code> as plain text.</p>
+<h4>PHP</h4>
+<pre><code>&lt;?php
+header('Content-Type: text/plain; charset=utf-8');
+$name = $_GET['name'] ?? '';
+if (!is_string($name) || trim($name) === '') {
+    $name = 'visitor';
+}
+echo 'Hello, ' . trim($name);</code></pre>
+<h4>Flask</h4>
+<pre><code>from flask import Flask, Response, request
+
+app = Flask(__name__)
+
+@app.get("/hello")
+def hello():
+    name = request.args.get("name", "").strip() or "visitor"
+    return Response(f"Hello, {name}", mimetype="text/plain")</code></pre>
+<p>Flask fits this portfolio because the routes and templates already use Python and Jinja. PHP fits projects that extend WordPress or are hosted on a PHP stack.</p>
+{% endblock %}
+{% block research_sources %}
+<li><a href="https://www.php.net/manual/en/tutorial.php">PHP Manual — A simple tutorial</a></li>
+<li><a href="https://www.php.net/manual/en/reserved.variables.get.php">PHP Manual — Query parameters in $_GET</a></li>
+<li><a href="https://www.php.net/manual/en/function.htmlspecialchars.php">PHP Manual — HTML escaping</a></li>
+<li><a href="https://flask.palletsprojects.com/en/stable/quickstart/">Pallets — Flask routing, request data, and templates</a></li>
+<li><a href="https://flask.palletsprojects.com/en/stable/deploying/gunicorn/">Pallets — Deploying Flask with Gunicorn</a></li>
+<li><a href="https://docs.aws.amazon.com/linux/al2023/ug/ec2-lamp-amazon-linux-2023.html">AWS — Anatomy of a LAMP server</a></li>
+<li><a href="https://wordpress.org/about/requirements/">WordPress.org — Server requirements</a></li>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "research/topic.html" %}
+{% block research_content %}
+<dl>
+    <dt>JavaScript</dt>
+    <dd>The scripting language introduced by Netscape for its browser. The name is now commonly used for the language developers write in browsers and other runtimes.</dd>
+    <dt>JScript</dt>
+    <dd>Microsoft's historical scripting implementation for Internet Explorer. Compatibility with a particular JScript version depended on the language features and browser APIs available in that environment.</dd>
+    <dt>ECMAScript</dt>
+    <dd>The language specified by ECMA-262. Ecma adopted the first edition in June 1997. JavaScript and JScript helped shape the standard, which gives implementations shared rules for syntax, types, and built-in objects.</dd>
+</dl>
+<h3>Language features and browser APIs</h3>
+<pre><code>const scores = [12, 18];
+const doubled = scores.map(score =&gt; score * 2);
+document.querySelector("#result").textContent = doubled.join(", ");</code></pre>
+<p>ECMAScript defines arrays, arrow functions, and <code>map()</code>. The browser supplies <code>document</code>, <code>querySelector()</code>, and <code>textContent</code> through the DOM. A runtime can support the first two lines without providing a browser document. Older JScript engines also predate newer language syntax such as arrow functions.</p>
+{% endblock %}
+{% block research_sources %}
+<li><a href="https://262.ecma-international.org/5.1/index.html">Ecma International — ECMA-262 introduction and edition history</a></li>
+<li><a href="https://tc39.es/ecma262/#sec-hosts-and-implementations">TC39 — ECMAScript hosts and implementations</a></li>
+<li><a href="https://dom.spec.whatwg.org/">WHATWG — DOM Standard</a></li>
+{% endblock %}
